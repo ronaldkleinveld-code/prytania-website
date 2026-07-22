@@ -106,7 +106,10 @@
 
   f.addEventListener('submit', async (e) => {
     e.preventDefault();
-    const code = input.value.trim().replace(/[^A-Za-z0-9_-]/g, '');
+    const code = input.value.trim()
+      .replace(/\s+/g, '-')            // spaces become hyphens
+      .replace(/[^A-Za-z0-9_-]/g, '')  // strip anything not URL-safe
+      .replace(/-{2,}/g, '-');         // collapse repeated hyphens
     msg.className = 'msg';
     if (!code) { msg.className = 'msg err'; msg.textContent = 'Please enter your access code.'; return; }
     const url = '/p/' + code + '/';
