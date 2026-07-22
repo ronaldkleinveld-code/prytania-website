@@ -13,7 +13,7 @@ import sys
 from datetime import date
 from pathlib import Path
 
-SITE = Path(__file__).resolve().parent.parent / "site"
+SITE = Path(__file__).resolve().parent.parent  # repo root = site root
 
 TEMPLATE = """<!DOCTYPE html>
 <html lang="en">
