@@ -1,0 +1,147 @@
+/* Prytania Partners — clean corporate stylesheet */
+:root {
+  --navy: #12233d;
+  --navy-2: #1c3556;
+  --ink: #22303f;
+  --muted: #5c6b7a;
+  --line: #e3e8ee;
+  --paper: #ffffff;
+  --wash: #f5f7fa;
+  --accent: #b08d3f; /* muted gold */
+  --serif: Georgia, "Times New Roman", serif;
+  --sans: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--sans);
+  color: var(--ink);
+  background: var(--paper);
+  line-height: 1.65;
+  font-size: 17px;
+  -webkit-font-smoothing: antialiased;
+}
+
+.wrap { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+
+/* Header */
+header.site {
+  position: sticky; top: 0; z-index: 50;
+  background: rgba(255,255,255,.96);
+  border-bottom: 1px solid var(--line);
+  backdrop-filter: blur(6px);
+}
+header.site .wrap {
+  display: flex; align-items: center; justify-content: space-between;
+  height: 72px;
+}
+.brand {
+  font-family: var(--serif);
+  font-size: 21px; letter-spacing: .02em;
+  color: var(--navy); text-decoration: none; font-weight: 600;
+}
+.brand span { color: var(--accent); }
+nav.main a {
+  color: var(--muted); text-decoration: none;
+  font-size: 14.5px; letter-spacing: .06em; text-transform: uppercase;
+  margin-left: 28px;
+}
+nav.main a:hover { color: var(--navy); }
+
+/* Hero */
+.hero {
+  background: linear-gradient(160deg, var(--navy) 0%, var(--navy-2) 100%);
+  color: #fff;
+  padding: 110px 0 100px;
+}
+.hero .kicker {
+  color: var(--accent); text-transform: uppercase;
+  letter-spacing: .18em; font-size: 13px; margin-bottom: 18px;
+}
+.hero h1 {
+  font-family: var(--serif); font-weight: 600;
+  font-size: clamp(34px, 5vw, 52px);
+  line-height: 1.15; max-width: 720px;
+}
+.hero p.lead {
+  margin-top: 22px; max-width: 620px;
+  color: #c9d3e0; font-size: 19px;
+}
+.hero .actions { margin-top: 36px; }
+
+.btn {
+  display: inline-block; text-decoration: none;
+  padding: 13px 28px; border-radius: 3px;
+  font-size: 15px; letter-spacing: .04em;
+}
+.btn.gold { background: var(--accent); color: #fff; }
+.btn.gold:hover { background: #9a7a33; }
+.btn.ghost { border: 1px solid rgba(255,255,255,.45); color: #fff; margin-left: 12px; }
+.btn.ghost:hover { border-color: #fff; }
+
+/* Sections */
+section { padding: 88px 0; }
+section.alt { background: var(--wash); }
+.eyebrow {
+  color: var(--accent); text-transform: uppercase;
+  letter-spacing: .18em; font-size: 12.5px; margin-bottom: 12px;
+}
+h2 {
+  font-family: var(--serif); font-weight: 600;
+  color: var(--navy); font-size: 32px; margin-bottom: 20px;
+}
+.prose { max-width: 700px; color: var(--ink); }
+.prose p + p { margin-top: 16px; }
+
+/* Services grid */
+.grid {
+  display: grid; gap: 28px; margin-top: 44px;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+.card {
+  background: var(--paper); border: 1px solid var(--line);
+  border-top: 3px solid var(--accent);
+  padding: 30px 28px;
+}
+.card h3 {
+  font-family: var(--serif); color: var(--navy);
+  font-size: 20px; margin-bottom: 10px; font-weight: 600;
+}
+.card p { color: var(--muted); font-size: 15.5px; }
+
+/* Contact */
+.contact-block { margin-top: 28px; font-size: 17px; }
+.contact-block a { color: var(--navy); }
+
+/* Footer */
+footer.site {
+  background: var(--navy); color: #a9b6c6;
+  padding: 40px 0; font-size: 14px;
+}
+footer.site .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+footer.site a { color: #cfd8e3; text-decoration: none; }
+footer.site a:hover { color: #fff; }
+
+/* Preview pages */
+.preview-banner {
+  background: var(--accent); color: #fff;
+  font-size: 13.5px; letter-spacing: .08em; text-transform: uppercase;
+  text-align: center; padding: 9px 16px;
+}
+.preview-frame {
+  border: 1px solid var(--line); border-radius: 4px;
+  overflow: hidden; margin-top: 32px;
+}
+.preview-frame iframe { display: block; width: 100%; height: 70vh; border: 0; }
+.meta-list { list-style: none; margin-top: 24px; }
+.meta-list li { padding: 10px 0; border-bottom: 1px solid var(--line); display: flex; gap: 16px; }
+.meta-list li strong { min-width: 140px; color: var(--navy); font-weight: 600; }
+
+@media (max-width: 640px) {
+  nav.main a { margin-left: 16px; font-size: 13px; }
+  .hero { padding: 72px 0 64px; }
+  section { padding: 60px 0; }
+}
