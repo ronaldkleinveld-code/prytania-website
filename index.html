@@ -5,98 +5,114 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Prytania Partners — Independent Advisory</title>
 <meta name="description" content="Prytania Partners is an independent advisory firm helping owners and leadership teams make confident decisions on strategy, operations, and digital projects.">
-<link rel="stylesheet" href="/styles.css">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%2312233d'/%3E%3Ctext x='16' y='22' font-family='Georgia' font-size='18' fill='%23b08d3f' text-anchor='middle'%3EP%3C/text%3E%3C/svg%3E">
+<style>
+  :root {
+    --navy: #12233d; --navy-2: #1c3556; --gold: #b08d3f;
+    --mist: #c9d3e0; --line: rgba(255,255,255,.14);
+    --serif: Georgia, "Times New Roman", serif;
+    --sans: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { height: 100%; }
+  body {
+    font-family: var(--sans); color: #fff;
+    background: linear-gradient(160deg, var(--navy) 0%, var(--navy-2) 100%);
+    line-height: 1.5; -webkit-font-smoothing: antialiased;
+  }
+  .screen {
+    min-height: 100vh; min-height: 100svh;
+    display: flex; flex-direction: column;
+    max-width: 1080px; margin: 0 auto; padding: 0 32px;
+  }
+
+  /* Top bar */
+  .top {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: clamp(14px, 2.5vh, 26px) 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .brand { font-family: var(--serif); font-size: 21px; font-weight: 600; color: #fff; text-decoration: none; letter-spacing: .02em; }
+  .brand span { color: var(--gold); }
+  .top a.cta {
+    color: #fff; text-decoration: none; font-size: 13px; letter-spacing: .08em;
+    text-transform: uppercase; border: 1px solid rgba(255,255,255,.4);
+    padding: 8px 18px; border-radius: 3px;
+  }
+  .top a.cta:hover { border-color: var(--gold); color: var(--gold); }
+
+  /* Middle */
+  .mid { flex: 1; display: flex; flex-direction: column; justify-content: center; padding: clamp(12px, 3vh, 36px) 0; }
+  .kicker { color: var(--gold); text-transform: uppercase; letter-spacing: .18em; font-size: 12.5px; margin-bottom: clamp(8px, 1.5vh, 16px); }
+  h1 {
+    font-family: var(--serif); font-weight: 600;
+    font-size: clamp(28px, 4.2vh, 44px); line-height: 1.15; max-width: 680px;
+  }
+  .lead {
+    margin-top: clamp(10px, 1.8vh, 18px); max-width: 640px;
+    color: var(--mist); font-size: clamp(15px, 2vh, 17.5px);
+  }
+  .services {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(14px, 2vw, 28px);
+    margin-top: clamp(18px, 3.5vh, 40px);
+  }
+  .svc { border-top: 2px solid var(--gold); padding-top: clamp(8px, 1.4vh, 14px); }
+  .svc h2 { font-family: var(--serif); font-weight: 600; font-size: clamp(15px, 1.9vh, 18px); margin-bottom: 4px; }
+  .svc p { color: var(--mist); font-size: clamp(12.5px, 1.6vh, 14.5px); line-height: 1.45; }
+
+  /* Bottom bar */
+  .bottom {
+    border-top: 1px solid var(--line);
+    padding: clamp(12px, 2.2vh, 22px) 0 clamp(14px, 2.5vh, 26px);
+    display: flex; justify-content: space-between; align-items: baseline;
+    gap: 16px; flex-wrap: wrap;
+    font-size: clamp(12px, 1.6vh, 14px); color: var(--mist);
+  }
+  .bottom a { color: #fff; text-decoration: none; border-bottom: 1px solid var(--gold); }
+  .bottom a:hover { color: var(--gold); }
+  .bottom .fine { color: #8595aa; }
+
+  /* Small screens: stack services, allow natural scrolling */
+  @media (max-width: 720px) {
+    .services { grid-template-columns: 1fr; }
+    .bottom { flex-direction: column; gap: 6px; }
+  }
+</style>
 </head>
 <body>
 
-<header class="site">
-  <div class="wrap">
+<div class="screen">
+  <header class="top">
     <a class="brand" href="/">Prytania <span>Partners</span></a>
-    <nav class="main">
-      <a href="#about">About</a>
-      <a href="#services">Services</a>
-      <a href="#previews">Client previews</a>
-      <a href="#contact">Contact</a>
-    </nav>
-  </div>
-</header>
+    <a class="cta" href="mailto:info@prytaniapartners.com">Get in touch</a>
+  </header>
 
-<div class="hero">
-  <div class="wrap">
+  <main class="mid">
     <div class="kicker">Independent advisory</div>
     <h1>Clear counsel for decisions that matter.</h1>
-    <p class="lead">Prytania Partners works alongside owners and leadership teams on strategy, operations, and digital initiatives — with the discretion and directness of a trusted partner.</p>
-    <div class="actions">
-      <a class="btn gold" href="#contact">Get in touch</a>
-      <a class="btn ghost" href="#services">What we do</a>
+    <p class="lead">Prytania Partners is an independent advisory practice based in Amsterdam. We work alongside owners and leadership teams — few engagements at a time, close involvement, honest advice, and accountability until the work is done.</p>
+
+    <div class="services">
+      <div class="svc">
+        <h2>Strategy &amp; decisions</h2>
+        <p>Sparring partner for owners and boards: positioning, growth options, and the analysis to choose with confidence.</p>
+      </div>
+      <div class="svc">
+        <h2>Operations &amp; execution</h2>
+        <p>Turning plans into working practice — process improvement, project leadership, hands-on reinforcement.</p>
+      </div>
+      <div class="svc">
+        <h2>Digital projects</h2>
+        <p>Websites, tooling, and automation — scoped sensibly, delivered end-to-end, built to be maintained.</p>
+      </div>
     </div>
-  </div>
+  </main>
+
+  <footer class="bottom">
+    <div><a href="mailto:info@prytaniapartners.com">info@prytaniapartners.com</a> &nbsp;·&nbsp; Amsterdam, the Netherlands</div>
+    <div class="fine">Client project previews are shared by private invitation link &nbsp;·&nbsp; &copy; 2026 Prytania Partners B.V.</div>
+  </footer>
 </div>
-
-<section id="about">
-  <div class="wrap">
-    <div class="eyebrow">About</div>
-    <h2>A partner, not a vendor</h2>
-    <div class="prose">
-      <p>Prytania Partners is an independent advisory practice based in the Netherlands. We take on a small number of engagements at a time, which lets us work closely, move quickly, and stay personally accountable for outcomes.</p>
-      <p>Our approach is simple: understand the business first, give honest advice second, and stay involved until the work is done — whether that is a strategic decision, an operational change, or a digital project brought from idea to launch.</p>
-    </div>
-  </div>
-</section>
-
-<section id="services" class="alt">
-  <div class="wrap">
-    <div class="eyebrow">Services</div>
-    <h2>What we do</h2>
-    <div class="grid">
-      <div class="card">
-        <h3>Strategy &amp; decision support</h3>
-        <p>Sparring partner for owners and boards: market positioning, growth options, and the analysis needed to choose between them with confidence.</p>
-      </div>
-      <div class="card">
-        <h3>Operations &amp; execution</h3>
-        <p>Turning plans into working practice — process improvement, project leadership, and hands-on support where the organisation needs reinforcement.</p>
-      </div>
-      <div class="card">
-        <h3>Digital projects</h3>
-        <p>Guidance and delivery of digital initiatives, from websites and tooling to workflow automation — scoped sensibly and built to be maintained.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="previews">
-  <div class="wrap">
-    <div class="eyebrow">Client previews</div>
-    <h2>Project previews by invitation</h2>
-    <div class="prose">
-      <p>Work in progress is shared with clients through private preview links. Each preview has its own confidential address that is not listed anywhere on this site and is not indexed by search engines.</p>
-      <p>If you are expecting a preview and have not received your link, please <a href="#contact">contact us</a> and we will resend it.</p>
-    </div>
-  </div>
-</section>
-
-<section id="contact" class="alt">
-  <div class="wrap">
-    <div class="eyebrow">Contact</div>
-    <h2>Start a conversation</h2>
-    <div class="prose">
-      <p>The best way to reach us is by email. We reply to every serious enquiry, usually within one business day.</p>
-    </div>
-    <div class="contact-block">
-      <p><strong>Email:</strong> <a href="mailto:info@prytaniapartners.com">info@prytaniapartners.com</a></p>
-      <p><strong>Location:</strong> Amsterdam, the Netherlands</p>
-    </div>
-  </div>
-</section>
-
-<footer class="site">
-  <div class="wrap">
-    <div>&copy; 2026 Prytania Partners B.V. All rights reserved.</div>
-    <div><a href="#about">About</a> &nbsp;·&nbsp; <a href="#services">Services</a> &nbsp;·&nbsp; <a href="#contact">Contact</a></div>
-  </div>
-</footer>
 
 </body>
 </html>
