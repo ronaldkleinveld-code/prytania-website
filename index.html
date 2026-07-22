@@ -35,6 +35,15 @@
   .brand { font-family: var(--serif); font-size: 21px; font-weight: 600; color: #fff; text-decoration: none; letter-spacing: .02em; }
   .brand span { color: var(--gold); }
   .top .actions { display: flex; align-items: center; gap: 22px; }
+  .lang { display: flex; gap: 4px; align-items: center; }
+  .lang button {
+    border: 2px solid transparent; background: none; padding: 2px; border-radius: 6px;
+    cursor: pointer; display: grid; place-items: center; opacity: .45;
+    transition: opacity .2s, border-color .2s;
+  }
+  .lang button:hover { opacity: 1; }
+  .lang button.active { opacity: 1; border-color: var(--gold); }
+  .lang svg { width: 20px; height: 14px; border-radius: 2px; display: block; }
   .top a.login { color: var(--mist); text-decoration: none; font-size: 13px; letter-spacing: .08em; text-transform: uppercase; }
   .top a.login:hover { color: var(--gold); }
   .top a.cta {
@@ -74,11 +83,13 @@
   .bottom a { color: #fff; text-decoration: none; border-bottom: 1px solid var(--gold); }
   .bottom a:hover { color: var(--gold); }
   .bottom .fine { color: #8595aa; }
+  .bottom .fine a { color: var(--mist); }
 
   /* Small screens: stack services, allow natural scrolling */
   @media (max-width: 720px) {
     .services { grid-template-columns: 1fr; }
     .bottom { flex-direction: column; gap: 6px; }
+    .top .actions { gap: 12px; }
   }
 </style>
 </head>
@@ -88,37 +99,128 @@
   <header class="top">
     <a class="brand" href="/">Prytania <span>Partners</span></a>
     <div class="actions">
-      <a class="login" href="/login/">Client login</a>
-      <a class="cta" href="mailto:info@prytaniapartners.com">Get in touch</a>
+      <div class="lang" id="langSwitch" aria-label="Language">
+        <button data-lang="en" class="active" aria-label="English" title="English"><svg viewBox="0 0 24 17"><rect width="24" height="17" fill="#fff"/><g fill="#B22234"><rect y="0" width="24" height="1.31"/><rect y="2.62" width="24" height="1.31"/><rect y="5.23" width="24" height="1.31"/><rect y="7.85" width="24" height="1.31"/><rect y="10.46" width="24" height="1.31"/><rect y="13.08" width="24" height="1.31"/><rect y="15.69" width="24" height="1.31"/></g><rect width="10.5" height="9.15" fill="#3C3B6E"/></svg></button>
+        <button data-lang="de" aria-label="Deutsch" title="Deutsch"><svg viewBox="0 0 24 17"><rect width="24" height="5.67" y="0" fill="#000"/><rect width="24" height="5.67" y="5.67" fill="#DD0000"/><rect width="24" height="5.66" y="11.34" fill="#FFCE00"/></svg></button>
+        <button data-lang="fr" aria-label="Français" title="Français"><svg viewBox="0 0 24 17"><rect width="8" height="17" x="0" fill="#0055A4"/><rect width="8" height="17" x="8" fill="#fff"/><rect width="8" height="17" x="16" fill="#EF4135"/></svg></button>
+        <button data-lang="nl" aria-label="Nederlands" title="Nederlands"><svg viewBox="0 0 24 17"><rect width="24" height="5.67" y="0" fill="#AE1C28"/><rect width="24" height="5.67" y="5.67" fill="#fff"/><rect width="24" height="5.66" y="11.34" fill="#21468B"/></svg></button>
+        <button data-lang="es" aria-label="Español" title="Español"><svg viewBox="0 0 24 17"><rect width="24" height="17" fill="#F1BF00"/><rect width="24" height="4.25" y="0" fill="#AA151B"/><rect width="24" height="4.25" y="12.75" fill="#AA151B"/></svg></button>
+        <button data-lang="it" aria-label="Italiano" title="Italiano"><svg viewBox="0 0 24 17"><rect width="8" height="17" x="0" fill="#009246"/><rect width="8" height="17" x="8" fill="#fff"/><rect width="8" height="17" x="16" fill="#CE2B37"/></svg></button>
+      </div>
+      <a class="login" href="/login/" data-i18n="nav.login">Client login</a>
+      <a class="cta" href="mailto:info@prytaniapartners.com" data-i18n="nav.contact">Get in touch</a>
     </div>
   </header>
 
   <main class="mid">
-    <div class="kicker">Independent advisory</div>
-    <h1>Clear counsel for decisions that matter.</h1>
-    <p class="lead">Prytania Partners is an independent advisory practice based in Amsterdam. We work alongside owners and leadership teams — few engagements at a time, close involvement, honest advice, and accountability until the work is done.</p>
+    <div class="kicker" data-i18n="kicker">Independent advisory</div>
+    <h1 data-i18n="h1">Clear counsel for decisions that matter.</h1>
+    <p class="lead" data-i18n="lead">Prytania Partners is an independent advisory practice based in Amsterdam. We work alongside owners and leadership teams — few engagements at a time, close involvement, honest advice, and accountability until the work is done.</p>
 
     <div class="services">
       <div class="svc">
-        <h2>Strategy &amp; decisions</h2>
-        <p>Sparring partner for owners and boards: positioning, growth options, and the analysis to choose with confidence.</p>
+        <h2 data-i18n="s1t">Strategy &amp; decisions</h2>
+        <p data-i18n="s1d">Sparring partner for owners and boards: positioning, growth options, and the analysis to choose with confidence.</p>
       </div>
       <div class="svc">
-        <h2>Operations &amp; execution</h2>
-        <p>Turning plans into working practice — process improvement, project leadership, hands-on reinforcement.</p>
+        <h2 data-i18n="s2t">Operations &amp; execution</h2>
+        <p data-i18n="s2d">Turning plans into working practice — process improvement, project leadership, hands-on reinforcement.</p>
       </div>
       <div class="svc">
-        <h2>Digital projects</h2>
-        <p>Websites, tooling, and automation — scoped sensibly, delivered end-to-end, built to be maintained.</p>
+        <h2 data-i18n="s3t">Digital projects</h2>
+        <p data-i18n="s3d">Websites, tooling, and automation — scoped sensibly, delivered end-to-end, built to be maintained.</p>
       </div>
     </div>
   </main>
 
   <footer class="bottom">
-    <div><a href="mailto:info@prytaniapartners.com">info@prytaniapartners.com</a> &nbsp;·&nbsp; Amsterdam, the Netherlands</div>
-    <div class="fine">Client project previews: <a href="/login/">log in with your access code</a> &nbsp;·&nbsp; &copy; 2026 Prytania Partners B.V.</div>
+    <div><a href="mailto:info@prytaniapartners.com">info@prytaniapartners.com</a> &nbsp;·&nbsp; <span data-i18n="foot.loc">Amsterdam, the Netherlands</span></div>
+    <div class="fine"><span data-i18n="foot.prev">Client project previews: <a href="/login/">log in with your access code</a></span> &nbsp;·&nbsp; &copy; 2026 Prytania Partners B.V.</div>
   </footer>
 </div>
+
+<script>
+const I18N = {
+en:{
+ "nav.login":"Client login","nav.contact":"Get in touch",
+ "kicker":"Independent advisory",
+ "h1":"Clear counsel for decisions that matter.",
+ "lead":"Prytania Partners is an independent advisory practice based in Amsterdam. We work alongside owners and leadership teams — few engagements at a time, close involvement, honest advice, and accountability until the work is done.",
+ "s1t":"Strategy &amp; decisions","s1d":"Sparring partner for owners and boards: positioning, growth options, and the analysis to choose with confidence.",
+ "s2t":"Operations &amp; execution","s2d":"Turning plans into working practice — process improvement, project leadership, hands-on reinforcement.",
+ "s3t":"Digital projects","s3d":"Websites, tooling, and automation — scoped sensibly, delivered end-to-end, built to be maintained.",
+ "foot.loc":"Amsterdam, the Netherlands",
+ "foot.prev":'Client project previews: <a href="/login/">log in with your access code</a>'
+},
+de:{
+ "nav.login":"Kunden-Login","nav.contact":"Kontakt",
+ "kicker":"Unabhängige Beratung",
+ "h1":"Klarer Rat für Entscheidungen, die zählen.",
+ "lead":"Prytania Partners ist eine unabhängige Beratungspraxis mit Sitz in Amsterdam. Wir arbeiten Seite an Seite mit Inhabern und Führungsteams — wenige Mandate zugleich, enge Einbindung, ehrlicher Rat und Verantwortung, bis die Arbeit getan ist.",
+ "s1t":"Strategie &amp; Entscheidungen","s1d":"Sparringspartner für Inhaber und Beiräte: Positionierung, Wachstumsoptionen und die Analyse, um mit Zuversicht zu entscheiden.",
+ "s2t":"Betrieb &amp; Umsetzung","s2d":"Pläne werden gelebte Praxis — Prozessverbesserung, Projektleitung, tatkräftige Verstärkung.",
+ "s3t":"Digitale Projekte","s3d":"Websites, Tools und Automatisierung — vernünftig zugeschnitten, von A bis Z geliefert, wartbar gebaut.",
+ "foot.loc":"Amsterdam, Niederlande",
+ "foot.prev":'Projektvorschauen für Kunden: <a href="/login/">mit Zugangscode anmelden</a>'
+},
+fr:{
+ "nav.login":"Espace client","nav.contact":"Contactez-nous",
+ "kicker":"Conseil indépendant",
+ "h1":"Des conseils clairs pour les décisions qui comptent.",
+ "lead":"Prytania Partners est un cabinet de conseil indépendant basé à Amsterdam. Nous travaillons aux côtés des propriétaires et des équipes dirigeantes — peu de missions à la fois, une implication étroite, des conseils honnêtes et une responsabilité jusqu’à ce que le travail soit accompli.",
+ "s1t":"Stratégie &amp; décisions","s1d":"Partenaire de réflexion des propriétaires et des conseils : positionnement, options de croissance et l’analyse pour choisir en confiance.",
+ "s2t":"Opérations &amp; exécution","s2d":"Transformer les plans en pratique — amélioration des processus, direction de projet, renfort opérationnel.",
+ "s3t":"Projets numériques","s3d":"Sites web, outils et automatisation — bien cadrés, livrés de bout en bout, conçus pour durer.",
+ "foot.loc":"Amsterdam, Pays-Bas",
+ "foot.prev":'Aperçus de projets clients : <a href="/login/">connectez-vous avec votre code d’accès</a>'
+},
+nl:{
+ "nav.login":"Klantlogin","nav.contact":"Neem contact op",
+ "kicker":"Onafhankelijk advies",
+ "h1":"Helder advies voor beslissingen die ertoe doen.",
+ "lead":"Prytania Partners is een onafhankelijke adviespraktijk in Amsterdam. We werken zij aan zij met eigenaren en managementteams — weinig opdrachten tegelijk, nauwe betrokkenheid, eerlijk advies en verantwoordelijkheid tot het werk af is.",
+ "s1t":"Strategie &amp; besluitvorming","s1d":"Sparringpartner voor eigenaren en besturen: positionering, groeiopties en de analyse om met vertrouwen te kiezen.",
+ "s2t":"Operatie &amp; uitvoering","s2d":"Van plan naar praktijk — procesverbetering, projectleiding, hands-on versterking.",
+ "s3t":"Digitale projecten","s3d":"Websites, tooling en automatisering — verstandig afgebakend, van begin tot eind opgeleverd, gebouwd om te onderhouden.",
+ "foot.loc":"Amsterdam, Nederland",
+ "foot.prev":'Projectpreviews voor klanten: <a href="/login/">log in met uw toegangscode</a>'
+},
+es:{
+ "nav.login":"Acceso clientes","nav.contact":"Contacto",
+ "kicker":"Asesoría independiente",
+ "h1":"Consejo claro para decisiones que importan.",
+ "lead":"Prytania Partners es una consultora independiente con sede en Ámsterdam. Trabajamos junto a propietarios y equipos directivos — pocos proyectos a la vez, implicación cercana, consejo honesto y responsabilidad hasta terminar el trabajo.",
+ "s1t":"Estrategia y decisiones","s1d":"Interlocutor de propietarios y consejos: posicionamiento, opciones de crecimiento y el análisis para elegir con confianza.",
+ "s2t":"Operaciones y ejecución","s2d":"Convertir planes en práctica — mejora de procesos, liderazgo de proyectos, refuerzo práctico.",
+ "s3t":"Proyectos digitales","s3d":"Webs, herramientas y automatización — bien delimitados, entregados de principio a fin, hechos para mantenerse.",
+ "foot.loc":"Ámsterdam, Países Bajos",
+ "foot.prev":'Vistas previas de proyectos: <a href="/login/">accede con tu código</a>'
+},
+it:{
+ "nav.login":"Area clienti","nav.contact":"Contattaci",
+ "kicker":"Consulenza indipendente",
+ "h1":"Consigli chiari per le decisioni che contano.",
+ "lead":"Prytania Partners è uno studio di consulenza indipendente con sede ad Amsterdam. Lavoriamo al fianco di proprietari e team dirigenti — pochi incarichi alla volta, coinvolgimento diretto, consigli onesti e responsabilità fino a lavoro concluso.",
+ "s1t":"Strategia e decisioni","s1d":"Sparring partner di proprietari e consigli: posizionamento, opzioni di crescita e l’analisi per scegliere con fiducia.",
+ "s2t":"Operazioni ed esecuzione","s2d":"Trasformare i piani in pratica — miglioramento dei processi, guida dei progetti, rinforzo operativo.",
+ "s3t":"Progetti digitali","s3d":"Siti web, strumenti e automazione — ben delimitati, consegnati end-to-end, fatti per essere mantenuti.",
+ "foot.loc":"Amsterdam, Paesi Bassi",
+ "foot.prev":'Anteprime dei progetti: <a href="/login/">accedi con il tuo codice</a>'
+}
+};
+function setLang(l) {
+  if (!I18N[l]) l = "en";
+  document.documentElement.lang = l;
+  document.querySelectorAll("[data-i18n]").forEach(el => {
+    const v = (I18N[l] && I18N[l][el.dataset.i18n]) ?? I18N.en[el.dataset.i18n];
+    if (v != null) el.innerHTML = v;
+  });
+  document.querySelectorAll(".lang button").forEach(b => b.classList.toggle("active", b.dataset.lang === l));
+  try { localStorage.setItem("pp_lang", l); } catch (e) {}
+}
+document.querySelectorAll(".lang button").forEach(b => b.addEventListener("click", () => setLang(b.dataset.lang)));
+try { const saved = localStorage.getItem("pp_lang"); if (saved && saved !== "en") setLang(saved); } catch (e) {}
+</script>
 
 </body>
 </html>

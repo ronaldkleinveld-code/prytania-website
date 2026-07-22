@@ -31,6 +31,16 @@
   }
   .brand { font-family: var(--serif); font-size: 21px; font-weight: 600; color: #fff; text-decoration: none; letter-spacing: .02em; }
   .brand span { color: var(--gold); }
+  .top .actions { display: flex; align-items: center; gap: 22px; }
+  .lang { display: flex; gap: 4px; align-items: center; }
+  .lang button {
+    border: 2px solid transparent; background: none; padding: 2px; border-radius: 6px;
+    cursor: pointer; display: grid; place-items: center; opacity: .45;
+    transition: opacity .2s, border-color .2s;
+  }
+  .lang button:hover { opacity: 1; }
+  .lang button.active { opacity: 1; border-color: var(--gold); }
+  .lang svg { width: 20px; height: 14px; border-radius: 2px; display: block; }
   .top a.back { color: var(--mist); text-decoration: none; font-size: 13px; letter-spacing: .08em; text-transform: uppercase; }
   .top a.back:hover { color: var(--gold); }
 
@@ -50,12 +60,12 @@
   }
   input:focus { border-color: var(--gold); }
   input::placeholder { color: #7d8ca0; }
-  button {
+  button[type=submit] {
     padding: 13px 26px; font-size: 14px; letter-spacing: .06em; text-transform: uppercase;
     background: var(--gold); color: #fff; border: 0; border-radius: 3px; cursor: pointer;
     font-family: var(--sans);
   }
-  button:hover { background: #9a7a33; }
+  button[type=submit]:hover { background: #9a7a33; }
   button[disabled] { opacity: .6; cursor: wait; }
   .msg { margin-top: 14px; font-size: 14.5px; min-height: 22px; }
   .msg.err { color: #e8b4b4; }
@@ -75,63 +85,144 @@
 <div class="screen">
   <header class="top">
     <a class="brand" href="/">Prytania <span>Partners</span></a>
-    <a class="back" href="/">&larr; Back to site</a>
+    <div class="actions">
+      <div class="lang" id="langSwitch" aria-label="Language">
+        <button data-lang="en" class="active" aria-label="English" title="English"><svg viewBox="0 0 24 17"><rect width="24" height="17" fill="#fff"/><g fill="#B22234"><rect y="0" width="24" height="1.31"/><rect y="2.62" width="24" height="1.31"/><rect y="5.23" width="24" height="1.31"/><rect y="7.85" width="24" height="1.31"/><rect y="10.46" width="24" height="1.31"/><rect y="13.08" width="24" height="1.31"/><rect y="15.69" width="24" height="1.31"/></g><rect width="10.5" height="9.15" fill="#3C3B6E"/></svg></button>
+        <button data-lang="de" aria-label="Deutsch" title="Deutsch"><svg viewBox="0 0 24 17"><rect width="24" height="5.67" y="0" fill="#000"/><rect width="24" height="5.67" y="5.67" fill="#DD0000"/><rect width="24" height="5.66" y="11.34" fill="#FFCE00"/></svg></button>
+        <button data-lang="fr" aria-label="Français" title="Français"><svg viewBox="0 0 24 17"><rect width="8" height="17" x="0" fill="#0055A4"/><rect width="8" height="17" x="8" fill="#fff"/><rect width="8" height="17" x="16" fill="#EF4135"/></svg></button>
+        <button data-lang="nl" aria-label="Nederlands" title="Nederlands"><svg viewBox="0 0 24 17"><rect width="24" height="5.67" y="0" fill="#AE1C28"/><rect width="24" height="5.67" y="5.67" fill="#fff"/><rect width="24" height="5.66" y="11.34" fill="#21468B"/></svg></button>
+        <button data-lang="es" aria-label="Español" title="Español"><svg viewBox="0 0 24 17"><rect width="24" height="17" fill="#F1BF00"/><rect width="24" height="4.25" y="0" fill="#AA151B"/><rect width="24" height="4.25" y="12.75" fill="#AA151B"/></svg></button>
+        <button data-lang="it" aria-label="Italiano" title="Italiano"><svg viewBox="0 0 24 17"><rect width="8" height="17" x="0" fill="#009246"/><rect width="8" height="17" x="8" fill="#fff"/><rect width="8" height="17" x="16" fill="#CE2B37"/></svg></button>
+      </div>
+      <a class="back" href="/" data-i18n="back">&larr; Back to site</a>
+    </div>
   </header>
 
   <main class="mid">
-    <div class="kicker">Client login</div>
-    <h1>View your project preview</h1>
-    <p class="help">Enter the access code from your invitation. Codes are case-sensitive and personal — please don't share them.</p>
+    <div class="kicker" data-i18n="kicker">Client login</div>
+    <h1 data-i18n="h1">View your project preview</h1>
+    <p class="help" data-i18n="help">Enter the access code from your invitation. Codes are case-sensitive and personal — please don't share them.</p>
 
     <form id="f" autocomplete="off">
-      <label for="code">Access code</label>
+      <label for="code" data-i18n="label">Access code</label>
       <div class="row">
         <input id="code" name="code" placeholder="e.g. Zk92mQ4pTx7a" spellcheck="false" autocapitalize="off" autofocus>
-        <button id="go" type="submit">View</button>
+        <button id="go" type="submit" data-i18n="btn">View</button>
       </div>
       <div class="msg" id="msg"></div>
     </form>
 
-    <p class="fine">No code, or code not working? Email <a href="mailto:info@prytaniapartners.com">info@prytaniapartners.com</a> and we'll send you a fresh invitation.</p>
+    <p class="fine" data-i18n="fine">No code, or code not working? Email <a href="mailto:info@prytaniapartners.com">info@prytaniapartners.com</a> and we'll send you a fresh invitation.</p>
   </main>
 
   <footer class="bottom">&copy; 2026 Prytania Partners B.V.</footer>
 </div>
 
 <script>
-  const f = document.getElementById('f');
-  const input = document.getElementById('code');
-  const msg = document.getElementById('msg');
-  const btn = document.getElementById('go');
+const I18N = {
+en:{
+ "back":"&larr; Back to site","kicker":"Client login","h1":"View your project preview",
+ "help":"Enter the access code from your invitation. Codes are case-sensitive and personal — please don't share them.",
+ "label":"Access code","btn":"View",
+ "fine":'No code, or code not working? Email <a href="mailto:info@prytaniapartners.com">info@prytaniapartners.com</a> and we\'ll send you a fresh invitation.',
+ "m.empty":"Please enter your access code.","m.check":"Checking…",
+ "m.ok":"Code accepted — opening your preview…",
+ "m.bad":"That code isn’t recognised. Check for typos, or request a new invitation below."
+},
+de:{
+ "back":"&larr; Zurück zur Website","kicker":"Kunden-Login","h1":"Ihre Projektvorschau ansehen",
+ "help":"Geben Sie den Zugangscode aus Ihrer Einladung ein. Codes unterscheiden Groß- und Kleinschreibung und sind persönlich — bitte nicht weitergeben.",
+ "label":"Zugangscode","btn":"Ansehen",
+ "fine":'Kein Code, oder der Code funktioniert nicht? Schreiben Sie an <a href="mailto:info@prytaniapartners.com">info@prytaniapartners.com</a> und wir senden Ihnen eine neue Einladung.',
+ "m.empty":"Bitte geben Sie Ihren Zugangscode ein.","m.check":"Wird geprüft…",
+ "m.ok":"Code akzeptiert — Vorschau wird geöffnet…",
+ "m.bad":"Dieser Code wurde nicht erkannt. Prüfen Sie auf Tippfehler oder fordern Sie unten eine neue Einladung an."
+},
+fr:{
+ "back":"&larr; Retour au site","kicker":"Espace client","h1":"Consultez l’aperçu de votre projet",
+ "help":"Saisissez le code d’accès de votre invitation. Les codes sont sensibles à la casse et personnels — merci de ne pas les partager.",
+ "label":"Code d’accès","btn":"Voir",
+ "fine":'Pas de code, ou un code qui ne fonctionne pas ? Écrivez à <a href="mailto:info@prytaniapartners.com">info@prytaniapartners.com</a> et nous vous enverrons une nouvelle invitation.',
+ "m.empty":"Veuillez saisir votre code d’accès.","m.check":"Vérification…",
+ "m.ok":"Code accepté — ouverture de l’aperçu…",
+ "m.bad":"Ce code n’est pas reconnu. Vérifiez les fautes de frappe ou demandez une nouvelle invitation ci-dessous."
+},
+nl:{
+ "back":"&larr; Terug naar de site","kicker":"Klantlogin","h1":"Bekijk uw projectpreview",
+ "help":"Voer de toegangscode uit uw uitnodiging in. Codes zijn hoofdlettergevoelig en persoonlijk — deel ze niet.",
+ "label":"Toegangscode","btn":"Bekijk",
+ "fine":'Geen code, of werkt de code niet? Mail <a href="mailto:info@prytaniapartners.com">info@prytaniapartners.com</a> en we sturen u een nieuwe uitnodiging.',
+ "m.empty":"Voer uw toegangscode in.","m.check":"Controleren…",
+ "m.ok":"Code geaccepteerd — preview wordt geopend…",
+ "m.bad":"Deze code wordt niet herkend. Controleer op typefouten of vraag hieronder een nieuwe uitnodiging aan."
+},
+es:{
+ "back":"&larr; Volver al sitio","kicker":"Acceso clientes","h1":"Ver la vista previa de su proyecto",
+ "help":"Introduzca el código de acceso de su invitación. Los códigos distinguen mayúsculas y son personales — no los comparta.",
+ "label":"Código de acceso","btn":"Ver",
+ "fine":'¿Sin código, o no funciona? Escriba a <a href="mailto:info@prytaniapartners.com">info@prytaniapartners.com</a> y le enviaremos una nueva invitación.',
+ "m.empty":"Introduzca su código de acceso.","m.check":"Comprobando…",
+ "m.ok":"Código aceptado — abriendo la vista previa…",
+ "m.bad":"Código no reconocido. Revise si hay erratas o solicite una nueva invitación abajo."
+},
+it:{
+ "back":"&larr; Torna al sito","kicker":"Area clienti","h1":"Guarda l’anteprima del tuo progetto",
+ "help":"Inserisci il codice di accesso del tuo invito. I codici distinguono maiuscole e minuscole e sono personali — non condividerli.",
+ "label":"Codice di accesso","btn":"Vedi",
+ "fine":'Nessun codice, o il codice non funziona? Scrivi a <a href="mailto:info@prytaniapartners.com">info@prytaniapartners.com</a> e ti invieremo un nuovo invito.',
+ "m.empty":"Inserisci il tuo codice di accesso.","m.check":"Verifica in corso…",
+ "m.ok":"Codice accettato — apertura dell’anteprima…",
+ "m.bad":"Codice non riconosciuto. Controlla eventuali errori di battitura o richiedi un nuovo invito qui sotto."
+}
+};
+let cur = "en";
+function t(k) { return (I18N[cur] && I18N[cur][k]) ?? I18N.en[k]; }
+function setLang(l) {
+  if (!I18N[l]) l = "en";
+  cur = l;
+  document.documentElement.lang = l;
+  document.querySelectorAll("[data-i18n]").forEach(el => {
+    const v = t(el.dataset.i18n);
+    if (v != null) el.innerHTML = v;
+  });
+  document.querySelectorAll(".lang button").forEach(b => b.classList.toggle("active", b.dataset.lang === l));
+  try { localStorage.setItem("pp_lang", l); } catch (e) {}
+}
+document.querySelectorAll(".lang button").forEach(b => b.addEventListener("click", () => setLang(b.dataset.lang)));
+try { const saved = localStorage.getItem("pp_lang"); if (saved && saved !== "en") setLang(saved); } catch (e) {}
 
-  f.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const code = input.value.trim()
-      .replace(/\s+/g, '-')            // spaces become hyphens
-      .replace(/[^A-Za-z0-9_-]/g, '')  // strip anything not URL-safe
-      .replace(/-{2,}/g, '-');         // collapse repeated hyphens
-    msg.className = 'msg';
-    if (!code) { msg.className = 'msg err'; msg.textContent = 'Please enter your access code.'; return; }
-    const url = '/p/' + code + '/';
-    btn.disabled = true;
-    msg.textContent = 'Checking…';
-    try {
-      const r = await fetch(url, { method: 'HEAD' });
-      if (r.ok) {
-        msg.className = 'msg ok';
-        msg.textContent = 'Code accepted — opening your preview…';
-        window.location.href = url;
-        return;
-      }
-      msg.className = 'msg err';
-      msg.textContent = 'That code isn’t recognised. Check for typos, or request a new invitation below.';
-    } catch (err) {
-      // If the check itself fails (offline, etc.), just try navigating.
+const f = document.getElementById('f');
+const input = document.getElementById('code');
+const msg = document.getElementById('msg');
+const btn = document.getElementById('go');
+
+f.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const code = input.value.trim()
+    .replace(/\s+/g, '-')            // spaces become hyphens
+    .replace(/[^A-Za-z0-9_-]/g, '')  // strip anything not URL-safe
+    .replace(/-{2,}/g, '-');         // collapse repeated hyphens
+  msg.className = 'msg';
+  if (!code) { msg.className = 'msg err'; msg.textContent = t('m.empty'); return; }
+  const url = '/p/' + code + '/';
+  btn.disabled = true;
+  msg.textContent = t('m.check');
+  try {
+    const r = await fetch(url, { method: 'HEAD' });
+    if (r.ok) {
+      msg.className = 'msg ok';
+      msg.textContent = t('m.ok');
       window.location.href = url;
       return;
     }
-    btn.disabled = false;
-  });
+    msg.className = 'msg err';
+    msg.textContent = t('m.bad');
+  } catch (err) {
+    window.location.href = url;
+    return;
+  }
+  btn.disabled = false;
+});
 </script>
 
 </body>
