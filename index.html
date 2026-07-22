@@ -34,6 +34,9 @@
   }
   .brand { font-family: var(--serif); font-size: 21px; font-weight: 600; color: #fff; text-decoration: none; letter-spacing: .02em; }
   .brand span { color: var(--gold); }
+  .top .actions { display: flex; align-items: center; gap: 22px; }
+  .top a.login { color: var(--mist); text-decoration: none; font-size: 13px; letter-spacing: .08em; text-transform: uppercase; }
+  .top a.login:hover { color: var(--gold); }
   .top a.cta {
     color: #fff; text-decoration: none; font-size: 13px; letter-spacing: .08em;
     text-transform: uppercase; border: 1px solid rgba(255,255,255,.4);
@@ -84,7 +87,10 @@
 <div class="screen">
   <header class="top">
     <a class="brand" href="/">Prytania <span>Partners</span></a>
-    <a class="cta" href="mailto:info@prytaniapartners.com">Get in touch</a>
+    <div class="actions">
+      <a class="login" href="/login/">Client login</a>
+      <a class="cta" href="mailto:info@prytaniapartners.com">Get in touch</a>
+    </div>
   </header>
 
   <main class="mid">
@@ -110,7 +116,7 @@
 
   <footer class="bottom">
     <div><a href="mailto:info@prytaniapartners.com">info@prytaniapartners.com</a> &nbsp;·&nbsp; Amsterdam, the Netherlands</div>
-    <div class="fine">Client project previews are shared by private invitation link &nbsp;·&nbsp; &copy; 2026 Prytania Partners B.V.</div>
+    <div class="fine">Client project previews: <a href="/login/">log in with your access code</a> &nbsp;·&nbsp; &copy; 2026 Prytania Partners B.V.</div>
   </footer>
 </div>
 

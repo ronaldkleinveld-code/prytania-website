@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Client login — Prytania Partners</title>
+<meta name="description" content="Enter your access code to view your private project preview.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%2312233d'/%3E%3Ctext x='16' y='22' font-family='Georgia' font-size='18' fill='%23b08d3f' text-anchor='middle'%3EP%3C/text%3E%3C/svg%3E">
+<style>
+  :root {
+    --navy: #12233d; --navy-2: #1c3556; --gold: #b08d3f;
+    --mist: #c9d3e0; --line: rgba(255,255,255,.14);
+    --serif: Georgia, "Times New Roman", serif;
+    --sans: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { height: 100%; }
+  body {
+    font-family: var(--sans); color: #fff;
+    background: linear-gradient(160deg, var(--navy) 0%, var(--navy-2) 100%);
+    line-height: 1.5; -webkit-font-smoothing: antialiased;
+  }
+  .screen {
+    min-height: 100vh; min-height: 100svh;
+    display: flex; flex-direction: column;
+    max-width: 1080px; margin: 0 auto; padding: 0 32px;
+  }
+  .top {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: clamp(14px, 2.5vh, 26px) 0; border-bottom: 1px solid var(--line);
+  }
+  .brand { font-family: var(--serif); font-size: 21px; font-weight: 600; color: #fff; text-decoration: none; letter-spacing: .02em; }
+  .brand span { color: var(--gold); }
+  .top a.back { color: var(--mist); text-decoration: none; font-size: 13px; letter-spacing: .08em; text-transform: uppercase; }
+  .top a.back:hover { color: var(--gold); }
+
+  .mid { flex: 1; display: flex; flex-direction: column; justify-content: center; align-items: flex-start; max-width: 480px; }
+  .kicker { color: var(--gold); text-transform: uppercase; letter-spacing: .18em; font-size: 12.5px; margin-bottom: 14px; }
+  h1 { font-family: var(--serif); font-weight: 600; font-size: clamp(26px, 4vh, 38px); line-height: 1.15; }
+  p.help { margin-top: 14px; color: var(--mist); font-size: 15.5px; }
+
+  form { margin-top: 28px; width: 100%; }
+  label { display: block; font-size: 12.5px; letter-spacing: .12em; text-transform: uppercase; color: var(--mist); margin-bottom: 8px; }
+  .row { display: flex; gap: 10px; }
+  input {
+    flex: 1; padding: 13px 16px; font-size: 16px; font-family: var(--sans);
+    border: 1px solid rgba(255,255,255,.35); border-radius: 3px;
+    background: rgba(255,255,255,.06); color: #fff; letter-spacing: .04em;
+    outline: none;
+  }
+  input:focus { border-color: var(--gold); }
+  input::placeholder { color: #7d8ca0; }
+  button {
+    padding: 13px 26px; font-size: 14px; letter-spacing: .06em; text-transform: uppercase;
+    background: var(--gold); color: #fff; border: 0; border-radius: 3px; cursor: pointer;
+    font-family: var(--sans);
+  }
+  button:hover { background: #9a7a33; }
+  button[disabled] { opacity: .6; cursor: wait; }
+  .msg { margin-top: 14px; font-size: 14.5px; min-height: 22px; }
+  .msg.err { color: #e8b4b4; }
+  .msg.ok { color: #bcd9c5; }
+  .fine { margin-top: 26px; color: #8595aa; font-size: 13px; }
+  .fine a { color: var(--mist); }
+
+  .bottom {
+    border-top: 1px solid var(--line);
+    padding: clamp(12px, 2.2vh, 22px) 0 clamp(14px, 2.5vh, 26px);
+    font-size: 13px; color: #8595aa;
+  }
+</style>
+</head>
+<body>
+
+<div class="screen">
+  <header class="top">
+    <a class="brand" href="/">Prytania <span>Partners</span></a>
+    <a class="back" href="/">&larr; Back to site</a>
+  </header>
+
+  <main class="mid">
+    <div class="kicker">Client login</div>
+    <h1>View your project preview</h1>
+    <p class="help">Enter the access code from your invitation. Codes are case-sensitive and personal — please don't share them.</p>
+
+    <form id="f" autocomplete="off">
+      <label for="code">Access code</label>
+      <div class="row">
+        <input id="code" name="code" placeholder="e.g. q6aN2EjKG4xT" spellcheck="false" autocapitalize="off" autofocus>
+        <button id="go" type="submit">View</button>
+      </div>
+      <div class="msg" id="msg"></div>
+    </form>
+
+    <p class="fine">No code, or code not working? Email <a href="mailto:info@prytaniapartners.com">info@prytaniapartners.com</a> and we'll send you a fresh invitation.</p>
+  </main>
+
+  <footer class="bottom">&copy; 2026 Prytania Partners B.V.</footer>
+</div>
+
+<script>
+  const f = document.getElementById('f');
+  const input = document.getElementById('code');
+  const msg = document.getElementById('msg');
+  const btn = document.getElementById('go');
+
+  f.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const code = input.value.trim().replace(/[^A-Za-z0-9_-]/g, '');
+    msg.className = 'msg';
+    if (!code) { msg.className = 'msg err'; msg.textContent = 'Please enter your access code.'; return; }
+    const url = '/p/' + code + '/';
+    btn.disabled = true;
+    msg.textContent = 'Checking…';
+    try {
+      const r = await fetch(url, { method: 'HEAD' });
+      if (r.ok) {
+        msg.className = 'msg ok';
+        msg.textContent = 'Code accepted — opening your preview…';
+        window.location.href = url;
+        return;
+      }
+      msg.className = 'msg err';
+      msg.textContent = 'That code isn’t recognised. Check for typos, or request a new invitation below.';
+    } catch (err) {
+      // If the check itself fails (offline, etc.), just try navigating.
+      window.location.href = url;
+      return;
+    }
+    btn.disabled = false;
+  });
+</script>
+
+</body>
+</html>
