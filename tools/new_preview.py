@@ -50,9 +50,28 @@ TEMPLATE = """<!DOCTYPE html>
       <li><strong>Feedback to</strong> <a href="mailto:info@prytaniapartners.com">info@prytaniapartners.com</a></li>
     </ul>
 
-    <div class="preview-frame">
+    <div class="frame-bar">
+      <a class="fs-open" href="draft/index.html" target="_blank" rel="noopener">Open in new tab &#8599;</a>
+      <button type="button" class="fs-btn" id="fsBtn">&#x26F6; Full screen</button>
+    </div>
+    <div class="preview-frame" id="pFrame">
+      <button type="button" class="fs-exit" id="fsExit">&#10005; Exit full screen</button>
       <iframe src="draft/index.html" title="Project draft preview"></iframe>
     </div>
+    <script>
+      (function () {{
+        var f = document.getElementById('pFrame');
+        var b = document.getElementById('fsBtn');
+        var x = document.getElementById('fsExit');
+        function set(on) {{
+          f.classList.toggle('fullscreen', on);
+          document.body.classList.toggle('noscroll', on);
+        }}
+        b.addEventListener('click', function () {{ set(true); }});
+        x.addEventListener('click', function () {{ set(false); }});
+        document.addEventListener('keydown', function (e) {{ if (e.key === 'Escape') set(false); }});
+      }})();
+    </script>
   </div>
 </section>
 
