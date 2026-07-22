@@ -1,0 +1,965 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Great Stuff Ventures — We invest in Great People doing Great Stuff</title>
+<meta name="description" content="Great Stuff Ventures is a diverse and inclusive angel group investing in early-stage technology companies. Based in Amsterdam, investing globally.">
+<meta name="theme-color" content="#011627">
+<link rel="icon" type="image/png" href="https://greatstuffventures.com/wp-content/uploads/2020/08/cropped-favicon-1-270x270.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#011627;
+  --ink-soft:#3b5265;
+  --paper:#f5f9f9;
+  --white:#ffffff;
+  --accent:#0f9b8e;
+  --accent-soft:#e0f5f2;
+  --teal:#2ec4b6;
+  --yellow:#ff9f1c;
+  --line:#dde8e8;
+  --radius:20px;
+  --font-display:"Space Grotesk",system-ui,sans-serif;
+  --font-body:"Inter",system-ui,sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--paper);color:var(--ink);font-family:var(--font-body);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4{font-family:var(--font-display);line-height:1.05;letter-spacing:-0.02em}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1200px;margin:0 auto;padding:0 24px}
+
+/* ---------- NAV ---------- */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(247,246,242,.85);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid transparent;transition:border-color .3s}
+.nav.scrolled{border-bottom-color:var(--line)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;height:72px}
+.logo{font-family:var(--font-display);font-weight:700;font-size:1.05rem;letter-spacing:-0.02em;display:flex;align-items:center;gap:12px}
+.logo-svg{height:28px;width:auto;aspect-ratio:1472/659;display:block}
+.logo-svg .letter{fill:var(--ink)}
+.logo-svg .letter-s{fill:var(--teal)}
+.nav-links{display:flex;gap:32px;align-items:center}
+.nav-links a{font-size:.92rem;font-weight:500;color:var(--ink-soft);transition:color .2s}
+.nav-links a:hover{color:var(--ink)}
+.btn{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-display);font-weight:600;font-size:.95rem;padding:13px 26px;border-radius:999px;transition:transform .2s,box-shadow .2s,background .2s;cursor:pointer;border:none}
+.btn-dark{background:var(--ink);color:var(--white)}
+.btn-dark:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(12,12,20,.25)}
+.btn-teal{background:var(--teal);color:var(--ink)}
+.btn-teal:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(46,196,182,.45)}
+.btn-yellow{background:var(--yellow);color:var(--ink)}
+.btn-yellow:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(255,159,28,.45)}
+.btn-ghost{border:1.5px solid var(--ink);background:transparent;color:var(--ink)}
+.btn-ghost:hover{background:var(--ink);color:var(--white)}
+.nav .btn{padding:10px 20px;font-size:.88rem}
+.nav-right{display:flex;align-items:center;gap:14px}
+.lang{display:flex;gap:5px;align-items:center}
+.lang button{border:2px solid transparent;background:none;padding:2px;border-radius:7px;cursor:pointer;display:grid;place-items:center;opacity:.5;transition:opacity .2s,border-color .2s,transform .2s}
+.lang button:hover{opacity:1;transform:translateY(-1px)}
+.lang button.active{opacity:1;border-color:var(--teal)}
+.lang svg{width:23px;height:16px;border-radius:3px;display:block}
+.burger{display:none;background:none;border:none;font-size:1.6rem;cursor:pointer;color:var(--ink)}
+
+/* ---------- HERO ---------- */
+.hero{padding:180px 0 0;position:relative;overflow:hidden}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:.85rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:28px}
+.hero-eyebrow .dot{width:8px;height:8px;border-radius:50%;background:var(--yellow);animation:pulse 2.4s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+.hero h1{font-size:clamp(3rem,8.5vw,6.8rem);font-weight:700;max-width:15ch}
+.hero h1 .hl{position:relative;white-space:nowrap}
+.hero h1 .hl::after{content:"";position:absolute;left:-2%;bottom:6%;width:104%;height:32%;background:var(--teal);opacity:.55;z-index:-1;border-radius:4px}
+.hero-sub{margin-top:32px;font-size:1.25rem;color:var(--ink-soft);max-width:52ch}
+.hero-ctas{display:flex;gap:16px;margin-top:44px;flex-wrap:wrap}
+.hero-sectors{display:flex;align-items:center;gap:12px;margin-top:40px;flex-wrap:wrap}
+.hero-sectors .hs-lbl{font-family:var(--font-display);font-size:.75rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft);margin-right:4px}
+.hero-sectors a{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-display);font-weight:600;font-size:.9rem;padding:9px 18px;border-radius:999px;background:var(--white);border:1px solid var(--line);transition:border-color .2s,transform .2s,box-shadow .2s}
+.hero-sectors a:hover{border-color:var(--teal);transform:translateY(-2px);box-shadow:0 8px 20px rgba(1,22,39,.07)}
+.hero-sectors a i{font-style:normal;color:var(--accent)}
+.hero-stats{display:flex;gap:56px;margin-top:56px;flex-wrap:wrap}
+.hero-stat .num{font-family:var(--font-display);font-size:2.2rem;font-weight:700}
+.hero-stat .num em{font-style:normal;color:var(--accent)}
+.hero-stat .lbl{font-size:.85rem;color:var(--ink-soft);margin-top:2px}
+
+/* marquee */
+.marquee{margin-top:90px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:22px 0;overflow:hidden;background:var(--white)}
+.marquee-track{display:flex;gap:0;width:max-content;align-items:center;animation:scroll 80s linear infinite}
+.marquee:hover .marquee-track{animation-play-state:paused}
+.marquee-track .m-item{display:flex;align-items:center;gap:48px;margin-right:48px}
+.marquee-track a{display:flex;align-items:center}
+.marquee-track img{height:32px;width:auto;max-width:130px;object-fit:contain;filter:grayscale(1);opacity:.65;transition:filter .25s,opacity .25s,transform .2s}
+.marquee-track a:hover img{filter:none;opacity:1;transform:translateY(-2px)}
+.marquee-track a:hover .m-name{color:var(--ink);opacity:1}
+.marquee-track .sep{color:var(--teal);font-size:.7rem}
+@keyframes scroll{to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion:reduce){.marquee-track{animation:none}.hero-eyebrow .dot{animation:none}}
+
+/* ---------- SECTIONS ---------- */
+section{padding:110px 0}
+.sec-tag{display:inline-block;font-family:var(--font-display);font-size:.8rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);background:var(--accent-soft);padding:7px 16px;border-radius:999px;margin-bottom:22px}
+.sec-title{font-size:clamp(2.2rem,4.5vw,3.6rem);font-weight:700;max-width:20ch}
+
+/* values */
+.values-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:56px}
+.value-card{background:var(--white);border:1px solid var(--line);border-radius:var(--radius);padding:34px 30px;transition:transform .25s,box-shadow .25s,border-color .25s}
+.value-card:hover{transform:translateY(-6px);box-shadow:0 18px 40px rgba(12,12,20,.08);border-color:var(--accent)}
+.value-card .idx{font-family:var(--font-display);font-size:.85rem;font-weight:600;color:var(--accent)}
+.value-card h3{font-size:1.5rem;margin:14px 0 10px}
+.value-card p{color:var(--ink-soft);font-size:.98rem}
+
+/* story — dark band */
+.story{background:var(--ink);color:var(--white);border-radius:36px;margin:0 16px}
+.story .sec-tag{background:rgba(46,196,182,.14);color:var(--teal)}
+.story-quote{font-family:var(--font-display);font-size:clamp(1.6rem,3.2vw,2.6rem);font-weight:500;line-height:1.3;letter-spacing:-0.01em;max-width:28ch}
+.story-quote .hl{color:var(--teal)}
+.story-meta{display:flex;gap:56px;margin-top:64px;flex-wrap:wrap}
+.story-meta .num{font-family:var(--font-display);font-size:2rem;font-weight:700;color:var(--teal)}
+.story-meta .lbl{font-size:.85rem;color:rgba(255,255,255,.6);margin-top:2px}
+
+/* approach */
+.approach-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:56px}
+.approach-card{border-radius:var(--radius);padding:40px 36px;position:relative;overflow:hidden}
+.approach-card.people{background:var(--ink);color:var(--white)}
+.approach-card.stuff{background:var(--teal);color:var(--ink)}
+.approach-card h3{font-size:1.9rem;margin-bottom:14px}
+.approach-card p{font-size:1.02rem;opacity:.92;max-width:40ch}
+.approach-card .big-icon{position:absolute;right:-10px;bottom:-24px;font-size:7rem;opacity:.14;font-family:var(--font-display);font-weight:700;pointer-events:none}
+.params{margin-top:20px;display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.param{background:var(--white);border:1px solid var(--line);border-radius:var(--radius);padding:30px}
+.param .num{font-family:var(--font-display);font-size:1.9rem;font-weight:700;color:var(--accent)}
+.param .lbl{font-size:.95rem;color:var(--ink-soft);margin-top:6px}
+.approach-notes{margin-top:36px;display:flex;flex-wrap:wrap;gap:12px}
+.approach-notes span{border:1.5px solid var(--ink);border-radius:999px;padding:9px 20px;font-size:.9rem;font-weight:500}
+
+/* sectors */
+.sectors-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:56px}
+.sector-card{background:var(--white);border:1px solid var(--line);border-radius:var(--radius);padding:34px 30px;display:flex;flex-direction:column;transition:transform .25s,box-shadow .25s,border-color .25s}
+.sector-card:hover{transform:translateY(-6px);box-shadow:0 18px 40px rgba(1,22,39,.08);border-color:var(--teal)}
+.sector-icon{width:52px;height:52px;border-radius:14px;background:var(--accent-soft);color:var(--accent);display:grid;place-items:center;font-family:var(--font-display);font-size:1.5rem;font-weight:700;margin-bottom:20px}
+.sector-card h3{font-size:1.35rem;margin-bottom:10px}
+.sector-card>p{color:var(--ink-soft);font-size:.97rem;flex:1}
+.sector-team{margin-top:22px;padding-top:18px;border-top:1px solid var(--line)}
+.sector-team .lbl{font-family:var(--font-display);font-size:.72rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:10px}
+.sector-team .tags span.tba{border-style:dashed;color:var(--ink-soft);opacity:.7}
+.thesis{margin-top:24px;background:var(--ink);color:#fff;border-radius:var(--radius);padding:56px 48px}
+.thesis .sec-tag{background:rgba(46,196,182,.14);color:var(--teal)}
+.thesis-quote{font-family:var(--font-display);font-size:clamp(1.3rem,2.2vw,1.8rem);font-weight:500;line-height:1.4;max-width:44ch;margin-top:6px}
+.thesis-quote .hl{color:var(--teal)}
+.thesis-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:32px;margin-top:44px}
+.thesis-col h4{font-size:.78rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--teal);margin-bottom:14px}
+.thesis-col ul{list-style:none}
+.thesis-col li{font-size:.9rem;color:rgba(255,255,255,.78);line-height:1.55;padding-left:18px;position:relative;margin-bottom:12px}
+.thesis-col li::before{content:"✦";position:absolute;left:0;top:2px;font-size:.6rem;color:var(--teal)}
+.thesis-col li em{font-style:italic;color:#fff}
+.thesis-foot{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-top:44px;padding-top:28px;border-top:1px solid rgba(255,255,255,.12)}
+.thesis-foot p{font-size:.88rem;color:rgba(255,255,255,.6)}
+.thesis-foot .btn{padding:11px 22px;font-size:.88rem}
+.quiz{margin-top:24px;background:var(--white);border:1px solid var(--line);border-radius:var(--radius);padding:48px}
+.quiz-title{font-size:clamp(1.5rem,2.6vw,2.1rem);font-weight:700;margin-top:4px}
+.quiz-sub{color:var(--ink-soft);margin-top:10px;max-width:60ch}
+.quiz-list{margin-top:28px}
+.quiz-item{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:15px 0;border-bottom:1px solid var(--line)}
+.quiz-item .qq{font-size:.95rem;line-height:1.5}
+.quiz-item .qq b{font-family:var(--font-display);color:var(--accent);margin-right:10px}
+.qbtns{display:flex;gap:8px;flex:none}
+.qbtns button{font-family:var(--font-display);font-weight:600;font-size:.85rem;padding:8px 20px;border-radius:999px;border:1.5px solid var(--line);background:var(--white);cursor:pointer;transition:all .15s}
+.qbtns button:hover{border-color:var(--ink)}
+.qbtns button.yes.on{background:var(--teal);border-color:var(--teal);color:var(--ink)}
+.qbtns button.no.on{background:var(--ink);border-color:var(--ink);color:#fff}
+.quiz-foot{display:flex;align-items:center;gap:20px;margin-top:26px;flex-wrap:wrap}
+.quiz-score{font-family:var(--font-display);font-weight:700;font-size:1.3rem;background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:12px 22px;white-space:nowrap}
+.quiz-score em{font-style:normal;color:var(--accent)}
+.quiz-result{flex:1;min-width:260px;border-radius:14px;padding:16px 22px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.quiz-result.pass{background:var(--accent-soft);border:1px solid var(--teal)}
+.quiz-result.mid{background:#fff6e6;border:1px solid var(--yellow)}
+.quiz-result.fail{background:var(--paper);border:1px dashed var(--line)}
+.quiz-result.fail p{color:var(--ink-soft)}
+.quiz-result p{font-weight:600;font-family:var(--font-display);font-size:1rem}
+.quiz-result .btn{padding:10px 20px;font-size:.85rem}
+
+/* portfolio */
+.portfolio-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:56px}
+.p-tile{background:var(--white);border:1px solid var(--line);border-radius:16px;min-height:104px;display:grid;place-items:center;padding:20px;text-align:center;font-family:var(--font-display);font-weight:600;font-size:.95rem;transition:transform .2s,border-color .2s,box-shadow .2s}
+.p-tile img{max-height:48px;max-width:82%;width:auto;object-fit:contain;filter:grayscale(1);opacity:.68;transition:filter .25s,opacity .25s}
+.p-tile:hover{transform:translateY(-4px);border-color:var(--teal);box-shadow:0 12px 28px rgba(1,22,39,.08)}
+.p-tile:hover img{filter:none;opacity:1}
+.p-tile .p-name{color:var(--ink-soft);opacity:.85;transition:color .25s}
+.p-tile:hover .p-name{color:var(--ink)}
+.marquee-track .m-name{font-family:var(--font-display);font-weight:600;font-size:1.05rem;color:var(--ink-soft);opacity:.75;white-space:nowrap}
+
+/* team */
+.team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:56px}
+.t-card{background:var(--white);border:1px solid var(--line);border-radius:var(--radius);padding:26px;transition:transform .2s,box-shadow .2s}
+.t-card:hover{transform:translateY(-4px);box-shadow:0 14px 34px rgba(12,12,20,.07)}
+.t-head{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.t-card h4{font-size:1.15rem}
+.t-card .li{width:34px;height:34px;border-radius:10px;background:var(--accent-soft);color:var(--accent);display:grid;place-items:center;font-weight:700;font-size:.8rem;flex:none;transition:background .2s,color .2s}
+.t-card .li:hover{background:var(--accent);color:var(--white)}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}
+.tags span{font-size:.72rem;font-weight:600;color:var(--ink-soft);background:var(--paper);border:1px solid var(--line);border-radius:999px;padding:4px 11px}
+
+/* contact */
+.contact{background:var(--ink);color:var(--white);border-radius:36px;margin:0 16px 40px;text-align:center;padding:120px 24px}
+.contact h2{font-size:clamp(2.6rem,6vw,4.6rem);font-weight:700}
+.contact h2 .hl{color:var(--teal)}
+.contact p{color:rgba(255,255,255,.65);margin:22px auto 0;max-width:46ch;font-size:1.1rem}
+.contact-ctas{display:flex;gap:16px;justify-content:center;margin-top:44px;flex-wrap:wrap}
+.contact .btn-ghost{border-color:rgba(255,255,255,.5);color:var(--white)}
+.contact .btn-ghost:hover{background:var(--white);color:var(--ink)}
+
+/* footer */
+footer{padding:44px 0 56px}
+.foot{display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap}
+.foot .tagline{color:var(--ink-soft);font-size:.92rem}
+.foot .tagline b{color:var(--ink)}
+.foot-links{display:flex;gap:24px;flex-wrap:wrap}
+.foot-links a{font-size:.88rem;color:var(--ink-soft)}
+.foot-links a:hover{color:var(--ink)}
+
+/* reveal animation */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+
+/* ---------- RESPONSIVE ---------- */
+@media(max-width:960px){
+  .values-grid,.team-grid{grid-template-columns:repeat(2,1fr)}
+  .sectors-grid{grid-template-columns:1fr}
+  .thesis-grid{grid-template-columns:repeat(2,1fr)}
+  .portfolio-grid{grid-template-columns:repeat(3,1fr)}
+  .approach-grid,.params{grid-template-columns:1fr 1fr}
+}
+@media(max-width:680px){
+  .nav-links{display:none;position:absolute;top:72px;left:0;right:0;background:var(--paper);flex-direction:column;padding:24px;gap:20px;border-bottom:1px solid var(--line)}
+  .nav-links.open{display:flex}
+  .burger{display:block}
+  .hero{padding-top:140px}
+  .logo span{display:none}
+  .logo-svg{height:24px}
+  .values-grid,.approach-grid,.params,.team-grid,.thesis-grid{grid-template-columns:1fr}
+  .thesis{padding:40px 28px}
+  .portfolio-grid{grid-template-columns:repeat(2,1fr)}
+  .hero-stats,.story-meta{gap:32px}
+  section{padding:80px 0}
+}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+<defs>
+<symbol id="gsv-mark" viewBox="224 90 1472 659">
+<path class="letter" d="M 746.61 395.73 L 556.99 395.73 L 556.99 506.05 L 748.76 506.05 C 737.32 543.44 715.75 572.87 684.09 594.23 C 652.44 615.67 612.49 626.38 564.26 626.38 C 499.14 626.38 446.79 606.91 407.33 568.03 C 367.83 529.11 348.08 479.81 348.08 420.14 C 348.08 359.86 367.54 309.94 406.42 270.44 C 445.30 230.94 494.89 211.19 555.22 211.19 C 592.57 211.19 626.5 219.33 656.95 235.61 C 677.65 246.68 694.80 259.94 708.35 275.48 L 653.68 103.59 C 622.90 94.50 590.38 90 556.12 90 C 462.04 90 383.20 121.98 319.57 185.86 C 255.97 249.78 224.16 327.88 224.16 420.14 C 224.16 511.80 256.26 589.44 320.48 653.03 C 384.69 716.66 465.67 748.48 563.35 748.48 C 655.01 748.48 729.75 720.42 787.64 664.35 C 799.75 652.61 810.62 640.14 820.16 626.91 Z"/>
+<path class="letter letter-s" d="M 1099.48 117.18 C 1064.81 99.05 1025.67 90 982.08 90 C 924.77 90 875.81 107.06 835.11 141.11 C 794.41 175.16 774.04 220.86 774.04 278.13 C 774.04 307.05 779.16 332.38 789.41 354.12 C 799.66 375.81 814.57 393.74 834.20 407.91 C 853.78 422.09 873.37 433.41 893.00 441.84 C 912.58 450.31 936.55 458.74 964.89 467.17 C 1016.13 481.63 1051.71 495.06 1071.62 507.41 C 1091.50 519.77 1101.46 537.12 1101.46 559.44 C 1101.46 578.73 1093.32 594.68 1077.04 607.37 C 1055.25 624.35 1021.92 626.89 995.25 626.38 C 929.50 625.13 866.77 600.22 819.58 554.25 C 819.15 553.83 816.89 552.14 816.89 551.58 L 840.85 626.91 L 871.92 724.68 C 907.83 740.55 949.36 748.48 996.55 748.48 C 1064.68 748.48 1120.01 731.29 1162.53 696.91 C 1205.01 662.53 1226.29 616.13 1226.29 557.62 C 1226.29 539.52 1224.01 522.78 1219.51 507.41 C 1214.97 492.04 1209.55 478.94 1203.23 468.08 C 1196.87 457.21 1187.69 446.67 1175.63 436.42 C 1163.57 426.18 1152.86 418.04 1143.52 412.01 C 1134.19 405.97 1120.92 399.48 1103.73 392.54 C 1086.54 385.60 1072.99 380.48 1063.03 377.17 C 1053.07 373.87 1038.44 369.20 1019.15 363.16 C 972.12 348.66 940.31 335.27 923.74 322.92 C 908.69 311.69 900.29 295.21 899.69 276.55 C 899.09 257.83 910.70 239.75 924.72 228.11 C 938.51 216.67 955.73 209.94 973.31 206.5 C 1003.98 200.47 1036.54 202.66 1065.98 213.25 C 1093.26 223.08 1116.83 241.53 1139.17 259.58 C 1141.59 261.53 1143.99 263.49 1146.36 265.49 Z"/>
+<path class="letter" d="M 1327.70 735.80 L 1115.16 102.66 L 1250.83 102.66 L 1405.65 589.43 L 1559.26 102.66 L 1695.83 102.66 L 1482.38 735.80 Z"/>
+</symbol>
+</defs>
+</svg>
+
+<nav class="nav" id="nav">
+  <div class="wrap nav-inner">
+    <a href="#top" class="logo" aria-label="Great Stuff Ventures — home"><svg class="logo-svg"><use href="#gsv-mark"/></svg><span>Great Stuff Ventures</span></a>
+    <div class="nav-links" id="navLinks">
+      <a href="#values" data-i18n="nav.values">Values</a>
+      <a href="#sectors" data-i18n="nav.sectors">Sectors</a>
+      <a href="#story" data-i18n="nav.story">Story</a>
+      <a href="#approach" data-i18n="nav.approach">Approach</a>
+      <a href="#portfolio" data-i18n="nav.portfolio">Portfolio</a>
+      <a href="#team" data-i18n="nav.about">About Us</a>
+      <a class="btn btn-dark" href="#contact" data-i18n="nav.contact">Get in touch</a>
+    </div>
+    <div class="nav-right">
+      <div class="lang" id="langSwitch" aria-label="Language">
+        <button data-lang="en" class="active" aria-label="English" title="English"><svg viewBox="0 0 24 17"><rect width="24" height="17" fill="#fff"/><g fill="#B22234"><rect y="0" width="24" height="1.31"/><rect y="2.62" width="24" height="1.31"/><rect y="5.23" width="24" height="1.31"/><rect y="7.85" width="24" height="1.31"/><rect y="10.46" width="24" height="1.31"/><rect y="13.08" width="24" height="1.31"/><rect y="15.69" width="24" height="1.31"/></g><rect width="10.5" height="9.15" fill="#3C3B6E"/><g fill="#fff"><circle cx="2" cy="1.8" r=".65"/><circle cx="5.2" cy="1.8" r=".65"/><circle cx="8.4" cy="1.8" r=".65"/><circle cx="3.6" cy="4.5" r=".65"/><circle cx="6.8" cy="4.5" r=".65"/><circle cx="2" cy="7.2" r=".65"/><circle cx="5.2" cy="7.2" r=".65"/><circle cx="8.4" cy="7.2" r=".65"/></g></svg></button>
+        <button data-lang="de" aria-label="Deutsch" title="Deutsch"><svg viewBox="0 0 24 17"><rect width="24" height="5.67" y="0" fill="#000"/><rect width="24" height="5.67" y="5.67" fill="#DD0000"/><rect width="24" height="5.66" y="11.34" fill="#FFCE00"/></svg></button>
+        <button data-lang="fr" aria-label="Français" title="Français"><svg viewBox="0 0 24 17"><rect width="8" height="17" x="0" fill="#0055A4"/><rect width="8" height="17" x="8" fill="#fff"/><rect width="8" height="17" x="16" fill="#EF4135"/></svg></button>
+        <button data-lang="nl" aria-label="Nederlands" title="Nederlands"><svg viewBox="0 0 24 17"><rect width="24" height="5.67" y="0" fill="#AE1C28"/><rect width="24" height="5.67" y="5.67" fill="#fff"/><rect width="24" height="5.66" y="11.34" fill="#21468B"/></svg></button>
+        <button data-lang="es" aria-label="Español" title="Español"><svg viewBox="0 0 24 17"><rect width="24" height="17" fill="#F1BF00"/><rect width="24" height="4.25" y="0" fill="#AA151B"/><rect width="24" height="4.25" y="12.75" fill="#AA151B"/></svg></button>
+      </div>
+      <button class="burger" id="burger" aria-label="Menu">☰</button>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero" id="top">
+  <div class="wrap">
+    <div class="hero-eyebrow reveal"><span class="dot"></span> <span data-i18n="hero.eyebrow">Based in Amsterdam · Investing globally</span></div>
+    <h1 class="reveal" data-i18n="hero.title">We invest in <span class="hl">Great&nbsp;People</span> doing <span class="hl">Great&nbsp;Stuff</span></h1>
+    <p class="hero-sub reveal" data-i18n="hero.sub">A diverse and inclusive group of entrepreneurs and industry veterans backing early-stage technology companies — with our own capital, and our own hands-on experience.</p>
+    <div class="hero-ctas reveal">
+      <a class="btn btn-teal" href="https://app.dealum.com/#/company/application/new/127689/nan0zh06c4pazxybj57l1gntb9h2u2ii" target="_blank" rel="noopener" data-i18n="hero.cta1">Pitch us your startup →</a>
+      <a class="btn btn-ghost" href="#approach" data-i18n="hero.cta2">Our approach</a>
+      <a class="btn btn-yellow" href="#quiz" data-i18n="hero.quiz">Are you a fit for partnering with GSV? 30 sec check here!</a>
+    </div>
+    <div class="hero-sectors reveal">
+      <span class="hs-lbl" data-i18n="hero.focus">Focus areas</span>
+      <a href="#sectors"><i>€</i> Fintech, Legal &amp; Compliance</a>
+      <a href="#sectors"><i>♥</i> Health</a>
+      <a href="#sectors"><i>❋</i> Planet</a>
+    </div>
+    <div class="hero-stats reveal">
+      <div class="hero-stat"><div class="num">41<em>+</em></div><div class="lbl" data-i18n="hero.stat1">Portfolio companies</div></div>
+      <div class="hero-stat"><div class="num">19</div><div class="lbl" data-i18n="hero.stat2">Investing members</div></div>
+      <div class="hero-stat"><div class="num">2018</div><div class="lbl" data-i18n="hero.stat3">Founded</div></div>
+      <div class="hero-stat"><div class="num">€100<em>k</em></div><div class="lbl" data-i18n="hero.stat4">Max initial ticket size</div></div>
+    </div>
+  </div>
+  <div class="marquee">
+    <div class="marquee-track" id="marqueeTrack"></div>
+  </div>
+</header>
+
+<!-- VALUES -->
+<section id="values">
+  <div class="wrap">
+    <span class="sec-tag reveal" data-i18n="values.tag">Our values</span>
+    <h2 class="sec-title reveal" data-i18n="values.title">What makes us who we are</h2>
+    <div class="values-grid">
+      <div class="value-card reveal"><div class="idx">01</div><h3 data-i18n="values.v1t">Diverse</h3><p data-i18n="values.v1d">In age, backgrounds, and country of origin.</p></div>
+      <div class="value-card reveal"><div class="idx">02</div><h3 data-i18n="values.v2t">Constructive</h3><p data-i18n="values.v2d">We enjoy helping, not dictating.</p></div>
+      <div class="value-card reveal"><div class="idx">03</div><h3 data-i18n="values.v3t">Experienced</h3><p data-i18n="values.v3d">We have seen the ups and the downs.</p></div>
+      <div class="value-card reveal"><div class="idx">04</div><h3 data-i18n="values.v4t">Unassuming</h3><p data-i18n="values.v4d">We aim to build genuine relationships based on trust.</p></div>
+      <div class="value-card reveal"><div class="idx">05</div><h3 data-i18n="values.v5t">International</h3><p data-i18n="values.v5d">We believe that great entrepreneurs come from anywhere.</p></div>
+      <div class="value-card reveal"><div class="idx">06</div><h3 data-i18n="values.v6t">Inclusive</h3><p data-i18n="values.v6d">Everybody can earn their opportunity, in business and in life.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTORS -->
+<section id="sectors">
+  <div class="wrap">
+    <span class="sec-tag reveal" data-i18n="sectors.tag">Sector focus</span>
+    <h2 class="sec-title reveal" data-i18n="sectors.title">Where we go deepest</h2>
+    <div class="sectors-grid">
+      <div class="sector-card reveal">
+        <div class="sector-icon">€</div>
+        <h3>Fintech, Legal &amp; Compliance</h3>
+        <p data-i18n="sectors.s1d">Financial technology with a legal &amp; compliance tech focus — turning Europe's regulatory depth into a market advantage.</p>
+      </div>
+      <div class="sector-card reveal">
+        <div class="sector-icon">♥</div>
+        <h3>Health</h3>
+        <p data-i18n="sectors.s2d">Health tech and longevity — technology that helps people live longer, healthier lives.</p>
+      </div>
+      <div class="sector-card reveal">
+        <div class="sector-icon">❋</div>
+        <h3>Planet</h3>
+        <p data-i18n="sectors.s3d">Climate, energy and sustainability — technology that helps keep the planet livable for future generations.</p>
+      </div>
+    </div>
+
+    <!-- Investment thesis summary -->
+    <div class="thesis reveal" id="thesis">
+      <span class="sec-tag" data-i18n="thesis.tag">Investment thesis</span>
+      <p class="thesis-quote" data-i18n="thesis.quote">We invest in people who can achieve <span class="hl">VC-like returns</span> and whose companies have a <span class="hl">non-negative impact</span> on society and the environment.</p>
+      <div class="thesis-grid">
+        <div class="thesis-col">
+          <h4 data-i18n="thesis.c1t">What we look for</h4>
+          <ul data-i18n="thesis.c1d">
+            <li>Exceptional, passionate founding teams with founder-market fit</li>
+            <li>Companies early in the technology opportunity window</li>
+            <li>Innovative, scalable solutions with software-like margins</li>
+            <li>Sustainable and ethical business practices</li>
+          </ul>
+        </div>
+        <div class="thesis-col">
+          <h4 data-i18n="thesis.c2t">How we invest</h4>
+          <ul data-i18n="thesis.c2d">
+            <li>Active partnership: strategic support, mentoring and network beyond capital</li>
+            <li>Long-term perspective — impactful ventures take time to mature</li>
+            <li>A collaborative ecosystem among our portfolio companies</li>
+          </ul>
+        </div>
+        <div class="thesis-col">
+          <h4 data-i18n="thesis.c3t">How we assess risk</h4>
+          <ul data-i18n="thesis.c3d">
+            <li>Due diligence is about finding reasons <em>not</em> to invest</li>
+            <li>Eight risk lenses: team, market, product, financial, operational, exit, crowding-out, legal &amp; regulatory</li>
+            <li>Mitigated through due diligence, diversification and active involvement</li>
+          </ul>
+        </div>
+        <div class="thesis-col">
+          <h4 data-i18n="thesis.c4t">The maths</h4>
+          <ul data-i18n="thesis.c4d">
+            <li>Typically €50–100k per investment — entry valuation is key</li>
+            <li>Roughly 1 in 10 angel investments becomes a home run, so each one must have home-run potential</li>
+            <li>Most exits take 8–12 years; we invest patiently</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Founder fit scorecard -->
+    <div class="quiz reveal" id="quiz">
+      <span class="sec-tag" data-i18n="quiz.tag">Take the quiz</span>
+      <h3 class="quiz-title" data-i18n="quiz.title">Are you a fit for partnering with GSV?</h3>
+      <p class="quiz-sub" data-i18n="quiz.sub">Answer the 10 questions below. Score at least 8 out of 10 "yes" and you're likely a fit for GSV.</p>
+      <div class="quiz-list" id="quizList"></div>
+      <div class="quiz-foot">
+        <div class="quiz-score" id="quizScore"><em>0</em> ✓ · 0/10</div>
+        <div class="quiz-result" id="quizResult" hidden></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STORY -->
+<section class="story" id="story">
+  <div class="wrap">
+    <span class="sec-tag reveal" data-i18n="story.tag">Our story</span>
+    <p class="story-quote reveal" data-i18n="story.quote">We founded Great Stuff Ventures in 2018 with the goal to find and be inspired by <span class="hl">the greatest technology entrepreneurs</span> of the next decade and beyond.</p>
+    <p class="story-quote reveal" style="font-size:clamp(1.05rem,1.6vw,1.25rem);margin-top:36px;font-family:var(--font-body);color:rgba(255,255,255,.75);max-width:60ch;line-height:1.7" data-i18n="story.body">We are a group of entrepreneurs and industry veterans investing their own capital in great people doing great stuff. We help by asking the right questions and introducing you to the right people.</p>
+    <div class="story-meta reveal">
+      <div><div class="num" data-i18n="story.m1n">Own capital</div><div class="lbl" data-i18n="story.m1l">Skin in the game, always</div></div>
+      <div><div class="num" data-i18n="story.m2n">Right questions</div><div class="lbl" data-i18n="story.m2l">Not a list of demands</div></div>
+      <div><div class="num" data-i18n="story.m3n">Right people</div><div class="lbl" data-i18n="story.m3l">Introductions that matter</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- APPROACH -->
+<section id="approach">
+  <div class="wrap">
+    <span class="sec-tag reveal" data-i18n="approach.tag">Our approach</span>
+    <h2 class="sec-title reveal" data-i18n="approach.title">Our sweet spots</h2>
+    <div class="approach-grid">
+      <div class="approach-card people reveal">
+        <h3>Great People</h3>
+        <p data-i18n="approach.people">Multi-disciplinary, energetic founding teams with domain expertise in their industry.</p>
+        <div class="big-icon">GP</div>
+      </div>
+      <div class="approach-card stuff reveal">
+        <h3>Great Stuff</h3>
+        <p data-i18n="approach.stuff">SaaS or marketplace business models addressing underserviced, fast-changing markets and industries.</p>
+        <div class="big-icon">GS</div>
+      </div>
+    </div>
+    <div class="params">
+      <div class="param reveal"><div class="num" data-i18n="approach.p1n">Up to €100k</div><div class="lbl" data-i18n="approach.p1l">Our investment per round</div></div>
+      <div class="param reveal"><div class="num">€250k – €1.5m</div><div class="lbl" data-i18n="approach.p2l">Round sizes we join</div></div>
+      <div class="param reveal"><div class="num">Seed → pre-A</div><div class="lbl" data-i18n="approach.p3l">Stages we invest in</div></div>
+    </div>
+    <div class="approach-notes reveal">
+      <span data-i18n="approach.n1">✓ We prefer to co-invest with angel groups &amp; early-stage VC funds</span>
+      <span data-i18n="approach.n2">✓ We prefer equity deals over convertibles</span>
+      <span data-i18n="approach.n3">✓ We help with introductions to VCs</span>
+    </div>
+  </div>
+</section>
+
+<!-- PORTFOLIO -->
+<section id="portfolio">
+  <div class="wrap">
+    <span class="sec-tag reveal" data-i18n="portfolio.tag">Portfolio</span>
+    <h2 class="sec-title reveal" data-i18n="portfolio.title">Great stuff, being built right now</h2>
+    <div class="portfolio-grid" id="portfolioGrid"></div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section id="team">
+  <div class="wrap">
+    <span class="sec-tag reveal" data-i18n="team.tag">About us</span>
+    <h2 class="sec-title reveal" data-i18n="team.title">The people behind the capital</h2>
+    <div class="team-grid" id="teamGrid"></div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <h2 class="reveal" data-i18n="contact.title">Sounds <span class="hl">great?</span></h2>
+  <p class="reveal" data-i18n="contact.body">If you're building something great and raising between €250k and €1.5m, we'd love to hear from you.</p>
+  <div class="contact-ctas reveal">
+    <a class="btn btn-teal" href="https://app.dealum.com/#/company/application/new/127689/nan0zh06c4pazxybj57l1gntb9h2u2ii" target="_blank" rel="noopener" data-i18n="contact.cta1">Fundraiser application →</a>
+    <a class="btn btn-ghost" href="mailto:info@greatstuffventures.com" data-i18n="contact.cta2">Send us an email</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot">
+    <div class="tagline" style="display:flex;align-items:center;gap:14px"><svg class="logo-svg" style="height:22px"><use href="#gsv-mark"/></svg><span data-i18n="foot.tagline">© Great Stuff Ventures · Based in Amsterdam, <b>investing globally</b>.</span></div>
+    <div class="foot-links">
+      <a href="#values" data-i18n="nav.values">Values</a><a href="#sectors" data-i18n="nav.sectors">Sectors</a><a href="#story" data-i18n="nav.story">Story</a><a href="#approach" data-i18n="nav.approach">Approach</a><a href="#portfolio" data-i18n="nav.portfolio">Portfolio</a><a href="#team" data-i18n="nav.about">About Us</a><a href="#contact" data-i18n="nav.contact">Get in touch</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+const IMG="https://greatstuffventures.com/wp-content/uploads/";
+const portfolio=[
+["Klippa","https://www.klippa.com/",IMG+"2022/08/klippa-web-new.png"],
+["Unless","https://unless.com/",IMG+"2020/07/unless-1.png"],
+["Vormats","https://vormats.com/",IMG+"2020/07/vormats.png"],
+["Bits of Stock","https://www.bitsofstock.com/",IMG+"2020/07/bits.png"],
+["Paybyrd","https://paybyrd.com/",IMG+"2020/07/paybird.png"],
+["28Bio","https://www.28bio.com/",IMG+"2020/07/axosim.png"],
+["Alvant","https://www.alvant.com/",IMG+"2020/10/alvant.png"],
+["Vendora","https://vendora.gr/",IMG+"2020/08/vendora.png"],
+["Frame Therapeutics","http://www.frametherapeutics.com",IMG+"2021/01/frame.png"],
+["Bold","http://bold.co/",IMG+"2021/01/bold.png"],
+["Privasee","https://www.privasee.co.uk/",IMG+"2021/05/privasee.png"],
+["Factory14","https://factory14.com/",IMG+"2021/05/factory.png"],
+["Darkbeam","https://www.darkbeam.com/",IMG+"2021/05/darkbeam.png"],
+["Opeeka","https://www.opeeka.com/",IMG+"2021/08/opeeka.png"],
+["Smart Guide","https://www.smart-guide.org/",IMG+"2021/08/smart-guide.png"],
+["Sprinque","https://www.sprinque.com/",IMG+"2021/08/sprinque.png"],
+["Applied Bioplastics","https://appliedbioplastics.com/",IMG+"2021/09/APPLIEDBIOPLASTIC.png"],
+["RealRate.ai","https://realrate.ai/",IMG+"2022/02/realtate.png"],
+["WeGaw","https://wegaw.com/",IMG+"2022/02/wegaw.png"],
+["Voicy.network","https://www.voicy.network/",IMG+"2022/02/voicy.png"],
+["Highball Cocktails","https://www.highballcocktails.com/",IMG+"2022/11/highball.jpeg"],
+["Augmedit","https://www.augmedit.com/",IMG+"2022/11/augmedit-logo.png"],
+["Greenspark","https://www.getgreenspark.com/",IMG+"2022/11/greenspark-logo.png"],
+["Built AI","https://www.builtai.co/",IMG+"2022/11/210920_built-ai_logo_b.png"],
+["Moonrise.health","https://moonrise.health",IMG+"2022/12/MOONRISE_Primary-Logo_Colour.png"],
+["Circadian","https://circadian.io/",IMG+"2024/02/logo-black-Circadian.png"],
+["Gigable","https://gigable.com",IMG+"2024/02/Gigable-logo.png"],
+["Starnus","https://starnus.com/home/",IMG+"2025/06/starnus-logo-1.png"],
+["Chirp","https://chirpfamily.com/",IMG+"2025/06/chirp-main-logo-1b-600x229-1.png"],
+["WrkSense","https://www.wrksense.com/",IMG+"2025/06/wrksense-logo.png"],
+["Martee","https://www.martee.ai/",IMG+"2025/06/martee-logo-1.png"],
+["Sports Impact Technologies","https://sportsimpacttechnologies.com/",IMG+"2025/06/Sports-impact-technologies-logo.jpg"],
+["Foresight","https://www.useforesight.io/",IMG+"2025/09/foresight-logo.png"],
+["ValueSpace","https://www.value.space",IMG+"2025/09/valuespace-logo.png"],
+["Meep","https://meep.bio/",IMG+"2025/09/Logo-Meep-e1664269203960.png"],
+["Aazzur","https://www.aazzur.com/",IMG+"2025/09/aazzur-logo.png"],
+["Blockrise","https://www.blockrise.com/","https://cdn.prod.website-files.com/6909f851e374984c24b4b77c/69f8a033faea3e53537ff208_blovk.avif"],
+["Ikkaton","https://ikkaton.com/",null],
+["MeMi Textiles","https://www.memi-textiles.de/","https://www.memi-textiles.de/wp-content/uploads/go-x/u/a6ad746f-f6f1-4770-9f0a-040d6aa4e7f2/image-455x455.png"],
+["Horison","https://www.horison.ai/",null],
+["Vera","https://www.getvera.ai/","https://www.getvera.ai/_next/image?url=%2Fimages%2Fvera-logo-text-dark.svg&w=384&q=75"]
+];
+const team=[
+["Khai Tan",["B2B","Enterprise","SaaS","Later-Stage"],null],
+["Ronald Kleinveld",["Fintech","Data","B2B","Enterprise"],"https://www.linkedin.com/in/ronaldkleinveld/"],
+["Rolf Colenbrander",["B2B","ProfessionalServices","Prop-tech"],"https://www.linkedin.com/in/rolf-colenbrander-3953464/"],
+["Elizabeth Kleinveld",["Fintech","Insuretech","B2B"],"https://www.linkedin.com/in/elizabeth-kleinveld-1493ab/"],
+["Arne Schoenmakers",["AI","Coding","Data","Innovation"],"https://www.linkedin.com/in/arneschoenmakers/"],
+["Arthur Adams",["Payments","Fintech","Crypto"],"https://www.linkedin.com/in/arthur-adams-4b75481/"],
+["Ivo Weevers",["Fintech","SME","Digital","Mobile","Product"],"https://uk.linkedin.com/in/ivoweevers"],
+["Raoul van Aalst",["B2B","Energy","Hardware"],"https://www.linkedin.com/in/raoul-van-aalst-1950352/"],
+["Sander van Loo",["DataArchitecture","DataPlatforms","Technology"],"https://www.linkedin.com/in/sander-van-loo-28b337a/"],
+["Gianluca Valentini",["Marketplaces","Consumer","B2C","Data"],"https://www.linkedin.com/in/gianlucav/"],
+["Tessa de Flines",["Fintech","FemaleFounders","OperationalExcellence","Organization"],"https://www.linkedin.com/in/tessadeflines/"],
+["Charles Ramuz",["Prop-tech","Engineering","B2B"],"https://www.linkedin.com/in/charles-ramuz-29028620/"],
+["Jan Willem Burgers",["Fintech","Insuretech","Bitcoin"],"https://www.linkedin.com/in/jwburgers/"],
+["Cade Gorman",["Enterprise","SaaS","Sales"],"http://www.linkedin.com/in/cade-gorman-43604920a"],
+["Desmin Dekker",["B2B","ProfessionalServices","Sales","SaaS"],"https://www.linkedin.com/in/desmindekker/"],
+["Fleur Engelberts",["Energy","Health","SocialImpact"],"https://www.linkedin.com/in/fleur-engelberts-5365a61/"],
+["Niels van Drimmelen",["IT/CloudInfra","ITArchitecture","InfoSec"],"https://nl.linkedin.com/in/nielsvandrimmelen"],
+["Igor de Glas",["B2B","ProfessionalServices","Fintech"],"https://www.linkedin.com/in/igor-d-1b3a733/"],
+["Mark van den Anker",["SaaS","AI","Health","Energy"],"https://www.linkedin.com/in/markvandenanker1/"]
+];
+
+document.getElementById("portfolioGrid").innerHTML=portfolio.map(([n,u,img])=>
+  `<a class="p-tile reveal" href="${u}" target="_blank" rel="noopener" title="${n}">${img?`<img src="${img}" alt="${n}" loading="lazy">`:`<span class="p-name">${n}</span>`}</a>`).join("");
+
+document.getElementById("teamGrid").innerHTML=team.map(([n,tags,li])=>
+  `<div class="t-card reveal"><div class="t-head"><h4>${n}</h4>${li?`<a class="li" href="${li}" target="_blank" rel="noopener" aria-label="LinkedIn of ${n}">in</a>`:""}</div><div class="tags">${tags.map(t=>`<span>#${t}</span>`).join("")}</div></div>`).join("");
+
+// build logo ticker from portfolio, duplicate for seamless loop
+const track=document.getElementById("marqueeTrack");
+const mItem=([n,u,img],clone)=>
+  `<span class="m-item"><a href="${u}" target="_blank" rel="noopener" title="${n}"${clone?' tabindex="-1" aria-hidden="true"':''}>${img?`<img src="${img}" alt="${n}">`:`<span class="m-name">${n}</span>`}</a><span class="sep">✦</span></span>`;
+track.innerHTML=portfolio.map(c=>mItem(c,false)).join("")+portfolio.map(c=>mItem(c,true)).join("");
+
+/* ---------- i18n ---------- */
+const I18N={
+en:{
+ "nav.values":"Values","nav.story":"Story","nav.approach":"Approach","nav.portfolio":"Portfolio","nav.about":"About Us","nav.contact":"Get in touch",
+ "hero.eyebrow":"Based in Amsterdam · Investing globally",
+ "hero.title":'We invest in <span class="hl">Great&nbsp;People</span> doing <span class="hl">Great&nbsp;Stuff</span>',
+ "hero.sub":"A diverse and inclusive group of entrepreneurs and industry veterans backing early-stage technology companies — with our own capital, and our own hands-on experience.",
+ "hero.cta1":"Pitch us your startup →","hero.cta2":"Our approach",
+ "hero.stat1":"Portfolio companies","hero.stat2":"Investing members","hero.stat3":"Founded","hero.stat4":"Max initial ticket size",
+ "values.tag":"Our values","values.title":"What makes us who we are",
+ "values.v1t":"Diverse","values.v1d":"In age, backgrounds, and country of origin.",
+ "values.v2t":"Constructive","values.v2d":"We enjoy helping, not dictating.",
+ "values.v3t":"Experienced","values.v3d":"We have seen the ups and the downs.",
+ "values.v4t":"Unassuming","values.v4d":"We aim to build genuine relationships based on trust.",
+ "values.v5t":"International","values.v5d":"We believe that great entrepreneurs come from anywhere.",
+ "values.v6t":"Inclusive","values.v6d":"Everybody can earn their opportunity, in business and in life.",
+ "story.tag":"Our story",
+ "story.quote":'We founded Great Stuff Ventures in 2018 with the goal to find and be inspired by <span class="hl">the greatest technology entrepreneurs</span> of the next decade and beyond.',
+ "story.body":"We are a group of entrepreneurs and industry veterans investing their own capital in great people doing great stuff. We help by asking the right questions and introducing you to the right people.",
+ "story.m1n":"Own capital","story.m1l":"Skin in the game, always",
+ "story.m2n":"Right questions","story.m2l":"Not a list of demands",
+ "story.m3n":"Right people","story.m3l":"Introductions that matter",
+ "approach.tag":"Our approach","approach.title":"Our sweet spots",
+ "approach.people":"Multi-disciplinary, energetic founding teams with domain expertise in their industry.",
+ "approach.stuff":"SaaS or marketplace business models addressing underserviced, fast-changing markets and industries.",
+ "approach.p1n":"Up to €100k","approach.p1l":"Our investment per round","approach.p2l":"Round sizes we join","approach.p3l":"Stages we invest in",
+ "approach.n1":"✓ We prefer to co-invest with angel groups &amp; early-stage VC funds",
+ "approach.n2":"✓ We prefer equity deals over convertibles",
+ "approach.n3":"✓ We help with introductions to VCs",
+ "nav.sectors":"Sectors","sectors.tag":"Sector focus","sectors.title":"Where we go deepest",
+ "sectors.s1d":"Financial technology with a legal &amp; compliance tech focus — turning Europe's regulatory depth into a market advantage.",
+ "sectors.s2d":"Health tech and longevity — technology that helps people live longer, healthier lives.",
+ "sectors.s3d":"Climate, energy and sustainability — technology that helps keep the planet livable for future generations.",
+ "sectors.team":"Team","hero.focus":"Focus areas",
+ "thesis.tag":"Investment thesis",
+ "thesis.quote":'We invest in people who can achieve <span class="hl">VC-like returns</span> and whose companies have a <span class="hl">non-negative impact</span> on society and the environment.',
+ "thesis.c1t":"What we look for",
+ "thesis.c1d":"<li>Exceptional, passionate founding teams with founder-market fit</li><li>Companies early in the technology opportunity window</li><li>Innovative, scalable solutions with software-like margins</li><li>Sustainable and ethical business practices</li>",
+ "thesis.c2t":"How we invest",
+ "thesis.c2d":"<li>Active partnership: strategic support, mentoring and network beyond capital</li><li>Long-term perspective — impactful ventures take time to mature</li><li>A collaborative ecosystem among our portfolio companies</li>",
+ "thesis.c3t":"How we assess risk",
+ "thesis.c3d":"<li>Due diligence is about finding reasons <em>not</em> to invest</li><li>Eight risk lenses: team, market, product, financial, operational, exit, crowding-out, legal &amp; regulatory</li><li>Mitigated through due diligence, diversification and active involvement</li>",
+ "thesis.c4t":"The maths",
+ "thesis.c4d":"<li>Typically €50–100k per investment — entry valuation is key</li><li>Roughly 1 in 10 angel investments becomes a home run, so each one must have home-run potential</li><li>Most exits take 8–12 years; we invest patiently</li>",
+ "hero.quiz":"Are you a fit for partnering with GSV? 30 sec check here!",
+ "quiz.tag":"Take the quiz","quiz.title":"Are you a fit for partnering with GSV?",
+ "quiz.sub":"Answer the 10 questions below. Score at least 8 out of 10 \"yes\" and you're likely a fit for GSV.",
+ "quiz.q1":"Are you building in one of our three focus areas — Fintech, Legal &amp; Compliance, Health, or Planet?",
+ "quiz.q2":"Is your founding team multi-disciplinary, with real domain expertise (founder-market fit)?",
+ "quiz.q3":"Are you raising between €250k and €1.5m, at seed to pre-Series A stage?",
+ "quiz.q4":"Is your business model SaaS or marketplace, with software-like margins?",
+ "quiz.q5":"Is your product in the market, with early traction or fast iterations?",
+ "quiz.q6":"Is your market very large — or set to become very large?",
+ "quiz.q7":"Are you early in the technology opportunity window, ahead of the incumbents?",
+ "quiz.q8":"Does your company have a non-negative impact on society and the environment?",
+ "quiz.q9":"Are you open to active investors who mentor, ask questions and make introductions?",
+ "quiz.q10":"Can you articulate a realistic exit path with home-run potential?",
+ "quiz.yes":"Yes","quiz.no":"No",
+ "quiz.pass":"You look like Great Stuff — definitely submit your application!",
+ "quiz.mid":"Promising! Send us an email and make a compelling case why we should talk to you.",
+ "quiz.fail":"Thank you — we wish you all the best, but you may not (yet) be a fit for GSV.",
+ "portfolio.tag":"Portfolio","portfolio.title":"Great stuff, being built right now",
+ "team.tag":"About us","team.title":"The people behind the capital",
+ "contact.title":'Sounds <span class="hl">great?</span>',
+ "contact.body":"If you're building something great and raising between €250k and €1.5m, we'd love to hear from you.",
+ "contact.cta1":"Fundraiser application →","contact.cta2":"Send us an email",
+ "foot.tagline":"© Great Stuff Ventures · Based in Amsterdam, <b>investing globally</b>."
+},
+de:{
+ "nav.values":"Werte","nav.story":"Geschichte","nav.approach":"Ansatz","nav.portfolio":"Portfolio","nav.about":"Über uns","nav.contact":"Kontakt",
+ "hero.eyebrow":"Sitz in Amsterdam · Weltweit investierend",
+ "hero.title":'Wir investieren in <span class="hl">großartige&nbsp;Menschen</span>, die <span class="hl">Großartiges</span> schaffen',
+ "hero.sub":"Eine vielfältige und inklusive Gruppe von Unternehmern und Branchenveteranen, die in Technologieunternehmen in der Frühphase investiert — mit eigenem Kapital und eigener Hands-on-Erfahrung.",
+ "hero.cta1":"Pitch uns dein Startup →","hero.cta2":"Unser Ansatz",
+ "hero.stat1":"Portfoliounternehmen","hero.stat2":"Investierende Mitglieder","hero.stat3":"Gegründet","hero.stat4":"Max. Erstticket",
+ "values.tag":"Unsere Werte","values.title":"Was uns ausmacht",
+ "values.v1t":"Vielfältig","values.v1d":"In Alter, Hintergrund und Herkunftsland.",
+ "values.v2t":"Konstruktiv","values.v2d":"Wir helfen gern, statt zu diktieren.",
+ "values.v3t":"Erfahren","values.v3d":"Wir haben die Höhen und Tiefen erlebt.",
+ "values.v4t":"Bescheiden","values.v4d":"Wir bauen echte Beziehungen auf, die auf Vertrauen basieren.",
+ "values.v5t":"International","values.v5d":"Wir glauben, dass großartige Unternehmer von überall kommen können.",
+ "values.v6t":"Inklusiv","values.v6d":"Jeder kann sich seine Chance verdienen, im Geschäft und im Leben.",
+ "story.tag":"Unsere Geschichte",
+ "story.quote":'Wir haben Great Stuff Ventures 2018 gegründet, um die <span class="hl">besten Technologie-Unternehmer</span> des nächsten Jahrzehnts und darüber hinaus zu finden und uns von ihnen inspirieren zu lassen.',
+ "story.body":"Wir sind eine Gruppe von Unternehmern und Branchenveteranen, die ihr eigenes Kapital in großartige Menschen mit großartigen Ideen investieren. Wir helfen, indem wir die richtigen Fragen stellen und dich den richtigen Menschen vorstellen.",
+ "story.m1n":"Eigenes Kapital","story.m1l":"Immer mit Skin in the Game",
+ "story.m2n":"Richtige Fragen","story.m2l":"Keine Forderungsliste",
+ "story.m3n":"Richtige Menschen","story.m3l":"Intros, die zählen",
+ "approach.tag":"Unser Ansatz","approach.title":"Unsere Sweet Spots",
+ "approach.people":"Multidisziplinäre, energiegeladene Gründerteams mit Domänenexpertise in ihrer Branche.",
+ "approach.stuff":"SaaS- oder Marktplatz-Geschäftsmodelle für unterversorgte, sich schnell verändernde Märkte und Branchen.",
+ "approach.p1n":"Bis zu €100k","approach.p1l":"Unser Investment pro Runde","approach.p2l":"Rundengrößen, an denen wir teilnehmen","approach.p3l":"Phasen, in denen wir investieren",
+ "approach.n1":"✓ Wir co-investieren bevorzugt mit Angel-Gruppen &amp; Early-Stage-VC-Fonds",
+ "approach.n2":"✓ Wir bevorzugen Equity-Deals gegenüber Convertibles",
+ "approach.n3":"✓ Wir helfen mit Intros zu VCs",
+ "nav.sectors":"Sektoren","sectors.tag":"Sektorfokus","sectors.title":"Wo wir am tiefsten gehen",
+ "sectors.s1d":"Finanztechnologie mit einem Legal- &amp; Compliance-Tech-Fokus — Europas Regulierungstiefe wird zum Marktvorteil.",
+ "sectors.s2d":"Health Tech und Longevity — Technologie, die Menschen hilft, länger und gesünder zu leben.",
+ "sectors.s3d":"Klima, Energie und Nachhaltigkeit — Technologie, die den Planeten für kommende Generationen lebenswert hält.",
+ "sectors.team":"Team","hero.focus":"Fokusbereiche",
+ "thesis.tag":"Investment-These",
+ "thesis.quote":'Wir investieren in Menschen, die <span class="hl">VC-ähnliche Renditen</span> erzielen können und deren Unternehmen eine <span class="hl">nicht-negative Wirkung</span> auf Gesellschaft und Umwelt haben.',
+ "thesis.c1t":"Worauf wir achten",
+ "thesis.c1d":"<li>Außergewöhnliche, leidenschaftliche Gründerteams mit Founder-Market-Fit</li><li>Unternehmen früh im Technologie-Opportunity-Window</li><li>Innovative, skalierbare Lösungen mit software-ähnlichen Margen</li><li>Nachhaltige und ethische Geschäftspraktiken</li>",
+ "thesis.c2t":"Wie wir investieren",
+ "thesis.c2d":"<li>Aktive Partnerschaft: strategische Unterstützung, Mentoring und Netzwerk über das Kapital hinaus</li><li>Langfristige Perspektive — wirkungsvolle Unternehmen brauchen Zeit</li><li>Ein kollaboratives Ökosystem unter unseren Portfoliounternehmen</li>",
+ "thesis.c3t":"Wie wir Risiken bewerten",
+ "thesis.c3d":"<li>Due Diligence heißt, Gründe zu finden, <em>nicht</em> zu investieren</li><li>Acht Risikolinsen: Team, Markt, Produkt, Finanzen, Operations, Exit, Crowding-out, Legal &amp; Regulatorik</li><li>Gemindert durch Due Diligence, Diversifikation und aktive Beteiligung</li>",
+ "thesis.c4t":"Die Mathematik",
+ "thesis.c4d":"<li>Typischerweise €50–100k pro Investment — die Einstiegsbewertung ist entscheidend</li><li>Etwa 1 von 10 Angel-Investments wird ein Home Run — jedes muss dieses Potenzial haben</li><li>Die meisten Exits dauern 8–12 Jahre; wir investieren geduldig</li>",
+ "hero.quiz":"Passt du zu GSV als Partner? 30-Sekunden-Check hier!",
+ "quiz.tag":"Mach das Quiz","quiz.title":"Passt du zu GSV als Partner?",
+ "quiz.sub":"Beantworte die 10 Fragen. Mit mindestens 8 von 10 „Ja“ passt du wahrscheinlich zu GSV.",
+ "quiz.q1":"Baust du in einem unserer drei Fokusbereiche — Fintech, Legal &amp; Compliance, Health oder Planet?",
+ "quiz.q2":"Ist dein Gründerteam multidisziplinär, mit echter Domänenexpertise (Founder-Market-Fit)?",
+ "quiz.q3":"Raist du zwischen €250k und €1,5m, in der Seed- bis Pre-Series-A-Phase?",
+ "quiz.q4":"Ist dein Geschäftsmodell SaaS oder Marktplatz, mit software-ähnlichen Margen?",
+ "quiz.q5":"Ist dein Produkt im Markt, mit erster Traktion oder schnellen Iterationen?",
+ "quiz.q6":"Ist dein Markt sehr groß — oder wird er es absehbar?",
+ "quiz.q7":"Bist du früh im Technologie-Opportunity-Window, vor den Incumbents?",
+ "quiz.q8":"Hat dein Unternehmen eine nicht-negative Wirkung auf Gesellschaft und Umwelt?",
+ "quiz.q9":"Bist du offen für aktive Investoren, die mentoren, hinterfragen und Intros machen?",
+ "quiz.q10":"Kannst du einen realistischen Exit-Pfad mit Home-Run-Potenzial aufzeigen?",
+ "quiz.yes":"Ja","quiz.no":"Nein",
+ "quiz.pass":"Du klingst nach Great Stuff — reich unbedingt deine Bewerbung ein!",
+ "quiz.mid":"Vielversprechend! Schick uns eine E-Mail und erkläre überzeugend, warum wir mit dir sprechen sollten.",
+ "quiz.fail":"Danke — wir wünschen dir alles Gute, aber vielleicht passt es (noch) nicht zu GSV.",
+ "portfolio.tag":"Portfolio","portfolio.title":"Great Stuff, das gerade entsteht",
+ "team.tag":"Über uns","team.title":"Die Menschen hinter dem Kapital",
+ "contact.title":'Klingt <span class="hl">great?</span>',
+ "contact.body":"Du baust etwas Großartiges und raist zwischen €250k und €1,5m? Dann würden wir gern von dir hören.",
+ "contact.cta1":"Fundraiser-Bewerbung →","contact.cta2":"Schreib uns eine E-Mail",
+ "foot.tagline":"© Great Stuff Ventures · Sitz in Amsterdam, <b>weltweit investierend</b>."
+},
+fr:{
+ "nav.values":"Valeurs","nav.story":"Histoire","nav.approach":"Approche","nav.portfolio":"Portfolio","nav.about":"À propos","nav.contact":"Contact",
+ "hero.eyebrow":"Basés à Amsterdam · Investissant dans le monde entier",
+ "hero.title":'Nous investissons dans des <span class="hl">gens&nbsp;formidables</span> qui font des <span class="hl">choses&nbsp;formidables</span>',
+ "hero.sub":"Un groupe diversifié et inclusif d'entrepreneurs et de vétérans de l'industrie qui soutient des entreprises technologiques en phase de démarrage — avec notre propre capital et notre expérience de terrain.",
+ "hero.cta1":"Présentez-nous votre startup →","hero.cta2":"Notre approche",
+ "hero.stat1":"Sociétés en portefeuille","hero.stat2":"Membres investisseurs","hero.stat3":"Fondé en","hero.stat4":"Ticket initial maximum",
+ "values.tag":"Nos valeurs","values.title":"Ce qui nous définit",
+ "values.v1t":"Divers","values.v1d":"En âge, en parcours et en pays d'origine.",
+ "values.v2t":"Constructifs","values.v2d":"Nous aimons aider, pas dicter.",
+ "values.v3t":"Expérimentés","values.v3d":"Nous avons connu les hauts et les bas.",
+ "values.v4t":"Modestes","values.v4d":"Nous construisons des relations authentiques fondées sur la confiance.",
+ "values.v5t":"Internationaux","values.v5d":"Nous croyons que les grands entrepreneurs viennent de partout.",
+ "values.v6t":"Inclusifs","values.v6d":"Chacun peut mériter sa chance, en affaires comme dans la vie.",
+ "story.tag":"Notre histoire",
+ "story.quote":'Nous avons fondé Great Stuff Ventures en 2018 avec l\'objectif de trouver et de nous inspirer des <span class="hl">plus grands entrepreneurs technologiques</span> de la prochaine décennie et au-delà.',
+ "story.body":"Nous sommes un groupe d'entrepreneurs et de vétérans de l'industrie qui investissent leur propre capital dans des gens formidables faisant des choses formidables. Nous aidons en posant les bonnes questions et en vous présentant aux bonnes personnes.",
+ "story.m1n":"Notre capital","story.m1l":"Toujours engagés personnellement",
+ "story.m2n":"Bonnes questions","story.m2l":"Pas une liste d'exigences",
+ "story.m3n":"Bonnes personnes","story.m3l":"Des présentations qui comptent",
+ "approach.tag":"Notre approche","approach.title":"Nos sweet spots",
+ "approach.people":"Des équipes fondatrices pluridisciplinaires et énergiques, avec une expertise de leur secteur.",
+ "approach.stuff":"Des modèles SaaS ou marketplace ciblant des marchés mal desservis et en évolution rapide.",
+ "approach.p1n":"Jusqu'à 100 k€","approach.p1l":"Notre investissement par tour","approach.p2l":"Taille des tours que nous rejoignons","approach.p3l":"Stades où nous investissons",
+ "approach.n1":"✓ Nous préférons co-investir avec des groupes d'angels &amp; des fonds VC early-stage",
+ "approach.n2":"✓ Nous préférons les deals en equity aux convertibles",
+ "approach.n3":"✓ Nous facilitons les introductions auprès de VCs",
+ "nav.sectors":"Secteurs","sectors.tag":"Focus sectoriel","sectors.title":"Là où nous allons le plus loin",
+ "sectors.s1d":"La fintech avec un focus legal &amp; compliance tech — faisant de la profondeur réglementaire européenne un avantage de marché.",
+ "sectors.s2d":"Health tech et longévité — des technologies qui aident à vivre plus longtemps et en meilleure santé.",
+ "sectors.s3d":"Climat, énergie et durabilité — des technologies qui gardent la planète vivable pour les générations futures.",
+ "sectors.team":"Équipe","hero.focus":"Domaines de focus",
+ "thesis.tag":"Thèse d'investissement",
+ "thesis.quote":'Nous investissons dans des personnes capables d\'atteindre des <span class="hl">rendements dignes du VC</span> et dont les entreprises ont un <span class="hl">impact non négatif</span> sur la société et l\'environnement.',
+ "thesis.c1t":"Ce que nous recherchons",
+ "thesis.c1d":"<li>Des équipes fondatrices exceptionnelles et passionnées, avec un founder-market fit</li><li>Des entreprises tôt dans la fenêtre d'opportunité technologique</li><li>Des solutions innovantes et scalables aux marges proches du logiciel</li><li>Des pratiques commerciales durables et éthiques</li>",
+ "thesis.c2t":"Comment nous investissons",
+ "thesis.c2d":"<li>Un partenariat actif : soutien stratégique, mentorat et réseau au-delà du capital</li><li>Une perspective de long terme — les entreprises à impact prennent du temps à mûrir</li><li>Un écosystème collaboratif entre nos sociétés en portefeuille</li>",
+ "thesis.c3t":"Comment nous évaluons le risque",
+ "thesis.c3d":"<li>La due diligence consiste à chercher des raisons de <em>ne pas</em> investir</li><li>Huit angles de risque : équipe, marché, produit, finances, opérations, exit, dilution, legal &amp; réglementaire</li><li>Atténués par la due diligence, la diversification et l'implication active</li>",
+ "thesis.c4t":"Les maths",
+ "thesis.c4d":"<li>Généralement €50–100k par investissement — la valorisation d'entrée est clé</li><li>Environ 1 investissement angel sur 10 devient un home run — chacun doit en avoir le potentiel</li><li>La plupart des exits prennent 8 à 12 ans ; nous investissons avec patience</li>",
+ "hero.quiz":"Êtes-vous fait pour un partenariat avec GSV ? Check de 30 sec ici !",
+ "quiz.tag":"Faites le quiz","quiz.title":"Êtes-vous fait pour un partenariat avec GSV ?",
+ "quiz.sub":"Répondez aux 10 questions. Avec au moins 8 « oui » sur 10, vous correspondez probablement à GSV.",
+ "quiz.q1":"Construisez-vous dans l'un de nos trois domaines de focus — fintech, legal &amp; compliance, santé ou planète ?",
+ "quiz.q2":"Votre équipe fondatrice est-elle pluridisciplinaire, avec une vraie expertise du domaine (founder-market fit) ?",
+ "quiz.q3":"Levez-vous entre 250 k€ et 1,5 M€, du seed au pré-série A ?",
+ "quiz.q4":"Votre modèle est-il SaaS ou marketplace, avec des marges proches du logiciel ?",
+ "quiz.q5":"Votre produit est-il sur le marché, avec une première traction ou des itérations rapides ?",
+ "quiz.q6":"Votre marché est-il très grand — ou en passe de le devenir ?",
+ "quiz.q7":"Êtes-vous tôt dans la fenêtre d'opportunité technologique, devant les acteurs établis ?",
+ "quiz.q8":"Votre entreprise a-t-elle un impact non négatif sur la société et l'environnement ?",
+ "quiz.q9":"Êtes-vous ouvert à des investisseurs actifs qui mentorent, questionnent et présentent ?",
+ "quiz.q10":"Pouvez-vous décrire un chemin de sortie réaliste avec un potentiel de home run ?",
+ "quiz.yes":"Oui","quiz.no":"Non",
+ "quiz.pass":"Vous ressemblez à du Great Stuff — soumettez votre candidature sans hésiter !",
+ "quiz.mid":"Prometteur ! Envoyez-nous un e-mail et expliquez de façon convaincante pourquoi nous devrions vous parler.",
+ "quiz.fail":"Merci — nous vous souhaitons le meilleur, mais ce n'est peut-être pas (encore) un fit avec GSV.",
+ "portfolio.tag":"Portfolio","portfolio.title":"Des choses formidables, en construction en ce moment",
+ "team.tag":"À propos","team.title":"Les personnes derrière le capital",
+ "contact.title":'Ça sonne <span class="hl">great ?</span>',
+ "contact.body":"Vous construisez quelque chose de formidable et levez entre 250 k€ et 1,5 M€ ? Nous serions ravis d'échanger.",
+ "contact.cta1":"Candidature de levée de fonds →","contact.cta2":"Envoyez-nous un e-mail",
+ "foot.tagline":"© Great Stuff Ventures · Basés à Amsterdam, <b>investissant dans le monde entier</b>."
+},
+nl:{
+ "nav.values":"Waarden","nav.story":"Verhaal","nav.approach":"Aanpak","nav.portfolio":"Portfolio","nav.about":"Over ons","nav.contact":"Contact",
+ "hero.eyebrow":"Gevestigd in Amsterdam · Wereldwijd investerend",
+ "hero.title":'Wij investeren in <span class="hl">geweldige&nbsp;mensen</span> die <span class="hl">geweldige&nbsp;dingen</span> bouwen',
+ "hero.sub":"Een diverse en inclusieve groep ondernemers en industrie-veteranen die investeert in technologiebedrijven in een vroege fase — met eigen kapitaal en eigen hands-on ervaring.",
+ "hero.cta1":"Pitch je startup →","hero.cta2":"Onze aanpak",
+ "hero.stat1":"Portfoliobedrijven","hero.stat2":"Investerende leden","hero.stat3":"Opgericht","hero.stat4":"Max. eerste ticket",
+ "values.tag":"Onze waarden","values.title":"Wat ons maakt wie we zijn",
+ "values.v1t":"Divers","values.v1d":"In leeftijd, achtergrond en land van herkomst.",
+ "values.v2t":"Constructief","values.v2d":"We helpen graag, zonder te dicteren.",
+ "values.v3t":"Ervaren","values.v3d":"We hebben de ups en de downs gezien.",
+ "values.v4t":"Bescheiden","values.v4d":"We bouwen aan echte relaties gebaseerd op vertrouwen.",
+ "values.v5t":"Internationaal","values.v5d":"Wij geloven dat geweldige ondernemers overal vandaan komen.",
+ "values.v6t":"Inclusief","values.v6d":"Iedereen kan zijn kans verdienen, in zaken en in het leven.",
+ "story.tag":"Ons verhaal",
+ "story.quote":'We richtten Great Stuff Ventures op in 2018 om de <span class="hl">beste technologie-ondernemers</span> van het komende decennium en daarna te vinden en ons door hen te laten inspireren.',
+ "story.body":"We zijn een groep ondernemers en industrie-veteranen die hun eigen kapitaal investeren in geweldige mensen die geweldige dingen doen. We helpen door de juiste vragen te stellen en je aan de juiste mensen voor te stellen.",
+ "story.m1n":"Eigen kapitaal","story.m1l":"Altijd skin in the game",
+ "story.m2n":"Juiste vragen","story.m2l":"Geen eisenlijstje",
+ "story.m3n":"Juiste mensen","story.m3l":"Introducties die ertoe doen",
+ "approach.tag":"Onze aanpak","approach.title":"Onze sweet spots",
+ "approach.people":"Multidisciplinaire, energieke foundersteams met domeinexpertise in hun industrie.",
+ "approach.stuff":"SaaS- of marketplace-businessmodellen voor onderbediende, snel veranderende markten en industrieën.",
+ "approach.p1n":"Tot €100k","approach.p1l":"Onze investering per ronde","approach.p2l":"Rondegroottes waaraan we meedoen","approach.p3l":"Fases waarin we investeren",
+ "approach.n1":"✓ We co-investeren het liefst met angel-groepen &amp; early-stage VC-fondsen",
+ "approach.n2":"✓ We geven de voorkeur aan equity-deals boven convertibles",
+ "approach.n3":"✓ We helpen met introducties bij VC's",
+ "nav.sectors":"Sectoren","sectors.tag":"Sectorfocus","sectors.title":"Waar we het diepst gaan",
+ "sectors.s1d":"Fintech met een focus op legal &amp; compliance tech — waarbij Europa's regelgevingsdiepte een marktvoordeel wordt.",
+ "sectors.s2d":"Health tech en longevity — technologie die mensen helpt langer en gezonder te leven.",
+ "sectors.s3d":"Klimaat, energie en duurzaamheid — technologie die de planeet leefbaar houdt voor volgende generaties.",
+ "sectors.team":"Team","hero.focus":"Focusgebieden",
+ "thesis.tag":"Investeringsthese",
+ "thesis.quote":'Wij investeren in mensen die <span class="hl">VC-achtige rendementen</span> kunnen behalen en van wie de bedrijven een <span class="hl">niet-negatieve impact</span> hebben op samenleving en milieu.',
+ "thesis.c1t":"Waar we naar zoeken",
+ "thesis.c1d":"<li>Uitzonderlijke, gepassioneerde foundersteams met founder-market fit</li><li>Bedrijven vroeg in het technologie-opportunity window</li><li>Innovatieve, schaalbare oplossingen met software-achtige marges</li><li>Duurzame en ethische bedrijfsvoering</li>",
+ "thesis.c2t":"Hoe we investeren",
+ "thesis.c2d":"<li>Actief partnerschap: strategische steun, mentoring en netwerk naast kapitaal</li><li>Langetermijnperspectief — impactvolle bedrijven hebben tijd nodig</li><li>Een collaboratief ecosysteem tussen onze portfoliobedrijven</li>",
+ "thesis.c3t":"Hoe we risico beoordelen",
+ "thesis.c3d":"<li>Due diligence draait om redenen vinden om <em>niet</em> te investeren</li><li>Acht risicolenzen: team, markt, product, financieel, operationeel, exit, verwatering, legal &amp; regelgeving</li><li>Beperkt door due diligence, diversificatie en actieve betrokkenheid</li>",
+ "thesis.c4t":"De rekensom",
+ "thesis.c4d":"<li>Doorgaans €50–100k per investering — de instapwaardering is bepalend</li><li>Ongeveer 1 op 10 angel-investeringen wordt een home run — elke investering moet die potentie hebben</li><li>De meeste exits duren 8–12 jaar; wij investeren geduldig</li>",
+ "hero.quiz":"Ben jij een match voor GSV? 30 sec check hier!",
+ "quiz.tag":"Doe de quiz","quiz.title":"Ben jij een match om met GSV te partneren?",
+ "quiz.sub":"Beantwoord de 10 vragen. Met minstens 8 van de 10 'ja' ben je waarschijnlijk een match voor GSV.",
+ "quiz.q1":"Bouw je in een van onze drie focusgebieden — fintech, legal &amp; compliance, health of planet?",
+ "quiz.q2":"Is je foundersteam multidisciplinair, met echte domeinexpertise (founder-market fit)?",
+ "quiz.q3":"Haal je tussen €250k en €1,5m op, in de seed- tot pre-Series A-fase?",
+ "quiz.q4":"Is je businessmodel SaaS of marketplace, met software-achtige marges?",
+ "quiz.q5":"Is je product in de markt, met eerste tractie of snelle iteraties?",
+ "quiz.q6":"Is je markt heel groot — of wordt hij dat binnenkort?",
+ "quiz.q7":"Ben je vroeg in het technologie-opportunity window, vóór de gevestigde spelers?",
+ "quiz.q8":"Heeft je bedrijf een niet-negatieve impact op samenleving en milieu?",
+ "quiz.q9":"Sta je open voor actieve investeerders die mentoren, vragen stellen en introduceren?",
+ "quiz.q10":"Kun je een realistisch exitpad met home-run-potentie schetsen?",
+ "quiz.yes":"Ja","quiz.no":"Nee",
+ "quiz.pass":"Je klinkt als Great Stuff — dien zeker je aanvraag in!",
+ "quiz.mid":"Veelbelovend! Stuur ons een e-mail met een overtuigend verhaal waarom we met jou moeten praten.",
+ "quiz.fail":"Bedankt — we wensen je alle succes, maar misschien (nog) geen match met GSV.",
+ "portfolio.tag":"Portfolio","portfolio.title":"Geweldige dingen, op dit moment in aanbouw",
+ "team.tag":"Over ons","team.title":"De mensen achter het kapitaal",
+ "contact.title":'Klinkt <span class="hl">great?</span>',
+ "contact.body":"Bouw je iets geweldigs en haal je tussen €250k en €1,5m op? Dan horen we graag van je.",
+ "contact.cta1":"Fundraiser-aanvraag →","contact.cta2":"Stuur ons een e-mail",
+ "foot.tagline":"© Great Stuff Ventures · Gevestigd in Amsterdam, <b>wereldwijd investerend</b>."
+},
+es:{
+ "nav.values":"Valores","nav.story":"Historia","nav.approach":"Enfoque","nav.portfolio":"Portfolio","nav.about":"Sobre nosotros","nav.contact":"Contacto",
+ "hero.eyebrow":"Con sede en Ámsterdam · Invirtiendo globalmente",
+ "hero.title":'Invertimos en <span class="hl">gente&nbsp;genial</span> que hace <span class="hl">cosas&nbsp;geniales</span>',
+ "hero.sub":"Un grupo diverso e inclusivo de emprendedores y veteranos de la industria que respalda empresas tecnológicas en fase temprana — con nuestro propio capital y nuestra propia experiencia práctica.",
+ "hero.cta1":"Preséntanos tu startup →","hero.cta2":"Nuestro enfoque",
+ "hero.stat1":"Empresas en cartera","hero.stat2":"Miembros inversores","hero.stat3":"Fundado en","hero.stat4":"Ticket inicial máximo",
+ "values.tag":"Nuestros valores","values.title":"Lo que nos define",
+ "values.v1t":"Diversos","values.v1d":"En edad, trayectoria y país de origen.",
+ "values.v2t":"Constructivos","values.v2d":"Nos gusta ayudar, no dictar.",
+ "values.v3t":"Experimentados","values.v3d":"Hemos vivido los altibajos.",
+ "values.v4t":"Sencillos","values.v4d":"Construimos relaciones auténticas basadas en la confianza.",
+ "values.v5t":"Internacionales","values.v5d":"Creemos que los grandes emprendedores pueden venir de cualquier lugar.",
+ "values.v6t":"Inclusivos","values.v6d":"Todos pueden ganarse su oportunidad, en los negocios y en la vida.",
+ "story.tag":"Nuestra historia",
+ "story.quote":'Fundamos Great Stuff Ventures en 2018 con el objetivo de encontrar e inspirarnos en <span class="hl">los mejores emprendedores tecnológicos</span> de la próxima década y más allá.',
+ "story.body":"Somos un grupo de emprendedores y veteranos de la industria que invierten su propio capital en gente genial que hace cosas geniales. Ayudamos haciendo las preguntas correctas y presentándote a las personas adecuadas.",
+ "story.m1n":"Capital propio","story.m1l":"Siempre con skin in the game",
+ "story.m2n":"Preguntas correctas","story.m2l":"No una lista de exigencias",
+ "story.m3n":"Personas adecuadas","story.m3l":"Presentaciones que importan",
+ "approach.tag":"Nuestro enfoque","approach.title":"Nuestros sweet spots",
+ "approach.people":"Equipos fundadores multidisciplinares y enérgicos, con experiencia en su sector.",
+ "approach.stuff":"Modelos de negocio SaaS o marketplace dirigidos a mercados desatendidos y en rápida evolución.",
+ "approach.p1n":"Hasta €100k","approach.p1l":"Nuestra inversión por ronda","approach.p2l":"Tamaño de las rondas en las que participamos","approach.p3l":"Fases en las que invertimos",
+ "approach.n1":"✓ Preferimos coinvertir con grupos de ángeles &amp; fondos VC early-stage",
+ "approach.n2":"✓ Preferimos deals de equity antes que convertibles",
+ "approach.n3":"✓ Ayudamos con presentaciones a VCs",
+ "nav.sectors":"Sectores","sectors.tag":"Enfoque sectorial","sectors.title":"Donde profundizamos más",
+ "sectors.s1d":"Tecnología financiera con un enfoque legal &amp; compliance tech — convirtiendo la profundidad regulatoria europea en una ventaja de mercado.",
+ "sectors.s2d":"Health tech y longevidad — tecnología que ayuda a vivir más años y con mejor salud.",
+ "sectors.s3d":"Clima, energía y sostenibilidad — tecnología que mantiene el planeta habitable para las próximas generaciones.",
+ "sectors.team":"Equipo","hero.focus":"Áreas de enfoque",
+ "thesis.tag":"Tesis de inversión",
+ "thesis.quote":'Invertimos en personas capaces de lograr <span class="hl">retornos propios del VC</span> y cuyas empresas tienen un <span class="hl">impacto no negativo</span> en la sociedad y el medio ambiente.',
+ "thesis.c1t":"Qué buscamos",
+ "thesis.c1d":"<li>Equipos fundadores excepcionales y apasionados, con founder-market fit</li><li>Empresas al inicio de la ventana de oportunidad tecnológica</li><li>Soluciones innovadoras y escalables con márgenes de software</li><li>Prácticas empresariales sostenibles y éticas</li>",
+ "thesis.c2t":"Cómo invertimos",
+ "thesis.c2d":"<li>Colaboración activa: apoyo estratégico, mentoría y red más allá del capital</li><li>Perspectiva de largo plazo — las empresas con impacto tardan en madurar</li><li>Un ecosistema colaborativo entre nuestras participadas</li>",
+ "thesis.c3t":"Cómo evaluamos el riesgo",
+ "thesis.c3d":"<li>La due diligence consiste en buscar razones para <em>no</em> invertir</li><li>Ocho lentes de riesgo: equipo, mercado, producto, finanzas, operaciones, exit, dilución, legal &amp; regulatorio</li><li>Mitigados con due diligence, diversificación e implicación activa</li>",
+ "thesis.c4t":"Las matemáticas",
+ "thesis.c4d":"<li>Normalmente €50–100k por inversión — la valoración de entrada es clave</li><li>Aproximadamente 1 de cada 10 inversiones ángel es un home run — cada una debe tener ese potencial</li><li>La mayoría de los exits tardan 8–12 años; invertimos con paciencia</li>",
+ "hero.quiz":"¿Encajas como partner de GSV? ¡Chequeo de 30 seg aquí!",
+ "quiz.tag":"Haz el quiz","quiz.title":"¿Encajas para asociarte con GSV?",
+ "quiz.sub":"Responde las 10 preguntas. Con al menos 8 de 10 'sí', probablemente encajas con GSV.",
+ "quiz.q1":"¿Construyes en una de nuestras tres áreas de enfoque — fintech, legal &amp; compliance, salud o planeta?",
+ "quiz.q2":"¿Tu equipo fundador es multidisciplinar, con verdadera experiencia del sector (founder-market fit)?",
+ "quiz.q3":"¿Estás levantando entre €250k y €1,5m, de seed a pre-Serie A?",
+ "quiz.q4":"¿Tu modelo de negocio es SaaS o marketplace, con márgenes de software?",
+ "quiz.q5":"¿Tu producto está en el mercado, con tracción inicial o iteraciones rápidas?",
+ "quiz.q6":"¿Tu mercado es muy grande — o va camino de serlo?",
+ "quiz.q7":"¿Estás al inicio de la ventana de oportunidad tecnológica, por delante de los incumbentes?",
+ "quiz.q8":"¿Tu empresa tiene un impacto no negativo en la sociedad y el medio ambiente?",
+ "quiz.q9":"¿Estás abierto a inversores activos que mentorizan, preguntan y presentan?",
+ "quiz.q10":"¿Puedes articular una ruta de salida realista con potencial de home run?",
+ "quiz.yes":"Sí","quiz.no":"No",
+ "quiz.pass":"Suenas a Great Stuff — ¡envía tu solicitud sin dudarlo!",
+ "quiz.mid":"¡Prometedor! Envíanos un email y argumenta de forma convincente por qué deberíamos hablar contigo.",
+ "quiz.fail":"Gracias — te deseamos lo mejor, pero quizá (aún) no encajas con GSV.",
+ "portfolio.tag":"Portfolio","portfolio.title":"Cosas geniales, construyéndose ahora mismo",
+ "team.tag":"Sobre nosotros","team.title":"Las personas detrás del capital",
+ "contact.title":'¿Suena <span class="hl">great?</span>',
+ "contact.body":"¿Estás construyendo algo genial y levantando entre €250k y €1,5m? Nos encantaría saber de ti.",
+ "contact.cta1":"Solicitud de financiación →","contact.cta2":"Envíanos un email",
+ "foot.tagline":"© Great Stuff Ventures · Con sede en Ámsterdam, <b>invirtiendo globalmente</b>."
+}
+};
+let currentLang="en";
+function setLang(l){
+  currentLang=l;
+  document.documentElement.lang=l;
+  document.querySelectorAll("[data-i18n]").forEach(el=>{
+    const v=(I18N[l]&&I18N[l][el.dataset.i18n])??I18N.en[el.dataset.i18n];
+    if(v!=null)el.innerHTML=v;
+  });
+  document.querySelectorAll(".lang button").forEach(b=>b.classList.toggle("active",b.dataset.lang===l));
+  updateQuiz();
+}
+document.querySelectorAll(".lang button").forEach(b=>b.addEventListener("click",()=>setLang(b.dataset.lang)));
+
+/* ---------- founder fit quiz ---------- */
+const QUIZ_N=10, QUIZ_PASS=8;
+const quizAnswers=new Array(QUIZ_N).fill(null);
+const quizList=document.getElementById("quizList");
+quizList.innerHTML=Array.from({length:QUIZ_N},(_,i)=>
+  `<div class="quiz-item">
+    <div class="qq"><b>${String(i+1).padStart(2,"0")}</b><span data-i18n="quiz.q${i+1}">${I18N.en["quiz.q"+(i+1)]}</span></div>
+    <div class="qbtns">
+      <button class="yes" data-q="${i}" data-v="1" data-i18n="quiz.yes">Yes</button>
+      <button class="no" data-q="${i}" data-v="0" data-i18n="quiz.no">No</button>
+    </div>
+  </div>`).join("");
+function updateQuiz(){
+  const answered=quizAnswers.filter(a=>a!==null).length;
+  const yes=quizAnswers.filter(a=>a===1).length;
+  document.getElementById("quizScore").innerHTML=`<em>${yes}</em> ✓ · ${answered}/${QUIZ_N}`;
+  const res=document.getElementById("quizResult");
+  if(answered<QUIZ_N){res.hidden=true;return}
+  const t=k=>(I18N[currentLang]&&I18N[currentLang][k])??I18N.en[k];
+  res.hidden=false;
+  if(yes>=8){
+    res.className="quiz-result pass";
+    res.innerHTML=`<p>${yes}/10 — ${t("quiz.pass")}</p><a class="btn btn-teal" href="https://app.dealum.com/#/company/application/new/127689/nan0zh06c4pazxybj57l1gntb9h2u2ii" target="_blank" rel="noopener">${t("contact.cta1")}</a>`;
+  }else if(yes>=5){
+    res.className="quiz-result mid";
+    res.innerHTML=`<p>${yes}/10 — ${t("quiz.mid")}</p><a class="btn btn-yellow" href="mailto:info@greatstuffventures.com?subject=${encodeURIComponent("Why GSV should talk to us")}">${t("contact.cta2")}</a>`;
+  }else{
+    res.className="quiz-result fail";
+    res.innerHTML=`<p>${yes}/10 — ${t("quiz.fail")}</p>`;
+  }
+}
+quizList.addEventListener("click",e=>{
+  const b=e.target.closest("button[data-q]");
+  if(!b)return;
+  const q=+b.dataset.q;
+  quizAnswers[q]=+b.dataset.v;
+  b.parentElement.querySelectorAll("button").forEach(x=>x.classList.toggle("on",x===b));
+  updateQuiz();
+});
+
+// scroll reveal
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}}),{threshold:.12});
+document.querySelectorAll(".reveal").forEach(el=>io.observe(el));
+
+// nav border on scroll + mobile menu
+const nav=document.getElementById("nav");
+addEventListener("scroll",()=>nav.classList.toggle("scrolled",scrollY>10),{passive:true});
+document.getElementById("burger").addEventListener("click",()=>document.getElementById("navLinks").classList.toggle("open"));
+document.querySelectorAll("#navLinks a").forEach(a=>a.addEventListener("click",()=>document.getElementById("navLinks").classList.remove("open")));
+</script>
+</body>
+</html>
