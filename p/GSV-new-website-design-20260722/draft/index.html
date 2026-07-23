@@ -66,7 +66,7 @@ a{color:inherit;text-decoration:none}
 .burger{display:none;background:none;border:none;font-size:1.6rem;cursor:pointer;color:var(--ink)}
 
 /* ---------- HERO ---------- */
-.hero{padding:180px 0 0;position:relative;overflow:hidden}
+.hero{padding:180px 0 90px;position:relative;overflow:hidden}
 .hero-eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:.85rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:28px}
 .hero-eyebrow .dot{width:8px;height:8px;border-radius:50%;background:var(--yellow);animation:pulse 2.4s infinite}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
@@ -85,13 +85,14 @@ a{color:inherit;text-decoration:none}
 .hero-stat .num em{font-style:normal;color:var(--accent)}
 .hero-stat .lbl{font-size:.85rem;color:var(--ink-soft);margin-top:2px}
 
-/* marquee */
-.marquee{margin-top:90px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:22px 0;overflow:hidden;background:var(--white)}
+/* marquee — persistent ticker fixed to the bottom of the viewport */
+.marquee{position:fixed;bottom:0;left:0;right:0;z-index:90;border-top:1px solid var(--line);padding:13px 0;overflow:hidden;background:rgba(255,255,255,.94);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+body{padding-bottom:60px}
 .marquee-track{display:flex;gap:0;width:max-content;align-items:center;animation:scroll 80s linear infinite}
 .marquee:hover .marquee-track{animation-play-state:paused}
 .marquee-track .m-item{display:flex;align-items:center;gap:48px;margin-right:48px}
 .marquee-track a{display:flex;align-items:center}
-.marquee-track img{height:32px;width:auto;max-width:130px;object-fit:contain;filter:grayscale(1);opacity:.65;transition:filter .25s,opacity .25s,transform .2s}
+.marquee-track img{height:26px;width:auto;max-width:120px;object-fit:contain;filter:grayscale(1);opacity:.65;transition:filter .25s,opacity .25s,transform .2s}
 .marquee-track a:hover img{filter:none;opacity:1;transform:translateY(-2px)}
 .marquee-track a:hover .m-name{color:var(--ink);opacity:1}
 .marquee-track .sep{color:var(--teal);font-size:.7rem}
