@@ -9,17 +9,24 @@
 <style>
   :root {
     --navy: #12233d; --navy-2: #1c3556; --gold: #b08d3f;
-    --mist: #c9d3e0; --line: rgba(255,255,255,.14);
+    --mist: #5c6b7a; --line: #e2e8f0;
     --serif: Georgia, "Times New Roman", serif;
     --sans: "Helvetica Neue", Helvetica, Arial, sans-serif;
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html, body { height: 100%; }
   body {
-    font-family: var(--sans); color: #fff;
-    background: linear-gradient(160deg, var(--navy) 0%, var(--navy-2) 100%);
+    font-family: var(--sans); color: #22303f;
+    background: linear-gradient(165deg, #eef1f6 0%, #dfe6ef 100%);
     line-height: 1.5; -webkit-font-smoothing: antialiased;
   }
+  body::before {
+    content: ""; position: fixed; inset: 0; pointer-events: none; z-index: 0;
+    background:
+      radial-gradient(640px 420px at 88% 8%, rgba(176,141,63,.10), transparent 62%),
+      radial-gradient(760px 520px at 6% 96%, rgba(58,110,165,.08), transparent 62%);
+  }
+  .screen { position: relative; z-index: 1; }
   .screen {
     min-height: 100vh; min-height: 100svh;
     display: flex; flex-direction: column;
@@ -29,7 +36,7 @@
     display: flex; align-items: center; justify-content: space-between;
     padding: clamp(14px, 2.5vh, 26px) 0; border-bottom: 1px solid var(--line);
   }
-  .brand { font-family: var(--serif); font-size: 21px; font-weight: 600; color: #fff; text-decoration: none; letter-spacing: .02em; }
+  .brand { font-family: var(--serif); font-size: 21px; font-weight: 600; color: var(--navy); text-decoration: none; letter-spacing: .02em; }
   .brand span { color: inherit; }
   .top .actions { display: flex; align-items: center; gap: 22px; }
   .lang { display: flex; gap: 4px; align-items: center; }
@@ -45,8 +52,14 @@
   .top a.back:hover { color: var(--gold); }
 
   .mid { flex: 1; display: flex; flex-direction: column; justify-content: center; align-items: flex-start; max-width: 480px; }
-  .kicker { color: var(--gold); text-transform: uppercase; letter-spacing: .18em; font-size: 12.5px; margin-bottom: 14px; }
-  h1 { font-family: var(--serif); font-weight: 600; font-size: clamp(26px, 4vh, 38px); line-height: 1.15; }
+  .kicker {
+    display: inline-flex; align-items: center; gap: 9px;
+    color: var(--gold); text-transform: uppercase; letter-spacing: .15em; font-size: 12px;
+    border: 1px solid rgba(176,141,63,.45); background: rgba(176,141,63,.08);
+    padding: 6px 15px; border-radius: 999px; margin-bottom: 14px;
+  }
+  .kicker::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--gold); }
+  h1 { font-family: var(--serif); font-weight: 600; font-size: clamp(26px, 4vh, 38px); line-height: 1.15; color: var(--navy); }
   p.help { margin-top: 14px; color: var(--mist); font-size: 15.5px; }
 
   form { margin-top: 28px; width: 100%; }
@@ -54,29 +67,31 @@
   .row { display: flex; gap: 10px; }
   input {
     flex: 1; padding: 13px 16px; font-size: 16px; font-family: var(--sans);
-    border: 1px solid rgba(255,255,255,.35); border-radius: 3px;
-    background: rgba(255,255,255,.06); color: #fff; letter-spacing: .04em;
-    outline: none;
+    border: 1px solid #cad4e0; border-radius: 999px;
+    background: #ffffff; color: #22303f; letter-spacing: .04em;
+    outline: none; padding-left: 20px;
   }
   input:focus { border-color: var(--gold); }
-  input::placeholder { color: #7d8ca0; }
+  input::placeholder { color: #9aa7b5; }
   button[type=submit] {
-    padding: 13px 26px; font-size: 14px; letter-spacing: .06em; text-transform: uppercase;
-    background: var(--gold); color: #fff; border: 0; border-radius: 3px; cursor: pointer;
-    font-family: var(--sans);
+    padding: 13px 28px; font-size: 14px; letter-spacing: .06em; text-transform: uppercase;
+    background: linear-gradient(120deg, var(--gold), #c9a45a); color: #fff;
+    border: 0; border-radius: 999px; cursor: pointer;
+    box-shadow: 0 2px 14px rgba(176,141,63,.35); font-family: var(--sans);
+    transition: transform .2s ease, box-shadow .2s ease;
   }
-  button[type=submit]:hover { background: #9a7a33; }
+  button[type=submit]:hover { transform: translateY(-1px); box-shadow: 0 6px 20px rgba(176,141,63,.5); }
   button[disabled] { opacity: .6; cursor: wait; }
   .msg { margin-top: 14px; font-size: 14.5px; min-height: 22px; }
-  .msg.err { color: #e8b4b4; }
-  .msg.ok { color: #bcd9c5; }
-  .fine { margin-top: 26px; color: #8595aa; font-size: 13px; }
+  .msg.err { color: #b3423f; }
+  .msg.ok { color: #2e7d4f; }
+  .fine { margin-top: 26px; color: #93a0b0; font-size: 13px; }
   .fine a { color: var(--mist); }
 
   .bottom {
     border-top: 1px solid var(--line);
     padding: clamp(12px, 2.2vh, 22px) 0 clamp(14px, 2.5vh, 26px);
-    font-size: 13px; color: #8595aa;
+    font-size: 13px; color: #93a0b0;
   }
 </style>
 </head>
@@ -84,7 +99,7 @@
 
 <div class="screen">
   <header class="top">
-    <a class="brand" href="/"><svg width="19" height="23" viewBox="0 0 76 94" style="vertical-align:-4px;margin-right:9px" aria-hidden="true"><rect x="0" y="0" width="76" height="8" rx="2" fill="#ffffff"/><rect x="6" y="12" width="64" height="6" rx="2" fill="#b08d3f"/><rect x="12" y="22" width="10" height="50" rx="2" fill="#ffffff"/><rect x="33" y="22" width="10" height="50" rx="2" fill="#ffffff"/><rect x="54" y="22" width="10" height="50" rx="2" fill="#ffffff"/><rect x="6" y="76" width="64" height="6" rx="2" fill="#b08d3f"/><rect x="0" y="86" width="76" height="8" rx="2" fill="#ffffff"/></svg>Prytania <span>Partners</span></a>
+    <a class="brand" href="/"><svg width="19" height="23" viewBox="0 0 76 94" style="vertical-align:-4px;margin-right:9px" aria-hidden="true"><rect x="0" y="0" width="76" height="8" rx="2" fill="#12233d"/><rect x="6" y="12" width="64" height="6" rx="2" fill="#b08d3f"/><rect x="12" y="22" width="10" height="50" rx="2" fill="#12233d"/><rect x="33" y="22" width="10" height="50" rx="2" fill="#12233d"/><rect x="54" y="22" width="10" height="50" rx="2" fill="#12233d"/><rect x="6" y="76" width="64" height="6" rx="2" fill="#b08d3f"/><rect x="0" y="86" width="76" height="8" rx="2" fill="#12233d"/></svg>Prytania <span>Partners</span></a>
     <div class="actions">
       <div class="lang" id="langSwitch" aria-label="Language">
         <button data-lang="en" class="active" aria-label="English" title="English"><svg viewBox="0 0 24 17"><rect width="24" height="17" fill="#fff"/><g fill="#B22234"><rect y="0" width="24" height="1.31"/><rect y="2.62" width="24" height="1.31"/><rect y="5.23" width="24" height="1.31"/><rect y="7.85" width="24" height="1.31"/><rect y="10.46" width="24" height="1.31"/><rect y="13.08" width="24" height="1.31"/><rect y="15.69" width="24" height="1.31"/></g><rect width="10.5" height="9.15" fill="#3C3B6E"/></svg></button>
