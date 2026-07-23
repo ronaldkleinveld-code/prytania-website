@@ -9,22 +9,22 @@
 <style>
   :root {
     --navy: #12233d; --navy-2: #1c3556; --gold: #b08d3f;
-    --mist: #c9d3e0; --line: rgba(255,255,255,.14);
+    --mist: #5c6b7a; --line: #e2e8f0;
     --serif: Georgia, "Times New Roman", serif;
     --sans: "Helvetica Neue", Helvetica, Arial, sans-serif;
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html, body { height: 100%; }
   body {
-    font-family: var(--sans); color: #fff;
-    background: linear-gradient(160deg, var(--navy) 0%, var(--navy-2) 100%);
+    font-family: var(--sans); color: #22303f;
+    background: linear-gradient(165deg, #fbfcfe 0%, #f2f5f9 100%);
     line-height: 1.5; -webkit-font-smoothing: antialiased;
   }
   body::before {
     content: ""; position: fixed; inset: 0; pointer-events: none; z-index: 0;
     background:
-      radial-gradient(640px 420px at 88% 8%, rgba(176,141,63,.14), transparent 62%),
-      radial-gradient(760px 520px at 6% 96%, rgba(58,110,165,.20), transparent 62%);
+      radial-gradient(640px 420px at 88% 8%, rgba(176,141,63,.10), transparent 62%),
+      radial-gradient(760px 520px at 6% 96%, rgba(58,110,165,.08), transparent 62%);
   }
   .screen { position: relative; z-index: 1; }
   .screen {
@@ -39,7 +39,7 @@
     padding: clamp(14px, 2.5vh, 26px) 0;
     border-bottom: 1px solid var(--line);
   }
-  .brand { font-family: var(--serif); font-size: 21px; font-weight: 600; color: #fff; text-decoration: none; letter-spacing: .02em; }
+  .brand { font-family: var(--serif); font-size: 21px; font-weight: 600; color: var(--navy); text-decoration: none; letter-spacing: .02em; }
   .brand span { color: var(--gold); }
   .top .actions { display: flex; align-items: center; gap: 22px; }
   .lang { display: flex; gap: 4px; align-items: center; }
@@ -52,6 +52,7 @@
   .lang button.active { opacity: 1; border-color: var(--gold); }
   .lang svg { width: 20px; height: 14px; border-radius: 2px; display: block; }
   .top a.login { color: var(--mist); text-decoration: none; font-size: 13px; letter-spacing: .08em; text-transform: uppercase; }
+  h1 { color: var(--navy); }
   .top a.login:hover { color: var(--gold); }
   .top a.cta {
     color: #fff; text-decoration: none; font-size: 13px; letter-spacing: .08em;
@@ -84,14 +85,14 @@
     margin-top: clamp(16px, 3vh, 34px);
   }
   .svc {
-    border: 1px solid rgba(255,255,255,.10); border-radius: 14px;
-    background: rgba(255,255,255,.045); backdrop-filter: blur(8px);
+    border: 1px solid var(--line); border-radius: 14px;
+    background: #ffffff; box-shadow: 0 2px 12px rgba(18,35,61,.05);
     padding: clamp(12px, 1.8vh, 20px) clamp(14px, 1.6vw, 20px);
-    transition: transform .25s ease, border-color .25s ease, background .25s ease;
+    transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
   }
-  .svc:hover { transform: translateY(-4px); border-color: rgba(176,141,63,.55); background: rgba(255,255,255,.07); }
+  .svc:hover { transform: translateY(-4px); border-color: rgba(176,141,63,.55); box-shadow: 0 10px 26px rgba(18,35,61,.10); }
   .svc::before { content: ""; display: block; width: 30px; height: 3px; border-radius: 2px; margin-bottom: clamp(8px, 1.2vh, 12px); background: linear-gradient(90deg, var(--gold), rgba(176,141,63,0)); }
-  .svc h2 { font-family: var(--serif); font-weight: 600; font-size: clamp(14.5px, 1.85vh, 17.5px); margin-bottom: 4px; }
+  .svc h2 { font-family: var(--serif); font-weight: 600; font-size: clamp(14.5px, 1.85vh, 17.5px); margin-bottom: 4px; color: var(--navy); }
   .svc p { color: var(--mist); font-size: clamp(12px, 1.5vh, 13.8px); line-height: 1.45; }
   @media (max-width: 1000px) { .services { grid-template-columns: repeat(2, 1fr); } }
 
@@ -103,9 +104,9 @@
     gap: 16px; flex-wrap: wrap;
     font-size: clamp(12px, 1.6vh, 14px); color: var(--mist);
   }
-  .bottom a { color: #fff; text-decoration: none; border-bottom: 1px solid var(--gold); }
+  .bottom a { color: var(--navy); text-decoration: none; border-bottom: 1px solid var(--gold); }
   .bottom a:hover { color: var(--gold); }
-  .bottom .fine { color: #8595aa; }
+  .bottom .fine { color: #93a0b0; }
   .bottom .fine a { color: var(--mist); }
 
   /* Benefits ticker */
@@ -116,23 +117,23 @@
   .tick-copy { display: inline-block; padding-right: 56px; font-size: clamp(12px, 1.6vh, 13.5px); letter-spacing: .06em; color: var(--mist); text-transform: uppercase; }
   .tick-copy .sep { color: var(--gold); margin: 0 22px; font-style: normal; }
   .tick-copy a { color: var(--gold); text-decoration: none; border-bottom: 1px solid var(--gold); }
-  .tick-copy a:hover { color: #fff; border-color: #fff; }
+  .tick-copy a:hover { color: var(--navy); border-color: var(--navy); }
   @media (prefers-reduced-motion: reduce) { .ticker-track { animation: none; } }
 
   /* Hamburger + mobile menu */
   .burger { display: none; background: none; border: 0; cursor: pointer; padding: 8px 4px; }
-  .burger span { display: block; width: 24px; height: 2px; background: #fff; margin: 5px 0; border-radius: 2px; }
+  .burger span { display: block; width: 24px; height: 2px; background: var(--navy); margin: 5px 0; border-radius: 2px; }
   .menu-overlay {
     position: fixed; inset: 0; z-index: 100;
-    background: linear-gradient(160deg, var(--navy) 0%, var(--navy-2) 100%);
+    background: linear-gradient(165deg, #fbfcfe 0%, #f2f5f9 100%);
     display: none; flex-direction: column; padding: 24px 32px;
   }
   .menu-overlay.open { display: flex; }
   .menu-head { display: flex; justify-content: space-between; align-items: center; padding-bottom: 18px; border-bottom: 1px solid var(--line); }
-  .menu-close { background: none; border: 0; color: #fff; font-size: 30px; line-height: 1; cursor: pointer; padding: 4px 10px; }
+  .menu-close { background: none; border: 0; color: var(--navy); font-size: 30px; line-height: 1; cursor: pointer; padding: 4px 10px; }
   .menu-links { display: flex; flex-direction: column; gap: 8px; margin-top: 34px; }
   .menu-links a {
-    color: #fff; text-decoration: none; font-family: var(--serif);
+    color: var(--navy); text-decoration: none; font-family: var(--serif);
     font-size: 27px; padding: 12px 0; border-bottom: 1px solid var(--line);
   }
   .menu-links a:hover { color: var(--gold); }
@@ -153,7 +154,7 @@
 
 <div class="screen">
   <header class="top">
-    <a class="brand" href="/"><svg width="19" height="23" viewBox="0 0 76 94" style="vertical-align:-4px;margin-right:9px" aria-hidden="true"><rect x="0" y="0" width="76" height="8" rx="2" fill="#ffffff"/><rect x="6" y="12" width="64" height="6" rx="2" fill="#b08d3f"/><rect x="12" y="22" width="10" height="50" rx="2" fill="#ffffff"/><rect x="33" y="22" width="10" height="50" rx="2" fill="#ffffff"/><rect x="54" y="22" width="10" height="50" rx="2" fill="#ffffff"/><rect x="6" y="76" width="64" height="6" rx="2" fill="#b08d3f"/><rect x="0" y="86" width="76" height="8" rx="2" fill="#ffffff"/></svg>Prytania <span>Partners</span> <small style="font-size:12.5px;opacity:.65;margin-left:2px;letter-spacing:.04em;font-weight:400">B.V.</small></a>
+    <a class="brand" href="/"><svg width="19" height="23" viewBox="0 0 76 94" style="vertical-align:-4px;margin-right:9px" aria-hidden="true"><rect x="0" y="0" width="76" height="8" rx="2" fill="#12233d"/><rect x="6" y="12" width="64" height="6" rx="2" fill="#b08d3f"/><rect x="12" y="22" width="10" height="50" rx="2" fill="#12233d"/><rect x="33" y="22" width="10" height="50" rx="2" fill="#12233d"/><rect x="54" y="22" width="10" height="50" rx="2" fill="#12233d"/><rect x="6" y="76" width="64" height="6" rx="2" fill="#b08d3f"/><rect x="0" y="86" width="76" height="8" rx="2" fill="#12233d"/></svg>Prytania <span>Partners</span> <small style="font-size:12.5px;opacity:.65;margin-left:2px;letter-spacing:.04em;font-weight:400">B.V.</small></a>
     <div class="actions">
       <div class="lang" id="langSwitch" aria-label="Language">
         <button data-lang="en" class="active" aria-label="English" title="English"><svg viewBox="0 0 24 17"><rect width="24" height="17" fill="#fff"/><g fill="#B22234"><rect y="0" width="24" height="1.31"/><rect y="2.62" width="24" height="1.31"/><rect y="5.23" width="24" height="1.31"/><rect y="7.85" width="24" height="1.31"/><rect y="10.46" width="24" height="1.31"/><rect y="13.08" width="24" height="1.31"/><rect y="15.69" width="24" height="1.31"/></g><rect width="10.5" height="9.15" fill="#3C3B6E"/></svg></button>
@@ -171,7 +172,7 @@
 
   <div class="menu-overlay" id="menuOverlay" aria-hidden="true">
     <div class="menu-head">
-      <a class="brand" href="/"><svg width="19" height="23" viewBox="0 0 76 94" style="vertical-align:-4px;margin-right:9px" aria-hidden="true"><rect x="0" y="0" width="76" height="8" rx="2" fill="#ffffff"/><rect x="6" y="12" width="64" height="6" rx="2" fill="#b08d3f"/><rect x="12" y="22" width="10" height="50" rx="2" fill="#ffffff"/><rect x="33" y="22" width="10" height="50" rx="2" fill="#ffffff"/><rect x="54" y="22" width="10" height="50" rx="2" fill="#ffffff"/><rect x="6" y="76" width="64" height="6" rx="2" fill="#b08d3f"/><rect x="0" y="86" width="76" height="8" rx="2" fill="#ffffff"/></svg>Prytania <span>Partners</span> <small style="font-size:12.5px;opacity:.65;margin-left:2px;letter-spacing:.04em;font-weight:400">B.V.</small></a>
+      <a class="brand" href="/"><svg width="19" height="23" viewBox="0 0 76 94" style="vertical-align:-4px;margin-right:9px" aria-hidden="true"><rect x="0" y="0" width="76" height="8" rx="2" fill="#12233d"/><rect x="6" y="12" width="64" height="6" rx="2" fill="#b08d3f"/><rect x="12" y="22" width="10" height="50" rx="2" fill="#12233d"/><rect x="33" y="22" width="10" height="50" rx="2" fill="#12233d"/><rect x="54" y="22" width="10" height="50" rx="2" fill="#12233d"/><rect x="6" y="76" width="64" height="6" rx="2" fill="#b08d3f"/><rect x="0" y="86" width="76" height="8" rx="2" fill="#12233d"/></svg>Prytania <span>Partners</span> <small style="font-size:12.5px;opacity:.65;margin-left:2px;letter-spacing:.04em;font-weight:400">B.V.</small></a>
       <button class="menu-close" id="menuClose" aria-label="Close menu">&times;</button>
     </div>
     <nav class="menu-links">
