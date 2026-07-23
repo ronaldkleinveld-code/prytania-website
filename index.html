@@ -85,6 +85,17 @@
   .bottom .fine { color: #8595aa; }
   .bottom .fine a { color: var(--mist); }
 
+  /* Benefits ticker */
+  .ticker { border-top: 1px solid var(--line); overflow: hidden; white-space: nowrap; }
+  .ticker-track { display: inline-block; animation: tick 38s linear infinite; padding: clamp(8px, 1.4vh, 12px) 0; }
+  .ticker:hover .ticker-track { animation-play-state: paused; }
+  @keyframes tick { to { transform: translateX(-50%); } }
+  .tick-copy { display: inline-block; padding-right: 56px; font-size: clamp(12px, 1.6vh, 13.5px); letter-spacing: .06em; color: var(--mist); text-transform: uppercase; }
+  .tick-copy .sep { color: var(--gold); margin: 0 22px; font-style: normal; }
+  .tick-copy a { color: var(--gold); text-decoration: none; border-bottom: 1px solid var(--gold); }
+  .tick-copy a:hover { color: #fff; border-color: #fff; }
+  @media (prefers-reduced-motion: reduce) { .ticker-track { animation: none; } }
+
   /* Hamburger + mobile menu */
   .burger { display: none; background: none; border: 0; cursor: pointer; padding: 8px 4px; }
   .burger span { display: block; width: 24px; height: 2px; background: #fff; margin: 5px 0; border-radius: 2px; }
@@ -177,6 +188,13 @@
     </div>
   </main>
 
+  <div class="ticker">
+    <div class="ticker-track">
+      <span class="tick-copy" data-i18n="ticker">Independent advice, no agenda <i class="sep">✦</i> Senior attention on every engagement <i class="sep">✦</i> From strategy to execution <i class="sep">✦</i> Digital projects, end-to-end <i class="sep">✦</i> Clear fees, no surprises <i class="sep">✦</i> <a href="mailto:info@prytaniapartners.com">Start a conversation →</a></span>
+      <span class="tick-copy" data-i18n="ticker" aria-hidden="true">Independent advice, no agenda <i class="sep">✦</i> Senior attention on every engagement <i class="sep">✦</i> From strategy to execution <i class="sep">✦</i> Digital projects, end-to-end <i class="sep">✦</i> Clear fees, no surprises <i class="sep">✦</i> <a href="mailto:info@prytaniapartners.com">Start a conversation →</a></span>
+    </div>
+  </div>
+
   <footer class="bottom">
     <div><a href="mailto:info@prytaniapartners.com">info@prytaniapartners.com</a> &nbsp;·&nbsp; <span data-i18n="foot.loc">Amsterdam, the Netherlands</span></div>
     <div class="fine"><span data-i18n="foot.prev">Client project previews: <a href="/login/">log in with your access code</a></span> &nbsp;·&nbsp; &copy; 2026 Prytania Partners B.V.</div>
@@ -194,7 +212,8 @@ en:{
  "s2t":"Operations &amp; execution","s2d":"Turning plans into working practice — process improvement, project leadership, hands-on reinforcement.",
  "s3t":"Digital projects","s3d":"Websites, tooling, and automation — scoped sensibly, delivered end-to-end, built to be maintained.",
  "foot.loc":"Amsterdam, the Netherlands",
- "foot.prev":'Client project previews: <a href="/login/">log in with your access code</a>'
+ "foot.prev":'Client project previews: <a href="/login/">log in with your access code</a>',
+ "ticker":'Independent advice, no agenda <i class="sep">✦</i> Senior attention on every engagement <i class="sep">✦</i> From strategy to execution <i class="sep">✦</i> Digital projects, end-to-end <i class="sep">✦</i> Clear fees, no surprises <i class="sep">✦</i> <a href="mailto:info@prytaniapartners.com">Start a conversation →</a>'
 },
 de:{
  "nav.login":"Kunden-Login","nav.contact":"Kontakt",
@@ -205,7 +224,8 @@ de:{
  "s2t":"Betrieb &amp; Umsetzung","s2d":"Pläne werden gelebte Praxis — Prozessverbesserung, Projektleitung, tatkräftige Verstärkung.",
  "s3t":"Digitale Projekte","s3d":"Websites, Tools und Automatisierung — vernünftig zugeschnitten, von A bis Z geliefert, wartbar gebaut.",
  "foot.loc":"Amsterdam, Niederlande",
- "foot.prev":'Projektvorschauen für Kunden: <a href="/login/">mit Zugangscode anmelden</a>'
+ "foot.prev":'Projektvorschauen für Kunden: <a href="/login/">mit Zugangscode anmelden</a>',
+ "ticker":'Unabhängiger Rat, ohne Agenda <i class="sep">✦</i> Senior-Aufmerksamkeit für jedes Mandat <i class="sep">✦</i> Von der Strategie bis zur Umsetzung <i class="sep">✦</i> Digitale Projekte, end-to-end <i class="sep">✦</i> Klare Honorare, keine Überraschungen <i class="sep">✦</i> <a href="mailto:info@prytaniapartners.com">Gespräch beginnen →</a>'
 },
 fr:{
  "nav.login":"Espace client","nav.contact":"Contactez-nous",
@@ -216,7 +236,8 @@ fr:{
  "s2t":"Opérations &amp; exécution","s2d":"Transformer les plans en pratique — amélioration des processus, direction de projet, renfort opérationnel.",
  "s3t":"Projets numériques","s3d":"Sites web, outils et automatisation — bien cadrés, livrés de bout en bout, conçus pour durer.",
  "foot.loc":"Amsterdam, Pays-Bas",
- "foot.prev":'Aperçus de projets clients : <a href="/login/">connectez-vous avec votre code d’accès</a>'
+ "foot.prev":'Aperçus de projets clients : <a href="/login/">connectez-vous avec votre code d’accès</a>',
+ "ticker":'Conseil indépendant, sans agenda <i class="sep">✦</i> Une attention senior pour chaque mission <i class="sep">✦</i> De la stratégie à l’exécution <i class="sep">✦</i> Projets numériques, de bout en bout <i class="sep">✦</i> Honoraires clairs, sans surprises <i class="sep">✦</i> <a href="mailto:info@prytaniapartners.com">Engager la conversation →</a>'
 },
 nl:{
  "nav.login":"Klantlogin","nav.contact":"Neem contact op",
@@ -227,7 +248,8 @@ nl:{
  "s2t":"Operatie &amp; uitvoering","s2d":"Van plan naar praktijk — procesverbetering, projectleiding, hands-on versterking.",
  "s3t":"Digitale projecten","s3d":"Websites, tooling en automatisering — verstandig afgebakend, van begin tot eind opgeleverd, gebouwd om te onderhouden.",
  "foot.loc":"Amsterdam, Nederland",
- "foot.prev":'Projectpreviews voor klanten: <a href="/login/">log in met uw toegangscode</a>'
+ "foot.prev":'Projectpreviews voor klanten: <a href="/login/">log in met uw toegangscode</a>',
+ "ticker":'Onafhankelijk advies, zonder agenda <i class="sep">✦</i> Senior aandacht bij elke opdracht <i class="sep">✦</i> Van strategie tot uitvoering <i class="sep">✦</i> Digitale projecten, end-to-end <i class="sep">✦</i> Heldere tarieven, geen verrassingen <i class="sep">✦</i> <a href="mailto:info@prytaniapartners.com">Begin een gesprek →</a>'
 },
 es:{
  "nav.login":"Acceso clientes","nav.contact":"Contacto",
@@ -238,7 +260,8 @@ es:{
  "s2t":"Operaciones y ejecución","s2d":"Convertir planes en práctica — mejora de procesos, liderazgo de proyectos, refuerzo práctico.",
  "s3t":"Proyectos digitales","s3d":"Webs, herramientas y automatización — bien delimitados, entregados de principio a fin, hechos para mantenerse.",
  "foot.loc":"Ámsterdam, Países Bajos",
- "foot.prev":'Vistas previas de proyectos: <a href="/login/">accede con tu código</a>'
+ "foot.prev":'Vistas previas de proyectos: <a href="/login/">accede con tu código</a>',
+ "ticker":'Consejo independiente, sin agenda <i class="sep">✦</i> Atención senior en cada proyecto <i class="sep">✦</i> De la estrategia a la ejecución <i class="sep">✦</i> Proyectos digitales, de principio a fin <i class="sep">✦</i> Honorarios claros, sin sorpresas <i class="sep">✦</i> <a href="mailto:info@prytaniapartners.com">Iniciemos una conversación →</a>'
 },
 it:{
  "nav.login":"Area clienti","nav.contact":"Contattaci",
@@ -249,7 +272,8 @@ it:{
  "s2t":"Operazioni ed esecuzione","s2d":"Trasformare i piani in pratica — miglioramento dei processi, guida dei progetti, rinforzo operativo.",
  "s3t":"Progetti digitali","s3d":"Siti web, strumenti e automazione — ben delimitati, consegnati end-to-end, fatti per essere mantenuti.",
  "foot.loc":"Amsterdam, Paesi Bassi",
- "foot.prev":'Anteprime dei progetti: <a href="/login/">accedi con il tuo codice</a>'
+ "foot.prev":'Anteprime dei progetti: <a href="/login/">accedi con il tuo codice</a>',
+ "ticker":'Consigli indipendenti, senza secondi fini <i class="sep">✦</i> Attenzione senior in ogni incarico <i class="sep">✦</i> Dalla strategia all’esecuzione <i class="sep">✦</i> Progetti digitali, end-to-end <i class="sep">✦</i> Compensi chiari, senza sorprese <i class="sep">✦</i> <a href="mailto:info@prytaniapartners.com">Inizia una conversazione →</a>'
 }
 };
 function setLang(l) {
