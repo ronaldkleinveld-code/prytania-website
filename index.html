@@ -20,6 +20,13 @@
     background: linear-gradient(160deg, var(--navy) 0%, var(--navy-2) 100%);
     line-height: 1.5; -webkit-font-smoothing: antialiased;
   }
+  body::before {
+    content: ""; position: fixed; inset: 0; pointer-events: none; z-index: 0;
+    background:
+      radial-gradient(640px 420px at 88% 8%, rgba(176,141,63,.14), transparent 62%),
+      radial-gradient(760px 520px at 6% 96%, rgba(58,110,165,.20), transparent 62%);
+  }
+  .screen { position: relative; z-index: 1; }
   .screen {
     min-height: 100vh; min-height: 100svh;
     display: flex; flex-direction: column;
@@ -48,29 +55,45 @@
   .top a.login:hover { color: var(--gold); }
   .top a.cta {
     color: #fff; text-decoration: none; font-size: 13px; letter-spacing: .08em;
-    text-transform: uppercase; border: 1px solid rgba(255,255,255,.4);
-    padding: 8px 18px; border-radius: 3px;
+    text-transform: uppercase; border: 0; border-radius: 999px;
+    background: linear-gradient(120deg, var(--gold), #c9a45a);
+    padding: 9px 22px; box-shadow: 0 2px 14px rgba(176,141,63,.35);
+    transition: transform .2s ease, box-shadow .2s ease;
   }
-  .top a.cta:hover { border-color: var(--gold); color: var(--gold); }
+  .top a.cta:hover { transform: translateY(-1px); box-shadow: 0 6px 20px rgba(176,141,63,.5); color: #fff; }
 
   /* Middle */
   .mid { flex: 1; display: flex; flex-direction: column; justify-content: center; padding: clamp(12px, 3vh, 36px) 0; }
-  .kicker { color: var(--gold); text-transform: uppercase; letter-spacing: .18em; font-size: 12.5px; margin-bottom: clamp(8px, 1.5vh, 16px); }
+  .kicker {
+    display: inline-flex; align-items: center; gap: 9px; align-self: flex-start;
+    color: var(--gold); text-transform: uppercase; letter-spacing: .15em; font-size: 12px;
+    border: 1px solid rgba(176,141,63,.45); background: rgba(176,141,63,.08);
+    padding: 6px 15px; border-radius: 999px; margin-bottom: clamp(10px, 1.8vh, 18px);
+  }
+  .kicker::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--gold); }
   h1 {
-    font-family: var(--serif); font-weight: 600;
-    font-size: clamp(28px, 4.2vh, 44px); line-height: 1.15; max-width: 680px;
+    font-family: var(--serif); font-weight: 600; letter-spacing: -.01em;
+    font-size: clamp(30px, 4.6vh, 50px); line-height: 1.12; max-width: 720px;
   }
   .lead {
     margin-top: clamp(10px, 1.8vh, 18px); max-width: 640px;
     color: var(--mist); font-size: clamp(15px, 2vh, 17.5px);
   }
   .services {
-    display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(14px, 2vw, 28px);
-    margin-top: clamp(18px, 3.5vh, 40px);
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: clamp(12px, 1.6vw, 20px);
+    margin-top: clamp(16px, 3vh, 34px);
   }
-  .svc { border-top: 2px solid var(--gold); padding-top: clamp(8px, 1.4vh, 14px); }
-  .svc h2 { font-family: var(--serif); font-weight: 600; font-size: clamp(15px, 1.9vh, 18px); margin-bottom: 4px; }
-  .svc p { color: var(--mist); font-size: clamp(12.5px, 1.6vh, 14.5px); line-height: 1.45; }
+  .svc {
+    border: 1px solid rgba(255,255,255,.10); border-radius: 14px;
+    background: rgba(255,255,255,.045); backdrop-filter: blur(8px);
+    padding: clamp(12px, 1.8vh, 20px) clamp(14px, 1.6vw, 20px);
+    transition: transform .25s ease, border-color .25s ease, background .25s ease;
+  }
+  .svc:hover { transform: translateY(-4px); border-color: rgba(176,141,63,.55); background: rgba(255,255,255,.07); }
+  .svc::before { content: ""; display: block; width: 30px; height: 3px; border-radius: 2px; margin-bottom: clamp(8px, 1.2vh, 12px); background: linear-gradient(90deg, var(--gold), rgba(176,141,63,0)); }
+  .svc h2 { font-family: var(--serif); font-weight: 600; font-size: clamp(14.5px, 1.85vh, 17.5px); margin-bottom: 4px; }
+  .svc p { color: var(--mist); font-size: clamp(12px, 1.5vh, 13.8px); line-height: 1.45; }
+  @media (max-width: 1000px) { .services { grid-template-columns: repeat(2, 1fr); } }
 
   /* Bottom bar */
   .bottom {
@@ -185,13 +208,17 @@
         <h2 data-i18n="s3t">Digital projects</h2>
         <p data-i18n="s3d">Websites, tooling, and automation — scoped sensibly, delivered end-to-end, built to be maintained.</p>
       </div>
+      <div class="svc">
+        <h2 data-i18n="s4t">Talent &amp; teams</h2>
+        <p data-i18n="s4d">We source the best talent for the ask — selected for fit, matched to the challenge, and brought together as one team.</p>
+      </div>
     </div>
   </main>
 
   <div class="ticker">
     <div class="ticker-track">
-      <span class="tick-copy" data-i18n="ticker">Independent advice, no agenda <i class="sep">✦</i> Senior attention on every engagement <i class="sep">✦</i> From strategy to execution <i class="sep">✦</i> Digital projects, end-to-end <i class="sep">✦</i> Clear fees, no surprises <i class="sep">✦</i> <a href="mailto:info@prytaniapartners.com">Start a conversation →</a></span>
-      <span class="tick-copy" data-i18n="ticker" aria-hidden="true">Independent advice, no agenda <i class="sep">✦</i> Senior attention on every engagement <i class="sep">✦</i> From strategy to execution <i class="sep">✦</i> Digital projects, end-to-end <i class="sep">✦</i> Clear fees, no surprises <i class="sep">✦</i> <a href="mailto:info@prytaniapartners.com">Start a conversation →</a></span>
+      <span class="tick-copy" data-i18n="ticker">Independent advice, no agenda <i class="sep">✦</i> Senior attention on every engagement <i class="sep">✦</i> From strategy to execution <i class="sep">✦</i> Digital projects, end-to-end <i class="sep">✦</i> Clear fees, no surprises <i class="sep">✦</i> Top talent, matched to the ask <i class="sep">✦</i> <a href="mailto:info@prytaniapartners.com">Start a conversation →</a></span>
+      <span class="tick-copy" data-i18n="ticker" aria-hidden="true">Independent advice, no agenda <i class="sep">✦</i> Senior attention on every engagement <i class="sep">✦</i> From strategy to execution <i class="sep">✦</i> Digital projects, end-to-end <i class="sep">✦</i> Clear fees, no surprises <i class="sep">✦</i> Top talent, matched to the ask <i class="sep">✦</i> <a href="mailto:info@prytaniapartners.com">Start a conversation →</a></span>
     </div>
   </div>
 
@@ -211,9 +238,10 @@ en:{
  "s1t":"Strategy &amp; decisions","s1d":"Sparring partner for owners and boards: positioning, growth options, and the analysis to choose with confidence.",
  "s2t":"Operations &amp; execution","s2d":"Turning plans into working practice — process improvement, project leadership, hands-on reinforcement.",
  "s3t":"Digital projects","s3d":"Websites, tooling, and automation — scoped sensibly, delivered end-to-end, built to be maintained.",
+ "s4t":"Talent &amp; teams","s4d":"We source the best talent for the ask — selected for fit, matched to the challenge, and brought together as one team.",
  "foot.loc":"Amsterdam, the Netherlands",
  "foot.prev":'Client project previews: <a href="/login/">log in with your access code</a>',
- "ticker":'Independent advice, no agenda <i class="sep">✦</i> Senior attention on every engagement <i class="sep">✦</i> From strategy to execution <i class="sep">✦</i> Digital projects, end-to-end <i class="sep">✦</i> Clear fees, no surprises <i class="sep">✦</i> <a href="mailto:info@prytaniapartners.com">Start a conversation →</a>'
+ "ticker":'Independent advice, no agenda <i class="sep">✦</i> Senior attention on every engagement <i class="sep">✦</i> From strategy to execution <i class="sep">✦</i> Digital projects, end-to-end <i class="sep">✦</i> Clear fees, no surprises <i class="sep">✦</i> Top talent, matched to the ask <i class="sep">✦</i> <a href="mailto:info@prytaniapartners.com">Start a conversation →</a>'
 },
 de:{
  "nav.login":"Kunden-Login","nav.contact":"Kontakt",
@@ -223,9 +251,10 @@ de:{
  "s1t":"Strategie &amp; Entscheidungen","s1d":"Sparringspartner für Inhaber und Beiräte: Positionierung, Wachstumsoptionen und die Analyse, um mit Zuversicht zu entscheiden.",
  "s2t":"Betrieb &amp; Umsetzung","s2d":"Pläne werden gelebte Praxis — Prozessverbesserung, Projektleitung, tatkräftige Verstärkung.",
  "s3t":"Digitale Projekte","s3d":"Websites, Tools und Automatisierung — vernünftig zugeschnitten, von A bis Z geliefert, wartbar gebaut.",
+ "s4t":"Talente &amp; Teams","s4d":"Wir finden die besten Talente für die Aufgabe — ausgewählt nach Passung, abgestimmt auf die Herausforderung und zu einem Team zusammengebracht.",
  "foot.loc":"Amsterdam, Niederlande",
  "foot.prev":'Projektvorschauen für Kunden: <a href="/login/">mit Zugangscode anmelden</a>',
- "ticker":'Unabhängiger Rat, ohne Agenda <i class="sep">✦</i> Senior-Aufmerksamkeit für jedes Mandat <i class="sep">✦</i> Von der Strategie bis zur Umsetzung <i class="sep">✦</i> Digitale Projekte, end-to-end <i class="sep">✦</i> Klare Honorare, keine Überraschungen <i class="sep">✦</i> <a href="mailto:info@prytaniapartners.com">Gespräch beginnen →</a>'
+ "ticker":'Unabhängiger Rat, ohne Agenda <i class="sep">✦</i> Senior-Aufmerksamkeit für jedes Mandat <i class="sep">✦</i> Von der Strategie bis zur Umsetzung <i class="sep">✦</i> Digitale Projekte, end-to-end <i class="sep">✦</i> Klare Honorare, keine Überraschungen <i class="sep">✦</i> Top-Talente, passend zur Aufgabe <i class="sep">✦</i> <a href="mailto:info@prytaniapartners.com">Gespräch beginnen →</a>'
 },
 fr:{
  "nav.login":"Espace client","nav.contact":"Contactez-nous",
@@ -235,9 +264,10 @@ fr:{
  "s1t":"Stratégie &amp; décisions","s1d":"Partenaire de réflexion des propriétaires et des conseils : positionnement, options de croissance et l’analyse pour choisir en confiance.",
  "s2t":"Opérations &amp; exécution","s2d":"Transformer les plans en pratique — amélioration des processus, direction de projet, renfort opérationnel.",
  "s3t":"Projets numériques","s3d":"Sites web, outils et automatisation — bien cadrés, livrés de bout en bout, conçus pour durer.",
+ "s4t":"Talents &amp; équipes","s4d":"Nous trouvons les meilleurs talents pour la mission — choisis pour leur adéquation, alignés sur le défi, et réunis en une seule équipe.",
  "foot.loc":"Amsterdam, Pays-Bas",
  "foot.prev":'Aperçus de projets clients : <a href="/login/">connectez-vous avec votre code d’accès</a>',
- "ticker":'Conseil indépendant, sans agenda <i class="sep">✦</i> Une attention senior pour chaque mission <i class="sep">✦</i> De la stratégie à l’exécution <i class="sep">✦</i> Projets numériques, de bout en bout <i class="sep">✦</i> Honoraires clairs, sans surprises <i class="sep">✦</i> <a href="mailto:info@prytaniapartners.com">Engager la conversation →</a>'
+ "ticker":'Conseil indépendant, sans agenda <i class="sep">✦</i> Une attention senior pour chaque mission <i class="sep">✦</i> De la stratégie à l’exécution <i class="sep">✦</i> Projets numériques, de bout en bout <i class="sep">✦</i> Honoraires clairs, sans surprises <i class="sep">✦</i> Les meilleurs talents, adaptés à la mission <i class="sep">✦</i> <a href="mailto:info@prytaniapartners.com">Engager la conversation →</a>'
 },
 nl:{
  "nav.login":"Klantlogin","nav.contact":"Neem contact op",
@@ -247,9 +277,10 @@ nl:{
  "s1t":"Strategie &amp; besluitvorming","s1d":"Sparringpartner voor eigenaren en besturen: positionering, groeiopties en de analyse om met vertrouwen te kiezen.",
  "s2t":"Operatie &amp; uitvoering","s2d":"Van plan naar praktijk — procesverbetering, projectleiding, hands-on versterking.",
  "s3t":"Digitale projecten","s3d":"Websites, tooling en automatisering — verstandig afgebakend, van begin tot eind opgeleverd, gebouwd om te onderhouden.",
+ "s4t":"Talent &amp; teams","s4d":"Wij vinden het beste talent voor de opdracht — geselecteerd op match, passend bij de uitdaging, en brengen iedereen samen als één team.",
  "foot.loc":"Amsterdam, Nederland",
  "foot.prev":'Projectpreviews voor klanten: <a href="/login/">log in met uw toegangscode</a>',
- "ticker":'Onafhankelijk advies, zonder agenda <i class="sep">✦</i> Senior aandacht bij elke opdracht <i class="sep">✦</i> Van strategie tot uitvoering <i class="sep">✦</i> Digitale projecten, end-to-end <i class="sep">✦</i> Heldere tarieven, geen verrassingen <i class="sep">✦</i> <a href="mailto:info@prytaniapartners.com">Begin een gesprek →</a>'
+ "ticker":'Onafhankelijk advies, zonder agenda <i class="sep">✦</i> Senior aandacht bij elke opdracht <i class="sep">✦</i> Van strategie tot uitvoering <i class="sep">✦</i> Digitale projecten, end-to-end <i class="sep">✦</i> Heldere tarieven, geen verrassingen <i class="sep">✦</i> Toptalent, passend bij de opdracht <i class="sep">✦</i> <a href="mailto:info@prytaniapartners.com">Begin een gesprek →</a>'
 },
 es:{
  "nav.login":"Acceso clientes","nav.contact":"Contacto",
@@ -259,9 +290,10 @@ es:{
  "s1t":"Estrategia y decisiones","s1d":"Interlocutor de propietarios y consejos: posicionamiento, opciones de crecimiento y el análisis para elegir con confianza.",
  "s2t":"Operaciones y ejecución","s2d":"Convertir planes en práctica — mejora de procesos, liderazgo de proyectos, refuerzo práctico.",
  "s3t":"Proyectos digitales","s3d":"Webs, herramientas y automatización — bien delimitados, entregados de principio a fin, hechos para mantenerse.",
+ "s4t":"Talento y equipos","s4d":"Encontramos el mejor talento para el encargo — seleccionado por encaje, alineado con el reto, y unido en un solo equipo.",
  "foot.loc":"Ámsterdam, Países Bajos",
  "foot.prev":'Vistas previas de proyectos: <a href="/login/">accede con tu código</a>',
- "ticker":'Consejo independiente, sin agenda <i class="sep">✦</i> Atención senior en cada proyecto <i class="sep">✦</i> De la estrategia a la ejecución <i class="sep">✦</i> Proyectos digitales, de principio a fin <i class="sep">✦</i> Honorarios claros, sin sorpresas <i class="sep">✦</i> <a href="mailto:info@prytaniapartners.com">Iniciemos una conversación →</a>'
+ "ticker":'Consejo independiente, sin agenda <i class="sep">✦</i> Atención senior en cada proyecto <i class="sep">✦</i> De la estrategia a la ejecución <i class="sep">✦</i> Proyectos digitales, de principio a fin <i class="sep">✦</i> Honorarios claros, sin sorpresas <i class="sep">✦</i> El mejor talento, a la medida del encargo <i class="sep">✦</i> <a href="mailto:info@prytaniapartners.com">Iniciemos una conversación →</a>'
 },
 it:{
  "nav.login":"Area clienti","nav.contact":"Contattaci",
@@ -271,9 +303,10 @@ it:{
  "s1t":"Strategia e decisioni","s1d":"Sparring partner di proprietari e consigli: posizionamento, opzioni di crescita e l’analisi per scegliere con fiducia.",
  "s2t":"Operazioni ed esecuzione","s2d":"Trasformare i piani in pratica — miglioramento dei processi, guida dei progetti, rinforzo operativo.",
  "s3t":"Progetti digitali","s3d":"Siti web, strumenti e automazione — ben delimitati, consegnati end-to-end, fatti per essere mantenuti.",
+ "s4t":"Talenti e team","s4d":"Troviamo i migliori talenti per l’incarico — scelti per affinità, allineati alla sfida e riuniti in un unico team.",
  "foot.loc":"Amsterdam, Paesi Bassi",
  "foot.prev":'Anteprime dei progetti: <a href="/login/">accedi con il tuo codice</a>',
- "ticker":'Consigli indipendenti, senza secondi fini <i class="sep">✦</i> Attenzione senior in ogni incarico <i class="sep">✦</i> Dalla strategia all’esecuzione <i class="sep">✦</i> Progetti digitali, end-to-end <i class="sep">✦</i> Compensi chiari, senza sorprese <i class="sep">✦</i> <a href="mailto:info@prytaniapartners.com">Inizia una conversazione →</a>'
+ "ticker":'Consigli indipendenti, senza secondi fini <i class="sep">✦</i> Attenzione senior in ogni incarico <i class="sep">✦</i> Dalla strategia all’esecuzione <i class="sep">✦</i> Progetti digitali, end-to-end <i class="sep">✦</i> Compensi chiari, senza sorprese <i class="sep">✦</i> I migliori talenti, su misura per l’incarico <i class="sep">✦</i> <a href="mailto:info@prytaniapartners.com">Inizia una conversazione →</a>'
 }
 };
 function setLang(l) {
