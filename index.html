@@ -85,11 +85,33 @@
   .bottom .fine { color: #8595aa; }
   .bottom .fine a { color: var(--mist); }
 
+  /* Hamburger + mobile menu */
+  .burger { display: none; background: none; border: 0; cursor: pointer; padding: 8px 4px; }
+  .burger span { display: block; width: 24px; height: 2px; background: #fff; margin: 5px 0; border-radius: 2px; }
+  .menu-overlay {
+    position: fixed; inset: 0; z-index: 100;
+    background: linear-gradient(160deg, var(--navy) 0%, var(--navy-2) 100%);
+    display: none; flex-direction: column; padding: 24px 32px;
+  }
+  .menu-overlay.open { display: flex; }
+  .menu-head { display: flex; justify-content: space-between; align-items: center; padding-bottom: 18px; border-bottom: 1px solid var(--line); }
+  .menu-close { background: none; border: 0; color: #fff; font-size: 30px; line-height: 1; cursor: pointer; padding: 4px 10px; }
+  .menu-links { display: flex; flex-direction: column; gap: 8px; margin-top: 34px; }
+  .menu-links a {
+    color: #fff; text-decoration: none; font-family: var(--serif);
+    font-size: 27px; padding: 12px 0; border-bottom: 1px solid var(--line);
+  }
+  .menu-links a:hover { color: var(--gold); }
+  .menu-lang { margin-top: 34px; }
+  .menu-lang .lang { gap: 10px; }
+  .menu-lang .lang svg { width: 30px; height: 21px; }
+
   /* Small screens: stack services, allow natural scrolling */
   @media (max-width: 720px) {
     .services { grid-template-columns: 1fr; }
     .bottom { flex-direction: column; gap: 6px; }
-    .top .actions { gap: 12px; }
+    .top .actions .lang, .top .actions .login, .top .actions .cta { display: none; }
+    .burger { display: block; }
   }
 </style>
 </head>
@@ -97,7 +119,7 @@
 
 <div class="screen">
   <header class="top">
-    <a class="brand" href="/"><svg width="19" height="23" viewBox="0 0 76 94" style="vertical-align:-4px;margin-right:9px" aria-hidden="true"><rect x="0" y="0" width="76" height="8" rx="2" fill="#ffffff"/><rect x="6" y="12" width="64" height="6" rx="2" fill="#b08d3f"/><rect x="12" y="22" width="10" height="50" rx="2" fill="#ffffff"/><rect x="33" y="22" width="10" height="50" rx="2" fill="#ffffff"/><rect x="54" y="22" width="10" height="50" rx="2" fill="#ffffff"/><rect x="6" y="76" width="64" height="6" rx="2" fill="#b08d3f"/><rect x="0" y="86" width="76" height="8" rx="2" fill="#ffffff"/></svg>Prytania <span>Partners</span></a>
+    <a class="brand" href="/"><svg width="19" height="23" viewBox="0 0 76 94" style="vertical-align:-4px;margin-right:9px" aria-hidden="true"><rect x="0" y="0" width="76" height="8" rx="2" fill="#ffffff"/><rect x="6" y="12" width="64" height="6" rx="2" fill="#b08d3f"/><rect x="12" y="22" width="10" height="50" rx="2" fill="#ffffff"/><rect x="33" y="22" width="10" height="50" rx="2" fill="#ffffff"/><rect x="54" y="22" width="10" height="50" rx="2" fill="#ffffff"/><rect x="6" y="76" width="64" height="6" rx="2" fill="#b08d3f"/><rect x="0" y="86" width="76" height="8" rx="2" fill="#ffffff"/></svg>Prytania <span>Partners</span> <small style="font-size:12.5px;opacity:.65;margin-left:2px;letter-spacing:.04em;font-weight:400">B.V.</small></a>
     <div class="actions">
       <div class="lang" id="langSwitch" aria-label="Language">
         <button data-lang="en" class="active" aria-label="English" title="English"><svg viewBox="0 0 24 17"><rect width="24" height="17" fill="#fff"/><g fill="#B22234"><rect y="0" width="24" height="1.31"/><rect y="2.62" width="24" height="1.31"/><rect y="5.23" width="24" height="1.31"/><rect y="7.85" width="24" height="1.31"/><rect y="10.46" width="24" height="1.31"/><rect y="13.08" width="24" height="1.31"/><rect y="15.69" width="24" height="1.31"/></g><rect width="10.5" height="9.15" fill="#3C3B6E"/></svg></button>
@@ -109,8 +131,30 @@
       </div>
       <a class="login" href="/login/" data-i18n="nav.login">Client login</a>
       <a class="cta" href="mailto:info@prytaniapartners.com" data-i18n="nav.contact">Get in touch</a>
+      <button class="burger" id="burger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
     </div>
   </header>
+
+  <div class="menu-overlay" id="menuOverlay" aria-hidden="true">
+    <div class="menu-head">
+      <a class="brand" href="/"><svg width="19" height="23" viewBox="0 0 76 94" style="vertical-align:-4px;margin-right:9px" aria-hidden="true"><rect x="0" y="0" width="76" height="8" rx="2" fill="#ffffff"/><rect x="6" y="12" width="64" height="6" rx="2" fill="#b08d3f"/><rect x="12" y="22" width="10" height="50" rx="2" fill="#ffffff"/><rect x="33" y="22" width="10" height="50" rx="2" fill="#ffffff"/><rect x="54" y="22" width="10" height="50" rx="2" fill="#ffffff"/><rect x="6" y="76" width="64" height="6" rx="2" fill="#b08d3f"/><rect x="0" y="86" width="76" height="8" rx="2" fill="#ffffff"/></svg>Prytania <span>Partners</span> <small style="font-size:12.5px;opacity:.65;margin-left:2px;letter-spacing:.04em;font-weight:400">B.V.</small></a>
+      <button class="menu-close" id="menuClose" aria-label="Close menu">&times;</button>
+    </div>
+    <nav class="menu-links">
+      <a href="/login/" data-i18n="nav.login">Client login</a>
+      <a href="mailto:info@prytaniapartners.com" data-i18n="nav.contact">Get in touch</a>
+    </nav>
+    <div class="menu-lang">
+      <div class="lang" aria-label="Language">
+        <button data-lang="en" class="active" aria-label="English" title="English"><svg viewBox="0 0 24 17"><rect width="24" height="17" fill="#fff"/><g fill="#B22234"><rect y="0" width="24" height="1.31"/><rect y="2.62" width="24" height="1.31"/><rect y="5.23" width="24" height="1.31"/><rect y="7.85" width="24" height="1.31"/><rect y="10.46" width="24" height="1.31"/><rect y="13.08" width="24" height="1.31"/><rect y="15.69" width="24" height="1.31"/></g><rect width="10.5" height="9.15" fill="#3C3B6E"/></svg></button>
+        <button data-lang="de" aria-label="Deutsch" title="Deutsch"><svg viewBox="0 0 24 17"><rect width="24" height="5.67" y="0" fill="#000"/><rect width="24" height="5.67" y="5.67" fill="#DD0000"/><rect width="24" height="5.66" y="11.34" fill="#FFCE00"/></svg></button>
+        <button data-lang="fr" aria-label="Français" title="Français"><svg viewBox="0 0 24 17"><rect width="8" height="17" x="0" fill="#0055A4"/><rect width="8" height="17" x="8" fill="#fff"/><rect width="8" height="17" x="16" fill="#EF4135"/></svg></button>
+        <button data-lang="nl" aria-label="Nederlands" title="Nederlands"><svg viewBox="0 0 24 17"><rect width="24" height="5.67" y="0" fill="#AE1C28"/><rect width="24" height="5.67" y="5.67" fill="#fff"/><rect width="24" height="5.66" y="11.34" fill="#21468B"/></svg></button>
+        <button data-lang="es" aria-label="Español" title="Español"><svg viewBox="0 0 24 17"><rect width="24" height="17" fill="#F1BF00"/><rect width="24" height="4.25" y="0" fill="#AA151B"/><rect width="24" height="4.25" y="12.75" fill="#AA151B"/></svg></button>
+        <button data-lang="it" aria-label="Italiano" title="Italiano"><svg viewBox="0 0 24 17"><rect width="8" height="17" x="0" fill="#009246"/><rect width="8" height="17" x="8" fill="#fff"/><rect width="8" height="17" x="16" fill="#CE2B37"/></svg></button>
+      </div>
+    </div>
+  </div>
 
   <main class="mid">
     <div class="kicker" data-i18n="kicker">Independent advisory</div>
@@ -220,6 +264,20 @@ function setLang(l) {
 }
 document.querySelectorAll(".lang button").forEach(b => b.addEventListener("click", () => setLang(b.dataset.lang)));
 try { const saved = localStorage.getItem("pp_lang"); if (saved && saved !== "en") setLang(saved); } catch (e) {}
+
+// Hamburger menu
+const burger = document.getElementById("burger");
+const overlay = document.getElementById("menuOverlay");
+const menuClose = document.getElementById("menuClose");
+function setMenu(open) {
+  overlay.classList.toggle("open", open);
+  overlay.setAttribute("aria-hidden", String(!open));
+  burger.setAttribute("aria-expanded", String(open));
+}
+burger.addEventListener("click", () => setMenu(true));
+menuClose.addEventListener("click", () => setMenu(false));
+overlay.querySelectorAll(".menu-links a").forEach(a => a.addEventListener("click", () => setMenu(false)));
+document.addEventListener("keydown", e => { if (e.key === "Escape") setMenu(false); });
 </script>
 
 </body>
