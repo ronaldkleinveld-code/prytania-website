@@ -222,6 +222,25 @@ f.addEventListener('submit', async (e) => {
   const url = '/p/' + code + '/';
   btn.disabled = true;
   msg.textContent = t('m.check');
+  // Beveiligde secties: probeer eerst de versleutelde kluis (vault.json) te openen met de ingevoerde code.
+  try {
+    const raw = input.value.trim().toLowerCase().replace(/\s+/g, '-').replace(/-{2,}/g, '-');
+    const vr = await fetch('/vault.json', { cache: 'no-store' });
+    if (vr.ok) {
+      const V = await vr.json();
+      const b64 = s => Uint8Array.from(atob(s), c => c.charCodeAt(0));
+      const km = await crypto.subtle.importKey('raw', new TextEncoder().encode(raw), 'PBKDF2', false, ['deriveKey']);
+      const key = await crypto.subtle.deriveKey({ name: 'PBKDF2', salt: b64(V.salt), iterations: V.iter, hash: 'SHA-256' }, km, { name: 'AES-GCM', length: 256 }, false, ['decrypt']);
+      const pt = await crypto.subtle.decrypt({ name: 'AES-GCM', iv: b64(V.iv) }, key, b64(V.ct)).catch(() => null);
+      if (pt) {
+        const dest = JSON.parse(new TextDecoder().decode(pt));
+        try { sessionStorage.setItem('pp_key', raw); } catch (e2) {}
+        msg.className = 'msg ok'; msg.textContent = t('m.ok');
+        window.location.href = dest.url;
+        return;
+      }
+    }
+  } catch (err) { /* geen kluis of geen match: ga door met gewone previewcodes */ }
   try {
     const r = await fetch(url, { method: 'HEAD' });
     if (r.ok) {
