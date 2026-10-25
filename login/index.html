@@ -224,7 +224,7 @@ f.addEventListener('submit', async (e) => {
   msg.textContent = t('m.check');
   // Beveiligde secties: probeer eerst de versleutelde kluis (vault.json) te openen met de ingevoerde code.
   try {
-    const raw = input.value.trim().toLowerCase().replace(/\s+/g, '-').replace(/-{2,}/g, '-');
+    const raw = input.value.trim().toLowerCase().replace(/[\s-]+/g, '');
     const vr = await fetch('/vault.json', { cache: 'no-store' });
     if (vr.ok) {
       const V = await vr.json();
