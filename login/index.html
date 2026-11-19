@@ -206,6 +206,7 @@ function setLang(l) {
 document.querySelectorAll(".lang button").forEach(b => b.addEventListener("click", () => setLang(b.dataset.lang)));
 try { const saved = localStorage.getItem("pp_lang"); if (saved && saved !== "en") setLang(saved); } catch (e) {}
 
+function ppPop(t){var o=document.createElement('div');o.style.cssText='position:fixed;inset:0;background:rgba(18,35,61,.55);display:flex;align-items:center;justify-content:center;z-index:99999;padding:24px';o.innerHTML='<div role="alertdialog" aria-modal="true" style="background:#fff;border-radius:14px;max-width:380px;width:100%;padding:26px;font:15px/1.5 Helvetica,Arial,sans-serif;color:#12233d;box-shadow:0 18px 40px rgba(0,0,0,.25)"><div style="font-weight:700;font-size:17px;margin-bottom:8px">Wachtwoord verlopen</div><div class="pp-t"></div><button type="button" style="margin-top:18px;width:100%;padding:11px;border:0;border-radius:8px;background:#12233d;color:#fff;font-weight:600;font-size:15px;cursor:pointer">OK</button></div>';o.querySelector('.pp-t').textContent=t;o.querySelector('button').onclick=function(){o.remove()};document.body.appendChild(o);o.querySelector('button').focus()}
 const f = document.getElementById('f');
 const input = document.getElementById('code');
 const msg = document.getElementById('msg');
@@ -225,6 +226,8 @@ f.addEventListener('submit', async (e) => {
   // Beveiligde secties: probeer eerst de versleutelde kluis (vault.json) te openen met de ingevoerde code.
   try {
     const raw = input.value.trim().toLowerCase().replace(/[\s-]+/g, '');
+    const rh = Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256', new TextEncoder().encode(raw)))).map(x => x.toString(16).padStart(2, '0')).join('');
+    if (['2e64caf6a939a2be5a5b8bc38ae8d508f0ea9242b48eee6ea45adc0c290d01b3'].includes(rh)) { const em = 'Jammer maar helaas: jouw wachtwoord is verlopen; stuur Ronald Kleinveld een bericht en vraag om het nieuwe wachtwoord.'; msg.className = 'msg err'; msg.textContent = em; btn.disabled = false; ppPop(em); return; }
     const vr = await fetch('/vault.json', { cache: 'no-store' });
     if (vr.ok) {
       const V = await vr.json();
