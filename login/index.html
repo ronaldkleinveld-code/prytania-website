@@ -227,7 +227,7 @@ f.addEventListener('submit', async (e) => {
   try {
     const raw = input.value.trim().toLowerCase().replace(/[\s-]+/g, '');
     const rh = Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256', new TextEncoder().encode(raw)))).map(x => x.toString(16).padStart(2, '0')).join('');
-    if (['2e64caf6a939a2be5a5b8bc38ae8d508f0ea9242b48eee6ea45adc0c290d01b3'].includes(rh)) { const em = 'Jammer maar helaas: jouw wachtwoord is verlopen; stuur Ronald Kleinveld een bericht en vraag om het nieuwe wachtwoord.'; msg.className = 'msg err'; msg.textContent = em; btn.disabled = false; ppPop(em); return; }
+    if (['2e64caf6a939a2be5a5b8bc38ae8d508f0ea9242b48eee6ea45adc0c290d01b3','3fa40901a67c3b3f799ff72eea31271d4a03509b863de07da4affe6fd1026978'].includes(rh)) { const em = 'Jammer maar helaas: jouw wachtwoord is verlopen; stuur Ronald Kleinveld een bericht en vraag om het nieuwe wachtwoord.'; msg.className = 'msg err'; msg.textContent = em; btn.disabled = false; ppPop(em); return; }
     const vr = await fetch('/vault.json', { cache: 'no-store' });
     if (vr.ok) {
       const V = await vr.json();
