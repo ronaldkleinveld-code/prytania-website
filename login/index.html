@@ -119,12 +119,17 @@
     <p class="help" data-i18n="help">Enter the access code from your invitation. Codes are case-sensitive and personal — please don't share them.</p>
 
     <form id="f" autocomplete="off">
-      <label for="code" data-i18n="label">Access code</label>
+      <div id="ubox" hidden style="margin-bottom:12px">
+        <label for="user" data-i18n="user">Username</label>
+        <input id="user" name="user" spellcheck="false" autocapitalize="off" autocomplete="username" style="width:100%">
+      </div>
+      <label for="code" id="codelbl" data-i18n="label">Access code</label>
       <div class="row">
         <input id="code" name="code" placeholder="e.g. Zk92mQ4pTx7a" spellcheck="false" autocapitalize="off" autofocus>
         <button id="go" type="submit" data-i18n="btn">View</button>
       </div>
       <div class="msg" id="msg"></div>
+      <p style="margin:10px 0 0;font-size:13px"><a href="#" id="utoggle" data-i18n="ulink">Sign in with username and password</a></p>
     </form>
 
     <p class="fine" data-i18n="fine">No code, or code not working? Email <a href="mailto:info@prytaniapartners.com">info@prytaniapartners.com</a> and we'll send you a fresh invitation.</p>
@@ -142,7 +147,8 @@ en:{
  "fine":'No code, or code not working? Email <a href="mailto:info@prytaniapartners.com">info@prytaniapartners.com</a> and we\'ll send you a fresh invitation.',
  "m.empty":"Please enter your access code.","m.check":"Checking…",
  "m.ok":"Code accepted — opening your preview…",
- "m.bad":"That code isn’t recognised. Check for typos, or request a new invitation below."
+ "m.bad":"That code isn’t recognised. Check for typos, or request a new invitation below.",
+ "user":"Username","pw":"Password","ulink":"Sign in with username and password"
 },
 de:{
  "back":"&larr; Zurück zur Website","kicker":"Kunden-Login","h1":"Ihre Projektvorschau ansehen",
@@ -169,7 +175,8 @@ nl:{
  "fine":'Geen code, of werkt de code niet? Mail <a href="mailto:info@prytaniapartners.com">info@prytaniapartners.com</a> en we sturen u een nieuwe uitnodiging.',
  "m.empty":"Voer uw toegangscode in.","m.check":"Controleren…",
  "m.ok":"Code geaccepteerd — preview wordt geopend…",
- "m.bad":"Deze code wordt niet herkend. Controleer op typefouten of vraag hieronder een nieuwe uitnodiging aan."
+ "m.bad":"Deze code wordt niet herkend. Controleer op typefouten of vraag hieronder een nieuwe uitnodiging aan.",
+ "user":"Gebruikersnaam","pw":"Wachtwoord","ulink":"Inloggen met gebruikersnaam en wachtwoord"
 },
 es:{
  "back":"&larr; Volver al sitio","kicker":"Acceso clientes","h1":"Ver la vista previa de su proyecto",
@@ -211,6 +218,8 @@ const f = document.getElementById('f');
 const input = document.getElementById('code');
 const msg = document.getElementById('msg');
 const btn = document.getElementById('go');
+const ubox = document.getElementById('ubox'), uin = document.getElementById('user');
+document.getElementById('utoggle').addEventListener('click', ev => { ev.preventDefault(); ubox.hidden = false; const l = document.getElementById('codelbl'); l.dataset.i18n = 'pw'; l.innerHTML = t('pw'); input.type = 'password'; input.placeholder = ''; uin.focus(); ev.target.parentNode.hidden = true; });
 
 f.addEventListener('submit', async (e) => {
   e.preventDefault();
@@ -225,7 +234,8 @@ f.addEventListener('submit', async (e) => {
   msg.textContent = t('m.check');
   // Beveiligde secties: probeer eerst de versleutelde kluis (vault.json) te openen met de ingevoerde code.
   try {
-    const raw = input.value.trim().toLowerCase().replace(/[\s-]+/g, '');
+    const un = (!ubox.hidden && uin.value.trim()) ? uin.value.trim().toLowerCase().replace(/[\s-]+/g, '') : '';
+    const raw = (un ? 'u:' + un + ':' : '') + input.value.trim().toLowerCase().replace(/[\s-]+/g, '');
     const rh = Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256', new TextEncoder().encode(raw)))).map(x => x.toString(16).padStart(2, '0')).join('');
     if (['2e64caf6a939a2be5a5b8bc38ae8d508f0ea9242b48eee6ea45adc0c290d01b3','3fa40901a67c3b3f799ff72eea31271d4a03509b863de07da4affe6fd1026978'].includes(rh)) { const em = 'Jammer maar helaas: jouw wachtwoord is verlopen; stuur Ronald Kleinveld een bericht en vraag om het nieuwe wachtwoord.'; msg.className = 'msg err'; msg.textContent = em; btn.disabled = false; ppPop(em); return; }
     const vr = await fetch('/vault.json', { cache: 'no-store' });
@@ -239,7 +249,7 @@ f.addEventListener('submit', async (e) => {
         const pt = await crypto.subtle.decrypt({ name: 'AES-GCM', iv: b64(E.iv) }, key, b64(E.ct)).catch(() => null);
         if (pt) {
           const dest = JSON.parse(new TextDecoder().decode(pt));
-          try { sessionStorage.setItem('pp_key', raw); } catch (e2) {}
+          try { sessionStorage.setItem('pp_key', dest.key || raw); } catch (e2) {}
           msg.className = 'msg ok'; msg.textContent = t('m.ok');
           window.location.href = dest.url;
           return;
